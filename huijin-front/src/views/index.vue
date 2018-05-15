@@ -9,7 +9,7 @@
     }
 
     .index h1 {
-        height:150px;
+        height: 150px;
     }
 
     .index h1 img {
