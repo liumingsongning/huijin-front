@@ -13,7 +13,7 @@
     }
 
     .index h1 img {
-        height: 100%;
+        height:100%;
     }
 
     .index h2 {
