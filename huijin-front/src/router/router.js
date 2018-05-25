@@ -5,21 +5,21 @@ const routers = [
         meta: {
             title: ''
         },
-        component: (resolve) => require(['./views/test.vue'], resolve)
+        component: (resolve) => require(['../views/test.vue'], resolve)
     },
     {
         path: '/login',
         meta: {
             title: 'Login - 登录'
         },
-        component: (resolve) => require(['./views/login.vue'], resolve)
+        component: (resolve) => require(['../views/login.vue'], resolve)
     },
     {
         path: '/',
         meta: {
             title: ''
         },
-        component: (resolve) => require(['./views/index.vue'], resolve)
+        component: (resolve) => require(['../views/index.vue'], resolve)
     },
    
 ];

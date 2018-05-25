@@ -1,5 +1,7 @@
 import axios from 'axios';
 import env from '../config/env';
+import store from '../store/index';
+import {router} from '../router/index';
 
 let util = {
 
@@ -10,7 +12,7 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://127.0.0.1' :
+    'http://192.168.199.202' :
     env === 'production' ?
     'https://www.url.com' :
     'https://debug.url.com';
@@ -19,7 +21,7 @@ var ajax = axios.create({
     baseURL: ajaxUrl,
     timeout: 30000,
     headers: {
-        'Accept': 'application/json',
+        'Accept': 'application/vnd.huijin.v1+json',
         'Content-Type': 'application/x-www-form-urlencoded',
     },
 });
@@ -40,11 +42,13 @@ ajax.interceptors.response.use(
         return response;
     },
     error => {
+     
         if (error.response) {
             switch (error.response.status) {
                 case 401:
                     // 401 清除token信息并跳转到登录页面
-                    store.commit('logout');
+                    // store.commit('logout');
+                 
                     router.replace({
                         path: 'login',
                         query: {redirect: router.currentRoute.fullPath}

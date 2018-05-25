@@ -6,7 +6,8 @@ import Vuex from 'vuex';
 import Util from './libs/util';
 import App from './app.vue';
 import 'iview/dist/styles/iview.css';
-
+import store from './store';
+import {router} from './router/index';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -16,38 +17,25 @@ Vue.use(iView);
 
 
 // 路由配置
-const RouterConfig = {
-    mode: 'history',
-    routes: Routers
-};
-const router = new VueRouter(RouterConfig);
+// const RouterConfig = {
+//     mode: 'history',
+//     routes: Routers
+// };
+// const router = new VueRouter(RouterConfig);
 
-router.beforeEach((to, from, next) => {
-    iView.LoadingBar.start();
-    Util.title(to.meta.title);
-    next();
-});
+// router.beforeEach((to, from, next) => {
+//     iView.LoadingBar.start();
+//     Util.title(to.meta.title);
+//     next();
+// });
 
-router.afterEach(() => {
-    iView.LoadingBar.finish();
-    window.scrollTo(0, 0);
-});
+// router.afterEach(() => {
+//     iView.LoadingBar.finish();
+//     window.scrollTo(0, 0);
+// });
 
 
-const store = new Vuex.Store({
-    state: {
-
-    },
-    getters: {
-
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    }
-});
+Vue.prototype.ajax=Util.ajax;
 
 
 new Vue({
