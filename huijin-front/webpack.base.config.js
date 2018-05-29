@@ -10,6 +10,9 @@ module.exports = {
     output: {
         path: path.join(__dirname, './dist')
     },
+    devServer:{
+        disableHostCheck: true
+    },
     module: {
         rules: [{
                 test: /.vue$/,
