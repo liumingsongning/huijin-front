@@ -83,7 +83,7 @@
 										<img src="../images/qq.png" style="vertical-align: middle;"/>QQ
 									</Col>
 									<Col span="4" offset="2">
-										<img src="../images/微信.png" style="vertical-align: middle;"/>微信
+										<img src="../images/wchat.png" style="vertical-align: middle;"/>微信
 									</Col>
 									<Col span="5" offset="10">
 										<button type="button" class="reg">立即注册</button>
@@ -200,3 +200,132 @@ export default {
   }
 };
 </script>
+<style scoped>
+	.ivu-layout {
+		width: 100%;
+		height: 100%;
+		background:  url(http://p8htjuaac.bkt.clouddn.com/467763290700598377.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	/*头部*/
+	.header {
+		width: 100%;
+		height: 120px;
+		background-color: transparent;
+		/*border: 1px solid red;*/
+	}
+	.header .logo {
+		margin-top: 32px;
+	}
+	/*内容*/
+	.content {
+		width: 100%;
+		height: 648px;
+		background: url(http://p8htjuaac.bkt.clouddn.com/9919146688478019.png) no-repeat;
+		background-size: 100% 648px;
+		
+	}
+	.content .loginPage {
+		height: 340px;
+		background-color: #ffffff;
+		margin-top: 76px;
+	}
+	.content .account_login {
+		font-size: 18px;
+		color: #ff6f6e;
+		margin-top: 22px;
+	}
+	.content .personal {
+		width: 100%;
+		height: 40px;
+		border: 1px solid #a6a6a6;
+		background: url(../images/people.png) no-repeat center;
+		background-color: #f3f3f3;
+		outline: none;
+	}
+	.content .phone{
+		width: 100%;
+		height: 40px;
+		border: 1px solid #a6a6a6;
+		border-left: 0;
+		border-right: 0;
+		/*background: url(../images/删除.png) no-repeat 240px 12px;*/
+		outline: none;
+		text-indent: 1em;
+		font-size: 14px;
+	}
+	.content .delete{
+		width: 100%;
+		height: 40px;
+		background: url(../images/delete.png) no-repeat center;
+		outline: none;
+		border: 1px solid #a6a6a6;
+		border-left: none;
+		
+	}
+	.content .pwd {
+		width: 100%;
+		height: 40px;
+		border: 1px solid #a6a6a6;
+		background: url(../images/pwd.png) no-repeat center;
+		background-color: #f3f3f3;
+		outline: none;
+		/*background-size: 100% 40px;*/
+	}
+	.content .forget{
+		width: 100%;
+		font-size: 12px;
+		margin-top: 23px;
+		border: none;
+		outline: none;
+		background-color: transparent;
+	}
+	.content .login{
+		width: 100%;
+		height: 40px;
+		border: 1px solid #ff3430;
+		outline: none;
+		background-color: #fe706e;
+		font-size: 19px;
+		color: white;
+		margin-top: 22px;
+	}
+	.content .reg{
+		width: 100%;
+		font-size: 12px;
+		border: none;
+		outline: none;
+		background-color: transparent;
+		
+	}
+	/*脚部*/
+	.footer{
+		width: 100%;
+		height: 40px;
+		/*border: 1px solid red;*/
+		background: transparent;
+		margin-top: 22px;
+	}
+	.footer ul{
+		margin-top: -20px;
+	}
+	.footer ul li{
+		list-style: none;
+		float: left;
+		border-right: 3px solid #8f618f;
+		font-size: 12px;
+		text-align: center;
+	}
+	.footer ul li:last-child{
+		border-right: none;
+	}
+	.footer ul li a{
+		color: #626262;
+	}
+	
+	@media screen and (min-width: 1920px) {
+		.footer ul{
+			letter-spacing: 3px;
+		}
+	}
+</style>
