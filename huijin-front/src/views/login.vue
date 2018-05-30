@@ -22,7 +22,7 @@
 						
 						<Row>
 							<Col span="6" offset="9" class="account_login">
-								账号登录
+								手机号登录
 							</Col>
 							<Col span="9">&nbsp;</Col>
 						</Row>
@@ -36,20 +36,23 @@
 							</Col>
 							<Col span="17">
 								<!--<Input  clearable style="width: 100%;" v-model="user"></Input>-->
-								<input type="text" class="phone" placeholder="请输入手机号码" v-model="userName"/>
+								<input type="text" class="phone" placeholder="请输入手机号码" v-model="phone"/>
 							</Col>
 							<Col span="2">
 								<button type="button" class="delete"></button>
 							</Col>
 							<Col span="1">&nbsp;</Col>
 						</Row>
+						<Row v-show="phone.length==11">
+							<div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
+						</Row>
 						<!--密码-->
-						<Row style="margin-top: 20px;">
+						<Row style="margin-top: 20px;" v-show="codeShow">
 							<Col span="3" offset="1" >
 								<button type="button" class="pwd"></button>
 							</Col>
 							<Col span="17">
-								<input type="password" class="phone" placeholder="密码" v-model="password"/>
+								<input type="password" class="phone" placeholder="请输入手机验证码" v-model="code"/>
 							</Col>
 							<Col span="2">
 								<button type="button" class="delete"></button>
@@ -57,16 +60,16 @@
 							<Col span="1">&nbsp;</Col>
 						</Row>
 						<!--忘记密码-->
-						<Row>
+						<!-- <Row>
 							<Col span="4" offset="19">
 								<button type="button" class="forget">
 									忘记密码
 								</button>
 							</Col>
 							<Col span="1">&nbsp;</Col>
-						</Row>
+						</Row> -->
 						<!--登录按钮-->
-						<Row>
+						<Row v-show="code.length==4">
 							<Col span="22" offset="1">
 								<button type="button" class="login" @click="login">
 									登录
@@ -76,7 +79,7 @@
 						</Row>
 						
 						<!--QQ以及微信-->
-						<Row>
+						<!-- <Row>
 							<Col span="22" offset="1" style="margin-top: 30px;">
 								<Row>
 									<Col span="3">
@@ -92,7 +95,7 @@
 								
 							</Col>
 							<Col span="1">&nbsp;</Col>
-						</Row>
+						</Row> -->
 					</Col>
 					<Col span="9">&nbsp;</Col>
        			</Row>
@@ -133,7 +136,7 @@
        		
        </Layout>
        
-    <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
+    
        
    </div>
 
@@ -145,7 +148,11 @@
 import Cookies from "js-cookie";
 export default {
   data() {
-    return {};
+    return {
+		phone:'',
+		code:'',
+		codeShow:false,
+	};
   },
   mounted() {
     var SCRIPT_URL = `//captcha.luosimao.com/static/dist/api.js`;
@@ -155,35 +162,43 @@ export default {
     scriptHeat.onload = onload;
     document.body.appendChild(scriptHeat);
     window.getCaptchaResponse = this.getCaptchaResponse;
-    // this.login();
   },
   methods: {
     login() {
+		var self=this
       this.ajax
-        .post("/api/login")
+        .post("/api/login",{
+                phone:self.phone,code: self.code
+            })
         .then(response => {
-          //   Cookies.set('token', response.data.token);
           this.$store.commit("login", response.data.token);
         })
         .catch(error => {
-          console.log(error);
+           if(error.status_code==403){
+				alert(error.message);
+				LUOCAPTCHA.reset()
+			}
         });
     },
     //人机验证成功返回
     getCaptchaResponse(resp) {
-      this.ajax
-        .post("/api/checkluosimao", { luotest_response: resp }, function(res) {
-          console.log(res);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+		var self=this;
+		 this.ajax.post('/api/sendcode', {
+                phone:self.phone,captcha: resp
+            }).then(function (response) {
+			   self.codeShow=true;
+            }).catch(function (error) {
+                if(error.status_code==400){
+					alert(error.message);
+					LUOCAPTCHA.reset()
+				}
+            })
     },
     test() {
       this.$router.push({
         name: "test"
       });
-    }
+    },
     //     Cookies.set('user', this.form.userName);
     //     Cookies.set('password', this.form.password);
     //  this.$store.commit('login',response.data.token)

@@ -2,7 +2,7 @@ import axios from 'axios';
 import env from '../config/env';
 import store from '../store/index';
 import {router} from '../router/index';
-
+import qs from 'qs';
 let util = {
 
 };
@@ -22,7 +22,7 @@ var ajax = axios.create({
     timeout: 30000,
     headers: {
         'Accept': 'application/vnd.huijin.v1+json',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
     },
 });
 // http request 拦截器
@@ -30,6 +30,10 @@ ajax.interceptors.request.use(
     config => {
         if (store.state.user.token) {
             config.headers.authorization = `Bearer ${store.state.user.token}`;
+        }
+        if (config.method=="post"){
+            config.data = qs.stringify(config.data);
+            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         }
         return config;
     },
