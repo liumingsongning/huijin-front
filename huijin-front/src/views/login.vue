@@ -46,6 +46,9 @@
 						<Row v-show="phone.length==11">
 							<div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
 						</Row>
+						<Row v-show="codeShow">
+							<div>验证码已发送，{{time}}后重新发送</div>
+						</Row>
 						<!--密码-->
 						<Row style="margin-top: 20px;" v-show="codeShow">
 							<Col span="3" offset="1" >
@@ -152,6 +155,7 @@ export default {
 		phone:'',
 		code:'',
 		codeShow:false,
+		time:60
 	};
   },
   mounted() {
@@ -161,7 +165,8 @@ export default {
     scriptHeat.src = SCRIPT_URL;
     scriptHeat.onload = onload;
     document.body.appendChild(scriptHeat);
-    window.getCaptchaResponse = this.getCaptchaResponse;
+	window.getCaptchaResponse = this.getCaptchaResponse;
+	
   },
   methods: {
     login() {
@@ -186,7 +191,8 @@ export default {
 		 this.ajax.post('/api/sendcode', {
                 phone:self.phone,captcha: resp
             }).then(function (response) {
-			   self.codeShow=true;
+				self.Interval();
+			   	self.codeShow=true;
             }).catch(function (error) {
                 if(error.status_code==400){
 					alert(error.message);
@@ -199,6 +205,18 @@ export default {
         name: "test"
       });
     },
+	Interval(){
+		var self=this;
+		var fun=function(){
+			self.time--;
+			if(self.time==0){
+				clearInterval(interval);
+				self.time=60;
+				LUOCAPTCHA.reset()                                            
+			}
+		}
+		var interval=setInterval(fun, 1000);
+	}
     //     Cookies.set('user', this.form.userName);
     //     Cookies.set('password', this.form.password);
     //  this.$store.commit('login',response.data.token)
