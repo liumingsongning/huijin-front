@@ -19,23 +19,18 @@
        		<div class="content">
        			<Row>
 					<Col span="6" offset="9" class="loginPage">
-						
 						<Row>
-							<Col span="6" offset="9" class="account_login">
+							<Col span="8" offset="8" class="phone_login">
 								手机号登录
 							</Col>
-							<Col span="9">&nbsp;</Col>
+							<Col span="8">&nbsp;</Col>
 						</Row>
 						<!--手机号-->
 						<Row style="margin-top: 28px;">
 							<Col span="3" offset="1" >
-								<!--<Input class="user" clearable>
-								</Input>-->
-								<!--<input type="text" class="phone" />-->
 								<button type="button" class="personal"></button>
 							</Col>
 							<Col span="17">
-								<!--<Input  clearable style="width: 100%;" v-model="user"></Input>-->
 								<input type="text" class="phone" placeholder="请输入手机号码" v-model="phone"/>
 							</Col>
 							<Col span="2">
@@ -132,7 +127,6 @@
        						
        					</Col>
 						<Col span="8">&nbsp;</Col>
-       					
        				</Row>
        			<!--</div>-->
        		</Footer>
@@ -245,7 +239,6 @@ export default {
 		width: 100%;
 		height: 120px;
 		background-color: transparent;
-		/*border: 1px solid red;*/
 	}
 	.header .logo {
 		margin-top: 32px;
@@ -263,7 +256,7 @@ export default {
 		background-color: #ffffff;
 		margin-top: 76px;
 	}
-	.content .account_login {
+	.content .phone_login {
 		font-size: 18px;
 		color: #ff6f6e;
 		margin-top: 22px;
@@ -272,7 +265,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/people.png) no-repeat center;
+		background: url(../images/login/people.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 	}
@@ -290,7 +283,7 @@ export default {
 	.content .delete{
 		width: 100%;
 		height: 40px;
-		background: url(../images/delete.png) no-repeat center;
+		background: url(../images/login/delete.png) no-repeat center;
 		outline: none;
 		border: 1px solid #a6a6a6;
 		border-left: none;
@@ -300,7 +293,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/pwd.png) no-repeat center;
+		background: url(../images/login/pwd.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 		/*background-size: 100% 40px;*/
@@ -359,6 +352,14 @@ export default {
 	@media screen and (min-width: 1920px) {
 		.footer ul{
 			letter-spacing: 3px;
+		}
+		.phone_login{
+			letter-spacing: 10px;
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.phone_login{
+			letter-spacing: 2px;
 		}
 	}
 </style>

@@ -1,0 +1,543 @@
+<template>
+	<div class="layout">
+		<Layout>
+			<!--头部-->
+			<Header class="header">
+				<Row>
+					<Col span="3" offset="1">
+					<img src="../images/wineclass/LOGO.png" class="logo" />
+					</Col>
+					<Col span="12" offset="3">
+					<ul>
+						<Row>
+							<Col span="6">
+								<li>
+									<a href="">商城首页</a>
+								</li>
+								</Col>
+								<Col span="6">
+								<li>
+									<a href="">最新资讯</a>
+								</li>
+								</Col>
+								<Col span="6">
+								<li>
+									<a href="">酒品分类</a>
+								</li>
+								</Col>
+								<Col span="6">
+								<li>
+									<a href="">个人中心</a>
+								</li>
+							</Col>
+						</Row>
+					</ul>
+					</Col>
+					<Col span="5"></Col>
+				</Row>
+			</Header>
+			<!--内容-->
+			<Content class="content">
+				<!--中部内容1-->
+				<div class="text1">
+					<Row>
+						<Col span="7" offset="3">
+							<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;" />
+						</Col>
+						<Col span="8" offset="1">
+							<img src="../images/wineclass/cloud1.png" />
+						<div class="pulp">
+							<Row>
+								<Col span="21" offset="3">
+									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">原浆酒(收藏)</span>
+								</Col>
+							</Row>
+							<ul>
+								<Row>
+									<Col span="15" offset="4">
+									<Col span="8">
+										<li>芝香清冽</li>
+									</Col>
+									<Col span="8">
+										<li>醉时愉悦</li>
+									</Col>
+									<Col span="8">
+										<li>醒后喜悦</li>
+									</Col>
+									</Col>
+									<Col span="5">&nbsp;</Col>
+								</Row>
+							</ul>
+
+							<ol>
+								<Row>
+									<Col span="11" offset="10">
+									<Col span="12">
+										<li>十年陈酿</li>
+									</Col>
+									<Col span="12">
+										<li>惊世绽放</li>
+									</Col>
+									</Col>
+									<Col span="3">&nbsp;</Col>
+								</Row>
+							</ol>
+							<Row>
+								<Col span="7" offset="4">
+									<Button type="text" class="btn">查看详情</Button>
+								</Col>
+								<Col span="13">&nbsp;</Col>
+							</Row>
+						</div>
+						</Col>
+						<Col span="5">&nbsp;</Col>
+					</Row>
+				</div>
+
+				<!--中部内容2-->
+				<div class="text2">
+					<Row>
+						<Col span="7" offset="6">
+						<!--定制-->
+						<div class="customize">
+							<Row>
+								<Col span="17">
+									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">定制酒</span>
+								</Col>
+								<Col span="7">&nbsp;</Col>
+							</Row>
+
+							<ul>
+								<Row>
+									<Col span="17" offset="1">
+									<Col span="8">
+										<li>芝香清冽</li>
+									</Col>
+									<Col span="8">
+										<li>醉时愉悦</li>
+									</Col>
+									<Col span="8">
+										<li>醒后喜悦</li>
+									</Col>
+									</Col>
+									<Col span="6">&nbsp;</Col>
+								</Row>
+							</ul>
+
+							<ol>
+								<Row>
+									<Col span="11" offset="8">
+									<Col span="12">
+										<li>十年陈酿</li>
+									</Col>
+									<Col span="12">
+										<li>惊世绽放</li>
+									</Col>
+									</Col>
+									<Col span="5">&nbsp;</Col>
+								</Row>
+							</ol>
+
+							<Row>
+								<Col span="7" offset="1">
+									<Button type="text" class="btn">查看详情</Button>
+								</Col>
+								<Col span="16">&nbsp;</Col>
+							</Row>
+
+							<Row>
+								<Col span="10" offset="14">
+									<img src="../images/wineclass/cloud1.png" />
+								</Col>
+							</Row>
+						</div>
+						</Col>
+
+						<Col span="9" offset="1">
+						<Row>
+							<Col span="14" offset="10">
+								<img src="../images/wineclass/cloud2.png" />
+							</Col>
+						</Row>
+						<Row>
+							<Col span="18">
+								<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;" />
+							</Col>
+							<Col span="6">&nbsp;</Col>
+						</Row>
+						</Col>
+						<Col span="1">&nbsp;</Col>
+					</Row>
+				</div>
+
+				<!--中部内容3-->
+				<div class="text3">
+					<Row>
+						<Col span="7" offset="4">
+							<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;margin-top: 32px;" />
+						</Col>
+						<Col span="8" offset="2">
+						<Row>
+							<Col span="15" offset="9">
+								<img src="../images/wineclass/cloud2.png" />
+							</Col>
+						</Row>
+						<div class="eat">
+
+							<Row>
+								<Col span="14">
+									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">食用酒</span>
+								</Col>
+								<Col span="10">&nbsp;</Col>
+							</Row>
+
+							<ul>
+								<Row>
+									<Col span="15" offset="1">
+									<Col span="8">
+										<li>芝香清冽</li>
+									</Col>
+									<Col span="8">
+										<li>醉时愉悦</li>
+									</Col>
+									<Col span="8">
+										<li>醒后喜悦</li>
+									</Col>
+									</Col>
+									<Col span="8">&nbsp;</Col>
+								</Row>
+							</ul>
+
+							<ol>
+								<Row>
+									<Col span="10" offset="7">
+									<Col span="12">
+										<li>十年陈酿</li>
+									</Col>
+									<Col span="12">
+										<li>惊世绽放</li>
+									</Col>
+									</Col>
+									<Col span="7">&nbsp;</Col>
+								</Row>
+							</ol>
+
+							<Row>
+								<Col span="7" offset="1">
+									<Button type="text" class="btn">查看详情</Button>
+								</Col>
+								<Col span="16">&nbsp;</Col>
+							</Row>
+
+						</div>
+						</Col>
+
+						<Col span="3">
+							<img src="../images/wineclass/bell.png" style="width: 100%;height: 348px;margin-top: 120px;" />
+						</Col>
+					</Row>
+
+				</div>
+
+				<!--中部内容4-->
+				<div class="text4">
+					<Row>
+						<Col span="12" offset="6">
+						<div class="hz">
+							<Row>
+								<Col span="14" offset="5" class="top1">
+									<span style="font-size: 34px;">洪</span>,<span style="font-size: 19px;">水大而宽广之意</span>。<span style="font-size: 34px;">泽</span>,<span style="font-size: 19px;">众水所聚集之地。</span>
+								</Col>
+								<Col span="5">&nbsp;</Col>
+							</Row>
+
+							<Row>
+								<Col span="7" offset="9" class="top2">
+									<span style="font-size: 18px;">一个大湖,一瓶美酒。</span>
+								</Col>
+								<Col span="8">&nbsp;</Col>
+							</Row>
+						</div>
+
+						<div class="bottom">
+							<Row>
+								<Col span="24" class="col1"> 洪泽湖,中国腹地最清澈的大湖,在中国以富庶知名的大省江苏。明清以来著名的鱼米之乡有了上佳谷物,再
+								</Col>
+							</Row>
+
+							<Row>
+								<Col span="24" class="col1"> 凭借大湖湿地,产生了独特风格的白酒。湖畔众多饭馆食肆,少不了又美味的鱼禽佐酒,飘扬的酒旗连绵招展。
+								</Col>
+							</Row>
+							<Row>
+								<Col span="24" class="col1"> 淮扬水系便利,南来北往,文人墨客,大商巨贾,每每把洪泽湖所产的美酒,携往他乡。水与水是不同的,酒与
+								</Col>
+							</Row>
+							<Row>
+								<Col span="24" class="col1"> 酒是不同的。那大湖的上方,时常有云。云美好而多变,于光影间形成万千景致。酒自粮、水而变,正如云自大
+								</Col>
+							</Row>
+							<Row>
+								<Col span="24" class="col1"> 湖所生。观云白酒,是以"观云"为名。来自洪湖的观云,是最清冽的浓香型白酒。观云带给你一个大湖上&nbsp;,
+								</Col>
+							</Row>
+							<Row>
+								<Col span="13" offset="6" class="col1"> 自然清新的气息,心旷神怡的视野,甚至,众流归宗的气象
+								</Col>
+								<Col span="5">&nbsp;</Col>
+							</Row>
+						</div>
+						</Col>
+						<Col span="6">&nbsp;</Col>
+					</Row>
+				</div>
+			</Content>
+			<!--脚部-->
+			<div class="footer">
+				<Row>
+					<Col span="6">
+						<img src="../images/wineclass/lotus.png" />
+					</Col>
+
+					<Col span="1">
+					<ul>
+						<li>
+							<a href="">关于我们</a>
+						</li>
+						<li>
+							<a href="">联系我们</a>
+						</li>
+						<li>
+							<a href="">加入我们</a>
+						</li>
+					</ul>
+
+					</Col>
+					<Col span="4" offset="2">
+						<p class="p1">注意未满十八岁,禁止购买!</p>
+					</Col>
+					<Col span="2" offset="3">
+					<div class="gz">
+						关注公众号
+						<div class="we">
+							加入我们
+						</div>
+					</div>
+					</Col>
+					<Col span="2" offset="1">
+						<img src="../images/wineclass/code.png" class="img3" />
+					</Col>
+					<Col span="3">&nbsp;</Col>
+				</Row>
+			</div>
+		</Layout>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		
+	}
+</script>
+
+<style scoped>
+	.layout {
+		width: 100%;
+		height: 2554px;
+		background: url(../images/wineclass/bg.png) no-repeat;
+		background-size: 100% 2554px;
+	}
+	
+	.ivu-layout {
+		background: transparent;
+	}
+	/*头部*/
+	
+	.header {
+		width: 100%;
+		height: 120px;
+		box-shadow: 0 8px 5px #b5b5b5;
+		background-color: transparent;
+	}
+	
+	.header .logo {
+		margin-top: 32px;
+	}
+	
+	.header ul li {
+		list-style: none;
+		float: left;
+		font-size: 16px;
+		line-height: 116px;
+		letter-spacing: 2.5px;
+	}
+	
+	.header ul li a {
+		color: #010101;
+	}
+	
+	.header ul li:hover {
+		border-bottom: 4px solid #a8d3fe;
+	}
+	/*内容*/
+	.content {
+		width: 100%;
+		height: 2100px;
+	}
+	/*中部内容1*/
+	.content .text1 {
+		height: 440px;
+		margin-top: 82px;
+	}
+	
+	.content .text1 ul li,
+	.content .text1 ol li {
+		float: left;
+		list-style: none;
+		font-size: 17px;
+		margin-top: 27px;
+	}
+	
+	.content .text1 .btn,
+	.text2 .btn {
+		max-width: 120px;
+		min-width: 120px;
+		height: 37px;
+		background-color: #fc9b88;
+		color: #fff;
+		outline: none;
+		margin-top: 42px;
+		font-size: 15px;
+	}
+	
+	.content .text1 .pulp {
+		margin-top: 10px;
+	}
+	/*中部内容2*/
+	
+	.content .text2 {
+		width: 100%;
+		height: 602px;
+		/*border: 1px solid;*/
+		margin-top: 6px;
+	}
+	
+	.content .text2 .customize {
+		margin-top: 240px;
+	}
+	
+	.content .text2 ul li,
+	.content .text2 ol li {
+		float: left;
+		list-style: none;
+		font-size: 17px;
+		margin-top: 27px;
+	}
+	/*中部内容3*/
+	
+	.content .text3 {
+		height: 460px;
+		margin-top: 110px;
+	}
+	
+	.content .text3 ul li {
+		float: left;
+		list-style: none;
+		font-size: 17px;
+	}
+	
+	.content .text3 ol li {
+		float: left;
+		list-style: none;
+		font-size: 17px;
+		margin-top: 20px;
+	}
+	
+	.content .text3 .btn {
+		width: 120px;
+		max-width: 120px;
+		min-width: 120px;
+		height: 37px;
+		background-color: #fc9b88;
+		color: #fff;
+		outline: none;
+		font-size: 15px;
+		margin-top: 22px;
+	}
+	/*中部内容4*/
+	
+	.content .text4 {
+		width: 100%;
+		height: 204px;
+		margin-top: 223px;
+		color: #919594;
+		/*border: 1px solid red;*/
+	}
+	
+	.content .text4 .bottom {
+		font-size: 12px;
+	}
+	/*脚部*/
+	
+	.footer {
+		width: 100%;
+		height: 252px;
+		margin-top: 80px;
+	}
+	
+	.footer ul {
+		width: 70px;
+		height: 70px;
+		margin-top: 122px;
+	}
+	
+	.footer ul li {
+		font-size: 16px;
+		list-style: none;
+	}
+	
+	.footer ul li a {
+		color: #838288;
+	}
+	
+	.footer .p1 {
+		color: #838288;
+		font-size: 16px;
+		margin-top: 156px;
+	}
+	
+	.footer .gz {
+		font-size: 16px;
+		margin-top: 122px;
+	}
+	
+	.footer .gz .we {
+		text-indent: 1em;
+		margin-top: 30px;
+	}
+	
+	.footer .img3 {
+		margin-top: 100px;
+	}
+	
+	@media screen and (min-width: 1920px) {
+		.content .text4 .bottom .col1 {
+			margin-top: 3px;
+			letter-spacing: 7.9px;
+		}
+		.content .text4 .top1 {
+			letter-spacing: 9px;
+		}
+		.content .text4 .top2 {
+			letter-spacing: 5px;
+		}
+	}
+	
+	@media screen and (max-width: 1366px) {
+		.content .text4 .bottom .col1 {
+			margin-top: 3px;
+			letter-spacing: 2.2px;
+		}
+	}
+</style>
