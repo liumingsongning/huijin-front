@@ -12,7 +12,7 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://192.168.199.202' :
+    'http://api.huijinjiu.com' :
     env === 'production' ?
     'https://www.url.com' :
     'https://debug.url.com';
