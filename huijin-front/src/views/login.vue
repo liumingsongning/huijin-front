@@ -5,7 +5,7 @@
        		<Header class="header">
        			<Row>
        				<Col span="3" offset="1">
-						<img src="http://p8htjuaac.bkt.clouddn.com/805351264090795932.png"  class="logo"/>
+						<img src="http://static.huijinjiu.com/805351264090795932.png"  class="logo"/>
 					</Col>
 					<Col span="2" offset="1" style="font-size: 23px;margin-top: 30px;">
 						欢迎登录
@@ -19,23 +19,18 @@
        		<div class="content">
        			<Row>
 					<Col span="6" offset="9" class="loginPage">
-						
 						<Row>
-							<Col span="6" offset="9" class="account_login">
+							<Col span="8" offset="8" class="phone_login">
 								手机号登录
 							</Col>
-							<Col span="9">&nbsp;</Col>
+							<Col span="8">&nbsp;</Col>
 						</Row>
 						<!--手机号-->
 						<Row style="margin-top: 28px;">
 							<Col span="3" offset="1" >
-								<!--<Input class="user" clearable>
-								</Input>-->
-								<!--<input type="text" class="phone" />-->
 								<button type="button" class="personal"></button>
 							</Col>
 							<Col span="17">
-								<!--<Input  clearable style="width: 100%;" v-model="user"></Input>-->
 								<input type="text" class="phone" placeholder="请输入手机号码" v-model="phone"/>
 							</Col>
 							<Col span="2">
@@ -86,10 +81,10 @@
 							<Col span="22" offset="1" style="margin-top: 30px;">
 								<Row>
 									<Col span="3">
-										<img src="../images/qq.png" style="vertical-align: middle;"/>QQ
+										<img src="../static.huijinjiu.com/qq.png" style="vertical-align: middle;"/>QQ
 									</Col>
 									<Col span="4" offset="2">
-										<img src="../images/wchat.png" style="vertical-align: middle;"/>微信
+										<img src="../static.huijinjiu.com/wchat.png" style="vertical-align: middle;"/>微信
 									</Col>
 									<Col span="5" offset="10">
 										<button type="button" class="reg">立即注册</button>
@@ -132,7 +127,6 @@
        						
        					</Col>
 						<Col span="8">&nbsp;</Col>
-       					
        				</Row>
        			<!--</div>-->
        		</Footer>
@@ -157,7 +151,7 @@ export default {
 		codeShow:false,
 		time:60
 	};
-  },
+  },	
   mounted() {
     var SCRIPT_URL = `//captcha.luosimao.com/static/dist/api.js`;
     var scriptHeat = document.createElement("script");
@@ -238,7 +232,7 @@ export default {
 	.ivu-layout {
 		width: 100%;
 		height: 100%;
-		background:  url(http://p8htjuaac.bkt.clouddn.com/467763290700598377.png) no-repeat;
+		background:  url(http://static.huijinjiu.com/467763290700598377.png) no-repeat;
 		background-size: 100% 100%;
 	}
 	/*头部*/
@@ -246,7 +240,6 @@ export default {
 		width: 100%;
 		height: 120px;
 		background-color: transparent;
-		/*border: 1px solid red;*/
 	}
 	.header .logo {
 		margin-top: 32px;
@@ -255,7 +248,7 @@ export default {
 	.content {
 		width: 100%;
 		height: 648px;
-		background: url(http://p8htjuaac.bkt.clouddn.com/9919146688478019.png) no-repeat;
+		background: url(http://static.huijinjiu.com/9919146688478019.png) no-repeat;
 		background-size: 100% 648px;
 		
 	}
@@ -264,7 +257,7 @@ export default {
 		background-color: #ffffff;
 		margin-top: 76px;
 	}
-	.content .account_login {
+	.content .phone_login {
 		font-size: 18px;
 		color: #ff6f6e;
 		margin-top: 22px;
@@ -273,7 +266,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/people.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/people.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 	}
@@ -283,7 +276,6 @@ export default {
 		border: 1px solid #a6a6a6;
 		border-left: 0;
 		border-right: 0;
-		/*background: url(../images/删除.png) no-repeat 240px 12px;*/
 		outline: none;
 		text-indent: 1em;
 		font-size: 14px;
@@ -291,7 +283,7 @@ export default {
 	.content .delete{
 		width: 100%;
 		height: 40px;
-		background: url(../images/delete.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/delete.png) no-repeat center;
 		outline: none;
 		border: 1px solid #a6a6a6;
 		border-left: none;
@@ -301,7 +293,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/pwd.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/pwd.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 		/*background-size: 100% 40px;*/
@@ -360,6 +352,14 @@ export default {
 	@media screen and (min-width: 1920px) {
 		.footer ul{
 			letter-spacing: 3px;
+		}
+		.phone_login{
+			letter-spacing: 10px;
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.phone_login{
+			letter-spacing: 2px;
 		}
 	}
 </style>
