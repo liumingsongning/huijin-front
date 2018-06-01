@@ -3,9 +3,11 @@
 		<!--头部-->
 		<div class="header">
 			<Row>
-	    		<Col span="1">&nbsp;</Col>
+	    		<Col span="1">
+						&nbsp;
+					</Col>
 	    		<Col span="3">
-	    			<!--<img src="../../../../images/mall/LOGO.png" class="logo"/>-->
+	    			<!--<img src="../../../../static.huijinjiu.com/mall/LOGO.png" class="logo"/>-->
 	    		</Col>
 	    		<Col span="3">&nbsp;</Col>
 	    		<Col span="12">
@@ -60,13 +62,13 @@
 	    					<Col span="18" style="margin-top: 58px;">
 	    						<Row>
 	    							<Col span="8">
-	    								<Button class="weight">1000ml</Button>
+	    								<Button class="weight" >{{good.weight}}ml</Button>
 	    							</Col>
 	    							<Col span="8">
-	    								<Button class="weight">1000ml</Button>
+	    								<Button class="weight">{{good.weight}}ml</Button>
 	    							</Col>
 	    							<Col span="8">
-	    								<Button class="weight">1000ml</Button>
+	    								<Button class="weight">{{good.weight}}ml</Button>
 	    							</Col>
 	    						</Row>
 	    					</Col>
@@ -76,7 +78,7 @@
 	    				<Row>
 	    					<Col span="12" offset="1">
 	    						<div class="money">
-	    							¥<span style="font-size: 28px;">20000.00</span>
+	    							¥<span style="font-size: 28px;" >{{good.market_price}}</span>
 	    						</div>
 	    						<Col span="11">&nbsp;</Col>
 	    					</Col>
@@ -89,15 +91,14 @@
 	    					</Col>
 	    					<Col span="6" offset="5">
 	    						
-	    						<Button class="shopcar">加入购物车</Button>
+	    						<Button class="shopcar" @click="add">加入购物车</Button>
 	    					</Col>
 	    				</Row>
 	    			</div>
 	    		</Col>
 
 	    		<Col span="14">
-	    			<!--<img src="../../../../images/mall/banner.png" class="img1"/>-->
-					
+							<img :src="good.goods_img" class="img1"/>
 	    		</Col>
 	    		<Col span="1">&nbsp;</Col>
    			</Row>
@@ -111,7 +112,7 @@
 		<div class="footer">
 			<Row>
 				<Col span="6">
-					<!--<img src="../../../../images/wineclass/lotus.png" />-->
+					<img src="../static.huijinjiu.com/wineclass/lotus.png" />
 				</Col>
 
 				<Col span="1">
@@ -140,7 +141,7 @@
 				</div>
 				</Col>
 				<Col span="2" offset="1">
-					<!--<img src="../../../../images/wineclass/code.png" class="img3" />-->
+					<img src="../static.huijinjiu.com/wineclass/code.png" class="img3" />
 				</Col>
 				<Col span="3">&nbsp;</Col>
 			</Row>
@@ -150,33 +151,61 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {};
-  },
-  mounted() {
-    console.log("1");
-    this.details();
-  },
-  methods: {
-    details() {
-      this.ajax
-        .get("/api/goods/1")
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {});
-    }
-  }
-};
+		export default {
+			// props: {
+			// 		obj: {
+			// 			type:Object
+			// 		}
+			// },
+			data (){
+					return {
+						banner:"",
+						market_price:"",
+						weight:"",
+						good:""
+					}
+			},
+			mounted() {
+				this.details()
+			},
+			methods: {
+				details () {
+						this.ajax.get("/api/goods/1")
+						.then(response => {
+								this.good = response.data.good;
+							
+							
+						})
+						.catch(error => {
+							if(error.status_code==404){
+								alert(error.message);
+
+							}
+						})
+				},
+				add () {
+						this.ajax.post("/api/cart/add",{
+								id : this.id
+						}).then(function(res){
+							
+						}).catch(function(err){
+								alert(err.message)
+						})
+						
+				}
+
+			}
+		}
+
 </script>
+
 
 <style scoped>
 .detail {
   width: 100%;
   height: 2164px;
-  /*background: url(../../../../images/detail/bg.jpg) no-repeat;*/
-  /*background-size: 100% 2164px;*/
+  background: url(../static.huijinjiu.com/detail/bg.jpg) no-repeat;
+  background-size: 100% 2164px;
 }
 /*头部*/
 .header {
@@ -246,13 +275,14 @@ ol li {
 /*中部内容*/
 .center {
   width: 100%;
-  height: 1202px;
-  border: 1px solid red;
+  height: 1185px;
+  /* border: 1px solid red; */
 }
 /*脚部*/
 .footer {
   width: 100%;
   height: 252px;
+	/* border: 1px solid red */
 }
 
 .footer ul {

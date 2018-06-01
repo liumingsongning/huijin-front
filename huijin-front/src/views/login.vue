@@ -5,7 +5,7 @@
        		<Header class="header">
        			<Row>
        				<Col span="3" offset="1">
-						<img src="http://p8htjuaac.bkt.clouddn.com/805351264090795932.png"  class="logo"/>
+						<img src="http://static.huijinjiu.com/805351264090795932.png"  class="logo"/>
 					</Col>
 					<Col span="2" offset="1" style="font-size: 23px;margin-top: 30px;">
 						欢迎登录
@@ -81,10 +81,10 @@
 							<Col span="22" offset="1" style="margin-top: 30px;">
 								<Row>
 									<Col span="3">
-										<img src="../images/qq.png" style="vertical-align: middle;"/>QQ
+										<img src="../static.huijinjiu.com/qq.png" style="vertical-align: middle;"/>QQ
 									</Col>
 									<Col span="4" offset="2">
-										<img src="../images/wchat.png" style="vertical-align: middle;"/>微信
+										<img src="../static.huijinjiu.com/wchat.png" style="vertical-align: middle;"/>微信
 									</Col>
 									<Col span="5" offset="10">
 										<button type="button" class="reg">立即注册</button>
@@ -151,7 +151,7 @@ export default {
 		codeShow:false,
 		time:60
 	};
-  },
+  },	
   mounted() {
     var SCRIPT_URL = `//captcha.luosimao.com/static/dist/api.js`;
     var scriptHeat = document.createElement("script");
@@ -231,7 +231,7 @@ export default {
 	.ivu-layout {
 		width: 100%;
 		height: 100%;
-		background:  url(http://p8htjuaac.bkt.clouddn.com/467763290700598377.png) no-repeat;
+		background:  url(http://static.huijinjiu.com/467763290700598377.png) no-repeat;
 		background-size: 100% 100%;
 	}
 	/*头部*/
@@ -247,7 +247,7 @@ export default {
 	.content {
 		width: 100%;
 		height: 648px;
-		background: url(http://p8htjuaac.bkt.clouddn.com/9919146688478019.png) no-repeat;
+		background: url(http://static.huijinjiu.com/9919146688478019.png) no-repeat;
 		background-size: 100% 648px;
 		
 	}
@@ -265,7 +265,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/login/people.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/people.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 	}
@@ -275,7 +275,6 @@ export default {
 		border: 1px solid #a6a6a6;
 		border-left: 0;
 		border-right: 0;
-		/*background: url(../images/删除.png) no-repeat 240px 12px;*/
 		outline: none;
 		text-indent: 1em;
 		font-size: 14px;
@@ -283,7 +282,7 @@ export default {
 	.content .delete{
 		width: 100%;
 		height: 40px;
-		background: url(../images/login/delete.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/delete.png) no-repeat center;
 		outline: none;
 		border: 1px solid #a6a6a6;
 		border-left: none;
@@ -293,7 +292,7 @@ export default {
 		width: 100%;
 		height: 40px;
 		border: 1px solid #a6a6a6;
-		background: url(../images/login/pwd.png) no-repeat center;
+		background: url(../static.huijinjiu.com/login/pwd.png) no-repeat center;
 		background-color: #f3f3f3;
 		outline: none;
 		/*background-size: 100% 40px;*/

@@ -6,7 +6,7 @@
 	<div class="side">
 		<Row>
 			<Col span="19" offset="2">
-			<img src="../images/personal/headborder.png" class="bk" />
+			<img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
 			</Col>
 			<Col span="3">&nbsp;</Col>
 		</Row>
@@ -24,7 +24,7 @@
 			</Col>
 			<Col span="6">&nbsp;</Col>
 		</Row>
-	<!--<img src="../../../../images/personal/border0.png"/>-->
+	<!--<img src="../../../../static.huijinjiu.com/personal/border0.png"/>-->
 		<div class="bottom">
 			<Row>
 				<Col span="11" offset="7">
@@ -63,7 +63,7 @@
 		<div class="header">
 			<Row>
 				<Col span="3" offset="1">
-				<img src="../images/personal/LOGO.png" class="logo" />
+				<img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
 				</Col>
 				<Col span="13" offset="3">
 				<ul>
@@ -132,7 +132,7 @@
 				<!--头像图片-->
 				<Row>
 					<Col span="3" offset="11">
-						<img src="../images/personal/headImg.png" class="img1" />
+						<img src="../static.huijinjiu.com/personal/headImg.png" class="img1" />
 					</Col>
 					<Col span="10"></Col>
 				</Row>
@@ -165,13 +165,13 @@
 						<Row>
 							<Col span="6">
 								<div class="sex">
-									<img src="../images/personal/male.png" style="vertical-align: middle;" />&nbsp;男
+									<img src="../static.huijinjiu.com/personal/male.png" style="vertical-align: middle;" />&nbsp;男
 								</div>
 							</Col>
 							
 							<Col span="7" offset="11">
 								<div class="address">
-									<img src="../images/personal/address.png" style="vertical-align: middle;" />&nbsp;北京
+									<img src="../static.huijinjiu.com/personal/address.png" style="vertical-align: middle;" />&nbsp;北京
 								</div>
 							</Col>
 						</Row>
@@ -193,7 +193,7 @@
 					<Col span="6" offset="10">
 						<Row>
 							<Col span="6">
-								&nbsp;<img src="../images/personal/blue.png" style="vertical-align: middle;" />
+								&nbsp;<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
 							</Col>
 							<Col span="8">
 								<div class="share">
@@ -201,7 +201,7 @@
 								</div>
 							</Col>
 							<Col span="6">
-								<img src="../images/personal/blue.png" style="vertical-align: middle;" />
+								<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
 							</Col>
 							<Col span="4">&nbsp;</Col>
 						</Row>
@@ -235,18 +235,18 @@
 				<!--底部图片-->
 				<Row>
 					<Col span="10" offset="1">
-						<img src="../images/personal/wine.png" class="imgTotal1"  />
+						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1"  />
 					</Col>
 					<Col span="10" offset="2">
-						<img src="../images/personal/wine.png" class="imgTotal1"  />
+						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1"  />
 					</Col>
 					<Col span="1">&nbsp;</Col>
 					
 					<Col span="10" offset="1">
-						<img src="../images/personal/wine.png" class="imgTotal2"  />
+						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2"  />
 					</Col>
 					<Col span="10" offset="2">
-						<img src="../images/personal/wine.png" class="imgTotal2"  />
+						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2"  />
 					</Col>
 					<Col span="1">&nbsp;</Col>
 				</Row>
@@ -268,7 +268,7 @@
 	.ivu-layout{
 		width: 100%;
 		height: 100%;
-		background: url(../images/personal/personImg.jpg) no-repeat;
+		background: url(../static.huijinjiu.com/personal/personImg.jpg) no-repeat;
 		background-size: 100% 1568px;
 		font-size: 16px;
 	}
@@ -276,7 +276,7 @@
 	/*侧边栏*/
 	.sider{
 		height: 1568px;
-		background: url(../images/personal/siderImg.png) no-repeat;
+		background: url(../static.huijinjiu.com/personal/siderImg.png) no-repeat;
 		background-size: 100% 100%;
 		
 	}
@@ -287,7 +287,7 @@
 	.side .bk{
 		width: 100%;
 		height: 100%;
-		background: url(../images/personal/head.png) no-repeat center;
+		background: url(../static.huijinjiu.com/personal/head.png) no-repeat center;
 		margin-top: 102px;
 		
 	}
@@ -317,7 +317,7 @@
 	}
 	
 	/*.side ul li:hover{
-		background: url(../../../../images/personal/border0.png) no-repeat;
+		background: url(../../../../static.huijinjiu.com/personal/border0.png) no-repeat;
 		background-size: 100% 22px;
 		
 	}*/
@@ -352,7 +352,7 @@
 	.content .zt{
 		width: 100%;
 		height: 300px;
-		background: url(../images/personal/theme.png) no-repeat;
+		background: url(../static.huijinjiu.com/personal/theme.png) no-repeat;
 		background-size: 100% 300px;
 		float: left;
 		font-size: 20px;
@@ -369,7 +369,7 @@
 	.content .fx{
 		width: 80px;
 		height: 80px;
-		background: url(../images/personal/share.png) no-repeat center;
+		background: url(../static.huijinjiu.com/personal/share.png) no-repeat center;
 		background-color: white;
 		border-top-right-radius: 10px;
 		border-bottom-right-radius: 10px;

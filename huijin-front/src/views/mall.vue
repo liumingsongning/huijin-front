@@ -5,7 +5,7 @@
 	    	<Row>
 	    		<Col span="1">&nbsp;</Col>
 	    		<Col span="3">
-	    			<img src="../images/mall/LOGO.png" class="logo"/>
+	    			<img src="../static.huijinjiu.com/mall/LOGO.png" class="logo"/>
 	    		</Col>
 	    		<Col span="3">&nbsp;</Col>
 	    		<Col span="12">
@@ -64,7 +64,7 @@
 	    		</Col>
 
 	    		<Col span="14" offset="1">
-	    			<img src="../images/mall/banner.png" class="img1"/>
+	    			<img src="../static.huijinjiu.com/mall/banner.png" class="img1"/>
 	    		</Col>
 	    		<Col span="1">&nbsp;</Col>
    			</Row>
@@ -119,7 +119,7 @@
    		<div class="text3">
    			<Row>
    				<Col span="3" offset="7">
-   					<img src="../images/mall/wine.png" class="img2"/>
+   					<img src="../static.huijinjiu.com/mall/wine.png" class="img2"/>
    				</Col>
    				<Col span="7" offset="3">
    					<div class="gy">
@@ -171,7 +171,7 @@
    		<div class="foot">
    			<Row>
    				<Col span="7">
-   					<img src="../images/mall/club.png"/>
+   					<img src="../static.huijinjiu.com/mall/club.png"/>
    				</Col>	
 	   			<Col span="12" class="col2">
    					<Col span="5">
@@ -200,7 +200,7 @@
    		<div class="footer">
    			<Row>
    				<Col span="6">
-   					<img src="../images/mall/lotus.png" />
+   					<img src="../static.huijinjiu.com/mall/lotus.png" />
    				</Col>
    				
    				<Col span="1">
@@ -223,7 +223,7 @@
    					</div>
    				</Col>
    				<Col span="2" offset="1">
-   					<img src="../images/mall/code.png"  class="img3"/>
+   					<img src="../static.huijinjiu.com/mall/code.png"  class="img3"/>
    				</Col>
    				<Col span="3">&nbsp;</Col>
    				
@@ -239,7 +239,7 @@
 <style scoped>
 	.mall{
 		width: 100%;
-		background:url(../images/mall/bg.png) no-repeat;
+		background:url(../static.huijinjiu.com/mall/bg.png) no-repeat;
 		background-size: 100% 100%;
 	}
 	/*头部*/
@@ -290,7 +290,7 @@
 		/*height: 356px;*/
 		height: 482px;
 		margin-top: 90px;
-		background: url(../images/mall/bird.png) no-repeat;
+		background: url(../static.huijinjiu.com/mall/bird.png) no-repeat;
 		background-size: 100% 100%;
 		
 	}
@@ -313,7 +313,7 @@
 	/*内容3*/
 	.text3{
 		width: 100%;
-		background: url(../images/mall/img.png) no-repeat;
+		background: url(../static.huijinjiu.com/mall/img.png) no-repeat;
 		background-size: 100% 100%;
 		margin-top: 108px;
 	}
@@ -333,7 +333,7 @@
 	.text3 .gy .below .btn{
 		width: 134px;
 		height: 52px;
-		background-image: url(../images/mall/btnborder.png);
+		background-image: url(../static.huijinjiu.com/mall/btnborder.png);
 		background-repeat: no-repeat;
 		border: none;
 		outline: none;
@@ -355,7 +355,7 @@
 		background-color: transparent;
 		font-size: 16px;
 		color: #777777;
-		background: url(../images/mall/border.png) no-repeat;
+		background: url(../static.huijinjiu.com/mall/border.png) no-repeat;
 	}
 	.foot .col2{
 		margin-top: 150px;

@@ -5,7 +5,7 @@
 			<Header class="header">
 				<Row>
 					<Col span="3" offset="1">
-					<img src="../images/wineclass/LOGO.png" class="logo" />
+					<img src="../static.huijinjiu.com/wineclass/LOGO.png" class="logo" />
 					</Col>
 					<Col span="12" offset="3">
 					<ul>
@@ -42,10 +42,10 @@
 				<div class="text1">
 					<Row>
 						<Col span="7" offset="3">
-							<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;" />
+							<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;" />
 						</Col>
 						<Col span="8" offset="1">
-							<img src="../images/wineclass/cloud1.png" />
+							<img src="../static.huijinjiu.com/wineclass/cloud1.png" />
 						<div class="pulp">
 							<Row>
 								<Col span="21" offset="3">
@@ -147,7 +147,7 @@
 
 							<Row>
 								<Col span="10" offset="14">
-									<img src="../images/wineclass/cloud1.png" />
+									<img src="../static.huijinjiu.com/wineclass/cloud1.png" />
 								</Col>
 							</Row>
 						</div>
@@ -156,12 +156,12 @@
 						<Col span="9" offset="1">
 						<Row>
 							<Col span="14" offset="10">
-								<img src="../images/wineclass/cloud2.png" />
+								<img src="../static.huijinjiu.com/wineclass/cloud2.png" />
 							</Col>
 						</Row>
 						<Row>
 							<Col span="18">
-								<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;" />
+								<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;" />
 							</Col>
 							<Col span="6">&nbsp;</Col>
 						</Row>
@@ -174,12 +174,12 @@
 				<div class="text3">
 					<Row>
 						<Col span="7" offset="4">
-							<img src="../images/wineclass/banner.png" style="width: 100%;height: 423px;margin-top: 32px;" />
+							<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;margin-top: 32px;" />
 						</Col>
 						<Col span="8" offset="2">
 						<Row>
 							<Col span="15" offset="9">
-								<img src="../images/wineclass/cloud2.png" />
+								<img src="../static.huijinjiu.com/wineclass/cloud2.png" />
 							</Col>
 						</Row>
 						<div class="eat">
@@ -233,7 +233,7 @@
 						</Col>
 
 						<Col span="3">
-							<img src="../images/wineclass/bell.png" style="width: 100%;height: 348px;margin-top: 120px;" />
+							<img src="../static.huijinjiu.com/wineclass/bell.png" style="width: 100%;height: 348px;margin-top: 120px;" />
 						</Col>
 					</Row>
 
@@ -296,7 +296,7 @@
 			<div class="footer">
 				<Row>
 					<Col span="6">
-						<img src="../images/wineclass/lotus.png" />
+						<img src="../static.huijinjiu.com/wineclass/lotus.png" />
 					</Col>
 
 					<Col span="1">
@@ -325,7 +325,7 @@
 					</div>
 					</Col>
 					<Col span="2" offset="1">
-						<img src="../images/wineclass/code.png" class="img3" />
+						<img src="../static.huijinjiu.com/wineclass/code.png" class="img3" />
 					</Col>
 					<Col span="3">&nbsp;</Col>
 				</Row>
@@ -345,7 +345,7 @@
 	.layout {
 		width: 100%;
 		height: 2554px;
-		background: url(../images/wineclass/bg.png) no-repeat;
+		background: url(../static.huijinjiu.com/wineclass/bg.png) no-repeat;
 		background-size: 100% 2554px;
 	}
 	
