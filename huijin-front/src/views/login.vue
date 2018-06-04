@@ -19,14 +19,30 @@
        		<div class="content">
        			<Row>
 					<Col span="6" offset="9" class="loginPage">
-						<Row>
-							<Col span="8" offset="8" class="phone_login">
-								手机号登录
+						<Row style="border-bottom:2px solid #bfbfbf;height:49px">
+							<Col span="18" offset="3">
+								<ul>
+									<Col span="12" >
+										<li @click="phone_login" class="phone_login">
+											<!-- {{phone_login1}} -->
+											手机登录
+										</li>
+										
+									</Col>
+									<Col span="12" >
+										<li @click="account_login" class="account_login">
+											<!-- {{account_login1}} -->
+											账户登录
+										</li>
+									</Col>
+								</ul>
+
 							</Col>
-							<Col span="8">&nbsp;</Col>
+							<Col span="3">&nbsp;</Col>
+							
 						</Row>
 						<!--手机号-->
-						<Row style="margin-top: 28px;">
+						<Row style="margin-top: 28px;" >
 							<Col span="3" offset="1" >
 								<button type="button" class="personal"></button>
 							</Col>
@@ -41,22 +57,39 @@
 						<Row v-show="phone.length==11">
 							<div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
 						</Row>
-						<Row v-show="codeShow">
-							<div>验证码已发送，{{time}}后重新发送</div>
+						<!-- <Row v-show="codeShow0">
+							<Col span="12" offset="6">
+								<div>验证码已发送，{{time}}s后重新发送</div>
+							</Col>
+							<Col span="6">&nbsp;</Col>
+						</Row> -->
+						<Row style="margin-top:20px" v-show="codeShow0">
+							<Col span="6" offset="1" >
+								<button type="button" style="outline:none;border:1px solid #a6a6a6;height:40px;background:transparent;border-right:none;width:100%">手机验证码</button>
+							</Col>
+							<Col span="9">
+								<input type="text" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
+							</Col>
+							<Col span="7">
+								<button type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none">{{time}}s后重新获取</button>
+							</Col>
+							<Col span="1">&nbsp;</Col>
 						</Row>
+						 
 						<!--密码-->
-						<Row style="margin-top: 20px;" v-show="codeShow">
+						<Row style="margin-top: 15px;" v-show="codeShow2">
 							<Col span="3" offset="1" >
 								<button type="button" class="pwd"></button>
 							</Col>
 							<Col span="17">
-								<input type="password" class="phone" placeholder="请输入手机验证码" v-model="code"/>
+								<input type="password" class="phone" placeholder="请输入密码" v-model="code"/>
 							</Col>
 							<Col span="2">
 								<button type="button" class="delete"></button>
 							</Col>
 							<Col span="1">&nbsp;</Col>
 						</Row>
+
 						<!--忘记密码-->
 						<!-- <Row>
 							<Col span="4" offset="19">
@@ -67,24 +100,28 @@
 							<Col span="1">&nbsp;</Col>
 						</Row> -->
 						<!--登录按钮-->
-						<Row v-show="code.length==4">
-							<Col span="22" offset="1">
+						<Row>
+							<Col span="22" offset="1"> 
+							<!-- v-show="code.length==4" -->
 								<button type="button" class="login" @click="login">
 									登录
 								</button>
 							</Col>
 							<Col span="1">&nbsp;</Col>
 						</Row>
-						
 						<!--QQ以及微信-->
-						<!-- <Row>
+						<Row>
 							<Col span="22" offset="1" style="margin-top: 30px;">
 								<Row>
 									<Col span="3">
-										<img src="../static.huijinjiu.com/qq.png" style="vertical-align: middle;"/>QQ
+										<div>
+											<img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;"/>QQ
+										</div>
 									</Col>
 									<Col span="4" offset="2">
-										<img src="../static.huijinjiu.com/wchat.png" style="vertical-align: middle;"/>微信
+										<div>
+											<img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;"/>微信
+										</div>
 									</Col>
 									<Col span="5" offset="10">
 										<button type="button" class="reg">立即注册</button>
@@ -93,7 +130,7 @@
 								
 							</Col>
 							<Col span="1">&nbsp;</Col>
-						</Row> -->
+						</Row>
 					</Col>
 					<Col span="9">&nbsp;</Col>
        			</Row>
@@ -148,8 +185,10 @@ export default {
     return {
 		phone:'',
 		code:'',
-		codeShow:false,
-		time:60
+		codeShow0:true,
+		codeShow1:true,
+		codeShow2:false,
+		time:60,
 	};
   },	
   mounted() {
@@ -163,6 +202,16 @@ export default {
 	
   },
   methods: {
+	phone_login () {
+		this.codeShow0 = true
+		this.codeShow2 = false
+		
+	},
+	account_login () {
+		this.codeShow0 = false		
+		this.codeShow1 = false		
+		this.codeShow2 = true
+	},
     login() {
 		var self=this
       this.ajax
@@ -232,7 +281,7 @@ export default {
 		width: 100%;
 		height: 100%;
 		background:  url(http://static.huijinjiu.com/467763290700598377.png) no-repeat;
-		background-size: 100% 100%;
+		background-size: 100% 918px;
 	}
 	/*头部*/
 	.header {
@@ -251,15 +300,32 @@ export default {
 		background-size: 100% 648px;
 		
 	}
+	.content ul li{
+		list-style: none;
+		cursor: pointer;
+	}
+	/* .content ul li:hover{
+		color: red
+	} */
 	.content .loginPage {
 		height: 340px;
 		background-color: #ffffff;
 		margin-top: 76px;
 	}
+	/* 手机登录 */
 	.content .phone_login {
+		text-align: center;
 		font-size: 18px;
-		color: #ff6f6e;
-		margin-top: 22px;
+		/* color: #ff6f6e; */
+		margin-top: 12px;
+		border-right: 2px solid #a6a6a6
+	}
+	/* 账户登录 */
+	.content .account_login{
+		font-size: 18px;
+		margin-top: 12px;
+		text-align: center;
+		
 	}
 	.content .personal {
 		width: 100%;
@@ -305,6 +371,17 @@ export default {
 		outline: none;
 		background-color: transparent;
 	}
+
+	.content .clickVerify{
+		width: 100%;
+		height: 40px;
+		border-radius: 0;
+		border: 1px solid #a6a6a6;
+		outline:0;
+		font-size: 14px;
+		background-color: white;
+		margin-top: 40px
+	}
 	.content .login{
 		width: 100%;
 		height: 40px;
@@ -313,7 +390,8 @@ export default {
 		background-color: #fe706e;
 		font-size: 19px;
 		color: white;
-		margin-top: 22px;
+		margin-top: 26px;
+		letter-spacing: 10px
 	}
 	.content .reg{
 		width: 100%;
@@ -321,13 +399,14 @@ export default {
 		border: none;
 		outline: none;
 		background-color: transparent;
+		color: red
 		
 	}
+	
 	/*脚部*/
 	.footer{
 		width: 100%;
 		height: 40px;
-		/*border: 1px solid red;*/
 		background: transparent;
 		margin-top: 22px;
 	}
@@ -360,5 +439,8 @@ export default {
 		.phone_login{
 			letter-spacing: 2px;
 		}
+	}
+	.active{
+		color: red
 	}
 </style>

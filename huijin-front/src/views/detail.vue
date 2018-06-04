@@ -62,13 +62,13 @@
 	    					<Col span="18" style="margin-top: 58px;">
 	    						<Row>
 	    							<Col span="8">
-	    								<Button class="weight" >{{good.weight}}ml</Button>
+	    								<Button class="weight" >{{good.goods_weight}}ml</Button>
 	    							</Col>
 	    							<Col span="8">
-	    								<Button class="weight">{{good.weight}}ml</Button>
+	    								<Button class="weight">{{good.goods_weight}}ml</Button>
 	    							</Col>
 	    							<Col span="8">
-	    								<Button class="weight">{{good.weight}}ml</Button>
+	    								<Button class="weight">{{good.goods_weight}}ml</Button>
 	    							</Col>
 	    						</Row>
 	    					</Col>
@@ -87,10 +87,8 @@
 	    				<Row>
 	    					<Col span="6">
 	    						<Button class="buy">立即购买</Button>
-	    						
 	    					</Col>
 	    					<Col span="6" offset="5">
-	    						
 	    						<Button class="shopcar" @click="add">加入购物车</Button>
 	    					</Col>
 	    				</Row>
@@ -152,16 +150,8 @@
 
 <script>
 		export default {
-			// props: {
-			// 		obj: {
-			// 			type:Object
-			// 		}
-			// },
 			data (){
 					return {
-						banner:"",
-						market_price:"",
-						weight:"",
 						good:""
 					}
 			},
@@ -173,26 +163,27 @@
 						this.ajax.get("/api/goods/1")
 						.then(response => {
 								this.good = response.data.good;
-							
-							
 						})
 						.catch(error => {
 							if(error.status_code==404){
-								alert(error.message);
+								console.log(error.message);
 
 							}
 						})
 				},
 				add () {
 						this.ajax.post("/api/cart/add",{
-								id : this.id
+								good_id : this.good.id
 						}).then(function(res){
-							
+								console.log(res)
 						}).catch(function(err){
-								alert(err.message)
+								if(err.status_code == 422){
+									console.log(error.message);
+								}
 						})
 						
-				}
+				},
+
 
 			}
 		}
