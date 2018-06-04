@@ -180,9 +180,19 @@
 								if(err.status_code == 422){
 									console.log(error.message);
 								}
-						})
-						
+						})	
 				},
+				// clear () {
+				// 	this.ajax.post("/api/cart/clear",{
+
+				// 	}).then(function(res){
+				// 			console.log(res)
+				// 	}).catch(function(err){
+				// 			if(err.status_code == 422){
+				// 				console.log(error.message);
+				// 			}
+				// 	})
+				// }
 
 
 			}
