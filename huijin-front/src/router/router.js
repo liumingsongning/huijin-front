@@ -22,7 +22,8 @@ const routers = [
 	    component: (resolve) => require(['../views/mall.vue'], resolve)
 	},
 	{
-	path: '/detail',
+    path: '/detail',
+    name:'good_detail',
     meta: {
         title: '商品详情'
     },
@@ -45,6 +46,7 @@ const routers = [
     },
     {
         path: '/',
+        name:'home',
         meta: {
             title: ''
         },
