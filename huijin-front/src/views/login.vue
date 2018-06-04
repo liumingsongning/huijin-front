@@ -68,7 +68,7 @@
 								<button type="button" style="outline:none;border:1px solid #a6a6a6;height:40px;background:transparent;border-right:none;width:100%">手机验证码</button>
 							</Col>
 							<Col span="9">
-								<input type="text" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
+								<input type="text" v-model="code" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
 							</Col>
 							<Col span="7">
 								<button type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none">{{time}}s后重新获取</button>
@@ -82,7 +82,7 @@
 								<button type="button" class="pwd"></button>
 							</Col>
 							<Col span="17">
-								<input type="password" class="phone" placeholder="请输入密码" v-model="code"/>
+								<input type="password" class="phone" placeholder="请输入密码" v-model="passcode"/>
 							</Col>
 							<Col span="2">
 								<button type="button" class="delete"></button>
@@ -188,6 +188,7 @@ export default {
 		codeShow0:true,
 		codeShow1:true,
 		codeShow2:false,
+		passcode:'',
 		time:60,
 	};
   },	
