@@ -255,7 +255,8 @@ export default {
 			if(self.time==0){
 				clearInterval(interval);
 				self.time=60;
-				LUOCAPTCHA.reset()                                            
+				LUOCAPTCHA.reset()   
+				self.codeShow=false;                                         
 			}
 		}
 		var interval=setInterval(fun, 1000);
