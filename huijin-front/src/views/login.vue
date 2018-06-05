@@ -1,96 +1,149 @@
 <template>
-	<div >
-		<Layout class="layout">
-			<!--头部-->
-			<Header class="header">
-				<Row>
-					<Col span="3" offset="1">
-					<img src="http://static.huijinjiu.com/805351264090795932.png" class="logo" />
-					</Col>
-					<Col span="2" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
-					</Col>
-					<Col span="17"></Col>
-				</Row>
-			</Header>
+  <div>
+    <Layout class="layout">
+      <!--头部-->
+      <Header class="header">
+        <Row>
+          <Col span="3" offset="1">
+          <img src="http://static.huijinjiu.com/805351264090795932.png" class="logo" />
+          </Col>
+          <Col span="2" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
+          </Col>
+          <Col span="17"></Col>
+        </Row>
+      </Header>
 
-			<!--内容-->
-			<!--<Content class="content">-->
-			<div class="content">
-				<Row>
-					<Col span="6" offset="9" class="loginPage">
-					<Row style="border-bottom:2px solid #bfbfbf;height:49px">
-						<Col span="18" offset="3">
-						<ul>
-							<Col span="12">
-							<li @click="phone_login" class="phone_login">
-								<!-- {{phone_login1}} -->
-								手机登录
-							</li>
+      <!--内容-->
+      <!--<Content class="content">-->
+      <div class="content">
+        <Row>
+          <Col span="6" offset="9">
+          <Card style="width:100%">
+            <Row style="border-bottom:2px solid #bfbfbf;height:49px">
+              <Col span="18" offset="3">
+              <ul>
+                <Col span="12">
+                <li @click="phone_login=!phone_login" class="phone_login">
+                  <!-- {{phone_login1}} -->
+                  手机登录
+                </li>
 
-							</Col>
-							<Col span="12">
-							<li @click="account_login" class="account_login">
-								<!-- {{account_login1}} -->
-								账户登录
-							</li>
-							</Col>
-						</ul>
+                </Col>
+                <Col span="12">
+                <li @click="phone_login=!phone_login" class="account_login">
+                  <!-- {{account_login1}} -->
+                  账户登录
+                </li>
+                </Col>
+              </ul>
 
-						</Col>
-						<Col span="3">&nbsp;</Col>
+              </Col>
+              <Col span="3">&nbsp;</Col>
 
-					</Row>
-					<!--手机号-->
-					<Row style="margin-top: 28px;">
-						<Col span="3" offset="1">
-						<button type="button" class="personal"></button>
-						</Col>
-						<Col span="17">
-						<input type="text" class="phone" placeholder="请输入手机号码" v-model="phone" />
-						</Col>
-						<Col span="2">
-						<button type="button" class="delete"></button>
-						</Col>
-						<Col span="1">&nbsp;</Col>
-					</Row>
-					<Row v-show="phone.length==11">
-						<div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
-					</Row>
-					<!-- <Row v-show="codeShow0">
-							<Col span="12" offset="6">
-								<div>验证码已发送，{{time}}s后重新发送</div>
-							</Col>
-							<Col span="6">&nbsp;</Col>
-						</Row> -->
-					<Row style="margin-top:20px" v-show="codeShow0">
-						<Col span="6" offset="1">
-						<button type="button" style="outline:none;border:1px solid #a6a6a6;height:40px;background:transparent;border-right:none;width:100%">手机验证码</button>
-						</Col>
-						<Col span="9">
-						<input type="text" v-model="code" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
-						</Col>
-						<Col span="7">
-						<button type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none">{{time}}s后重新获取</button>
-						</Col>
-						<Col span="1">&nbsp;</Col>
-					</Row>
+            </Row>
 
-					<!--密码-->
-					<Row style="margin-top: 15px;" v-show="codeShow2">
-						<Col span="3" offset="1">
-						<button type="button" class="pwd"></button>
-						</Col>
-						<Col span="17">
-						<input type="password" class="phone" placeholder="请输入密码" v-model="passcode" />
-						</Col>
-						<Col span="2">
-						<button type="button" class="delete"></button>
-						</Col>
-						<Col span="1">&nbsp;</Col>
-					</Row>
+            <Row v-show='phone_login_d'>
+              <!--手机号-->
+              <Row style="margin-top: 28px;">
+                <Col span="3" offset="1">
+                <button type="button" class="personal"></button>
+                </Col>
+                <Col span="17">
+                <input type="text" class="phone" placeholder="请输入手机号码" v-model="phone" />
+                </Col>
+                <Col span="2">
+                <button type="button" class="delete"></button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
 
-					<!--忘记密码-->
-					<!-- <Row>
+              <Row v-show="phone.length==11" style="margin:0 4%;margin-top:10px;">
+
+                <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
+
+              </Row>
+
+              <Row style="margin-top:20px">
+                <Col span="6" offset="1">
+                <button type="button" style="outline:none;border:1px solid #a6a6a6;height:40px;background:transparent;border-right:none;width:100%">手机验证码</button>
+                </Col>
+                <Col span="9">
+                <input type="text" v-model="code_d" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
+                </Col>
+                <Col span="7">
+                <button v-show='!checked_d' type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none" @click='send_code_m'>发送验证码</button>
+                <button v-show='checked_d' type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none">{{time_d}}s后重新获取</button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
+
+              <Row>
+                <Col span="22" offset="1">
+
+                <button type="button" class="login" @click="phone_login_m">
+                  登录
+                </button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
+
+            </Row>
+            <Row v-show='!phone_login_d'>
+              <!--账户-->
+              <Row style="margin-top: 28px;">
+                <Col span="3" offset="1">
+                <button type="button" class="personal"></button>
+                </Col>
+                <Col span="17">
+                <input type="text" class="phone" placeholder="请输入账号" v-model="phone_d" />
+                </Col>
+                <Col span="2">
+                <button type="button" class="delete"></button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
+              <!--密码-->
+              <Row style="margin-top: 15px;">
+                <Col span="3" offset="1">
+                <button type="button" class="pwd"></button>
+                </Col>
+                <Col span="17">
+                <input type="password" class="phone" placeholder="请输入密码" v-model="password_d" />
+                </Col>
+                <Col span="2">
+                <button type="button" class="delete"></button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
+              <Row>
+                <Col span="22" offset="1">
+                <!-- v-show="code.length==4" -->
+                <button type="button" class="login" @click="account_login_m">
+                  登录
+                </button>
+                </Col>
+                <Col span="1">&nbsp;</Col>
+              </Row>
+              <Row>
+                <Col span="3">
+                <div>
+                  <img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ
+                </div>
+                </Col>
+                <Col span="4" offset="2">
+                <div>
+                  <img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;" />微信
+                </div>
+                </Col>
+                <Col span="5" offset="10">
+                <button type="button" class="reg">立即注册</button>
+                </Col>
+              </Row>
+
+            </Row>
+
+            <!--忘记密码-->
+            <!-- <Row>
 							<Col span="4" offset="19">
 								<button type="button" class="forget">
 									忘记密码
@@ -98,99 +151,72 @@
 							</Col>
 							<Col span="1">&nbsp;</Col>
 						</Row> -->
-					<!--登录按钮-->
-					<Row>
-						<Col span="22" offset="1">
-						<!-- v-show="code.length==4" -->
-						<button type="button" class="login" @click="login">
-							登录
-						</button>
-						</Col>
-						<Col span="1">&nbsp;</Col>
-					</Row>
-					<!--QQ以及微信-->
-					<Row>
-						<Col span="22" offset="1" style="margin-top: 30px;">
-						<Row>
-							<Col span="3">
-							<div>
-								<img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ
-							</div>
-							</Col>
-							<Col span="4" offset="2">
-							<div>
-								<img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;" />微信
-							</div>
-							</Col>
-							<Col span="5" offset="10">
-							<button type="button" class="reg">立即注册</button>
-							</Col>
-						</Row>
+            <!--登录按钮-->
+          </Card>
+          </Col>
+          <Col span="1">&nbsp;</Col>
+        </Row>
+        </Col>
+        <Col span="9">&nbsp;</Col>
+        </Row>
+      </div>
+      <!--</Content>-->
 
-						</Col>
-						<Col span="1">&nbsp;</Col>
-					</Row>
-					</Col>
-					<Col span="9">&nbsp;</Col>
-				</Row>
-			</div>
-			<!--</Content>-->
+      <!--脚部-->
+      <Footer class="footer">
+        <!--<div class="footer">-->
+        <Row>
+          <Col span="14" offset="5">
+          <ul>
+            <li>
+              <a href="">关于我们&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;English Site</a>
+            </li>
+          </ul>
+          </Col>
+          <Col span="5">&nbsp;</Col>
+        </Row>
+        <Row>
+          <Col span="6" offset="10" style="margin-top: -15px;"> Copyright&copy;2004-2018 京东JD.com版权所有
 
-			<!--脚部-->
-			<Footer class="footer">
-				<!--<div class="footer">-->
-				<Row>
-					<Col span="14" offset="5">
-					<ul>
-						<li>
-							<a href="">关于我们&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
-						</li>
-						<li>
-							<a href="">&nbsp;&nbsp;English Site</a>
-						</li>
-					</ul>
-					</Col>
-					<Col span="5">&nbsp;</Col>
-				</Row>
-				<Row>
-					<Col span="6" offset="10" style="margin-top: -15px;"> Copyright&copy;2004-2018 京东JD.com版权所有
+          </Col>
+          <Col span="8">&nbsp;</Col>
+        </Row>
+        <!--</div>-->
+      </Footer>
 
-					</Col>
-					<Col span="8">&nbsp;</Col>
-				</Row>
-				<!--</div>-->
-			</Footer>
+    </Layout>
 
-		</Layout>
-
-	</div>
+  </div>
 
 </template>
 
@@ -199,13 +225,12 @@ import Cookies from "js-cookie";
 export default {
   data() {
     return {
-      phone: "",
-      code: "",
-      codeShow0: true,
-      codeShow1: true,
-      codeShow2: false,
-      passcode: "",
-      time: 60
+      phone_d: "",
+      code_d: "",
+      password_d: "",
+      time_d: 60,
+      phone_login_d: true,
+      checked_d: false
     };
   },
   mounted() {
@@ -218,26 +243,20 @@ export default {
     window.getCaptchaResponse = this.getCaptchaResponse;
   },
   methods: {
-    phone_login() {
-      this.codeShow0 = true;
-      this.codeShow2 = false;
-    },
-    account_login() {
-      this.codeShow0 = false;
-      this.codeShow1 = false;
-      this.codeShow2 = true;
-    },
-    login() {
+    phone_login_m() {
       var self = this;
+      if(self.phone_d==''){
+        alert('手机号不能为空')
+      }
       this.ajax
         .post("/api/login", {
-          phone: self.phone,
-          code: self.code
+          phone: self.phone_d,
+          code: self.code_d
         })
         .then(response => {
           this.$store.commit("login", response.data.token);
           if (self.$route.query.redirect) {
-            self.$router.push({path: self.$route.query.redirect});
+            self.$router.push({ path: self.$route.query.redirect });
           } else {
             self.$router.push({
               name: "home"
@@ -251,17 +270,16 @@ export default {
           }
         });
     },
+    account_login_m() {},
     //人机验证成功返回
     getCaptchaResponse(resp) {
       var self = this;
       this.ajax
-        .post("/api/sendcode", {
-          phone: self.phone,
+        .post("/api/checkcaptcha", {
           captcha: resp
         })
         .then(function(response) {
-          self.Interval();
-          self.codeShow = true;
+          self.checkcaptcha = true;
         })
         .catch(function(error) {
           if (error.status_code == 400) {
@@ -270,18 +288,33 @@ export default {
           }
         });
     },
-    test() {
-      this.$router.push({
-        name: "test"
-      });
+    send_code_m() {
+      var self = this;
+      if (self.phone === "") {
+        alert("请输入手机号");
+        return false;
+      }
+      this.ajax
+        .post("/api/sendcode", {
+          phone: self.phone_d,
+        })
+        .then(function(response) {
+          self.Interval();
+          self.checked_d = true;
+        })
+        .catch(function(error) {
+          if (error.status_code == 400) {
+            alert(error.message);
+          }
+        });
     },
     Interval() {
       var self = this;
       var fun = function() {
-        self.time--;
-        if (self.time == 0) {
+        self.time_d--;
+        if (self.time_d == 0) {
           clearInterval(interval);
-          self.time = 60;
+          self.time_d = 60;
           LUOCAPTCHA.reset();
           self.codeShow = false;
         }
