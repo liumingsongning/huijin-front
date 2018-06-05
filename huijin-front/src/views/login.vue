@@ -49,7 +49,7 @@
                 <button type="button" class="personal"></button>
                 </Col>
                 <Col span="17">
-                <input type="text" class="phone" placeholder="请输入手机号码" v-model="phone" />
+                <input type="text" class="phone" placeholder="请输入手机号码" v-model="phone_d" />
                 </Col>
                 <Col span="2">
                 <button type="button" class="delete"></button>
@@ -57,7 +57,7 @@
                 <Col span="1">&nbsp;</Col>
               </Row>
 
-              <Row v-show="phone.length==11" style="margin:0 4%;margin-top:10px;">
+              <Row v-show="phone_d.length==11" style="margin:0 4%;margin-top:10px;">
 
                 <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
 
