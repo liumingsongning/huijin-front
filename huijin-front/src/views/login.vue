@@ -23,14 +23,14 @@
               <Col span="18" offset="3">
               <ul>
                 <Col span="12">
-                <li @click="phone_login=!phone_login" class="phone_login">
+                <li @click="phone_login_d=!phone_login_d" class="phone_login">
                   <!-- {{phone_login1}} -->
                   手机登录
                 </li>
 
                 </Col>
                 <Col span="12">
-                <li @click="phone_login=!phone_login" class="account_login">
+                <li @click="phone_login_d=!phone_login_d" class="account_login">
                   <!-- {{account_login1}} -->
                   账户登录
                 </li>
