@@ -14,37 +14,32 @@
       </Header>
 
       <!--内容-->
-      <!--<Content class="content">-->
       <div class="content">
         <Row>
           <Col span="6" offset="9">
-          <Card style="width:100%">
+          <Card style="width:100%;margin-top:76px">
             <Row style="border-bottom:2px solid #bfbfbf;height:49px">
               <Col span="18" offset="3">
               <ul>
                 <Col span="12">
                 <li @click="phone_login_d=!phone_login_d" class="phone_login">
-                  <!-- {{phone_login1}} -->
                   手机登录
                 </li>
 
                 </Col>
                 <Col span="12">
                 <li @click="phone_login_d=!phone_login_d" class="account_login">
-                  <!-- {{account_login1}} -->
                   账户登录
                 </li>
                 </Col>
               </ul>
-
               </Col>
               <Col span="3">&nbsp;</Col>
-
             </Row>
-
-            <Row v-show='phone_login_d'>
+            <!-- 手机登录 -->
+            <div v-show='phone_login_d'>
               <!--手机号-->
-              <Row style="margin-top: 28px;">
+              <!-- <Row style="margin-top: 28px;">
                 <Col span="3" offset="1">
                 <button type="button" class="personal"></button>
                 </Col>
@@ -55,77 +50,93 @@
                 <button type="button" class="delete"></button>
                 </Col>
                 <Col span="1">&nbsp;</Col>
-              </Row>
-
+              </Row> -->
+              <Form>
+                <Row>
+                    <Col span="22" offset="1">
+                      <FormItem>
+                        <Input type="text"  placeholder="请输入手机号码" class="phone" v-model="phone_d" clearable size="large">
+                            <Icon type="iphone" slot="prepend"></Icon>
+                        </Input>
+                      </FormItem>
+                    </Col>
+                    <Col span="1">&nbsp;</Col>
+                </Row>
+                
+              </Form>
               <Row v-show="phone_d.length==11" style="margin:0 4%;margin-top:10px;">
 
                 <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
 
               </Row>
 
-              <Row style="margin-top:20px">
+              <Row>
                 <Col span="6" offset="1">
-                <button type="button" style="outline:none;border:1px solid #a6a6a6;height:40px;background:transparent;border-right:none;width:100%">手机验证码</button>
+                <button type="button" style="outline:none;border:1px solid #e9e9e9;height:36px;background:transparent;border-right:none;width:100%;border-top-left-radius:4px;border-bottom-left-radius:4px;font-size:12px">手机验证码</button>
                 </Col>
                 <Col span="9">
-                <input type="text" v-model="code_d" placeholder="输入手机验证码" style="text-align:center;height:40px;width:100%;outline:none;border:1px solid #a6a6a6;border-left:none;">
+                <input type="text" v-model="code_d" placeholder="输入手机验证码" style="text-align:center;height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;font-size:12px">
                 </Col>
                 <Col span="7">
-                <button v-show='!checked_d' type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none" @click='send_code_m'>发送验证码</button>
-                <button v-show='checked_d' type="button" style="height:40px;width:100%;background:transparent;outline:none;border:1px solid #a6a6a6;border-left:none">{{time_d}}s后重新获取</button>
+                <button v-show='!checked_d' type="button" style="height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;border-top-right-radius:4px;border-bottom-right-radius:4px;font-size:12px" @click='send_code_m'>发送验证码</button>
+                <button v-show='checked_d' type="button" style="height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;border-top-right-radius:4px;border-bottom-right-radius:4px;font-size:12px">{{time_d}}s后重新获取</button>
                 </Col>
                 <Col span="1">&nbsp;</Col>
               </Row>
 
               <Row>
                 <Col span="22" offset="1">
-
-                <button type="button" class="login" @click="phone_login_m">
+                <Button type="button" class="login" @click="phone_login_m">
                   登录
-                </button>
+                </Button>
                 </Col>
                 <Col span="1">&nbsp;</Col>
               </Row>
 
-            </Row>
-            <Row v-show='!phone_login_d'>
-              <!--账户-->
-              <Row style="margin-top: 28px;">
-                <Col span="3" offset="1">
-                <button type="button" class="personal"></button>
-                </Col>
-                <Col span="17">
-                <input type="text" class="phone" placeholder="请输入账号" v-model="phone_d" />
-                </Col>
-                <Col span="2">
-                <button type="button" class="delete"></button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row>
-              <!--密码-->
-              <Row style="margin-top: 15px;">
-                <Col span="3" offset="1">
-                <button type="button" class="pwd"></button>
-                </Col>
-                <Col span="17">
-                <input type="password" class="phone" placeholder="请输入密码" v-model="password_d" />
-                </Col>
-                <Col span="2">
-                <button type="button" class="delete"></button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row>
-              <Row>
-                <Col span="22" offset="1">
-                <!-- v-show="code.length==4" -->
-                <button type="button" class="login" @click="account_login_m">
-                  登录
-                </button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row>
-              <Row>
-                <Col span="3">
+            </div>
+            <!-- 账号登录 -->
+            <div v-show='!phone_login_d'>
+              <Form>
+                <!-- 账号 -->
+                  <Row style="margin-top: 28px">
+                      <Col span="22" offset="1">
+                             <FormItem>
+                                <Input type="text" placeholder="请输入账号" v-model="phone_d" clearable   size="large">
+                                   <!-- <Icon type="person" slot="prepend"></Icon> -->
+                                  <Icon type="person" slot="prepend" ></Icon>
+                                   
+                                </Input>
+                            </FormItem>
+                      </Col>
+                      <Col span="1">&nbsp;</Col>
+                  </Row>
+                  <!-- 密码 -->
+                  <Row>
+                      <Col span="22" offset="1">
+                             <FormItem>
+                                <Input type="password"  placeholder="请输入密码" v-model="password_d" clearable size="large">
+                                    <Icon type="locked" slot="prepend"></Icon>
+                                </Input>
+                            </FormItem>
+                      </Col>
+                      <Col span="1">&nbsp;</Col>
+                  </Row>
+                  <!-- 登录 -->
+                  <Row>
+                    <Col span="22" offset="1">
+                      <FormItem>
+                        <Button  class="login1" @click="account_login_m">
+                          登录
+                        </Button>
+                      </FormItem>
+                    </Col>
+                    <Col span="1">&nbsp;</Col>
+                </Row>
+              </Form>
+              
+              
+              <Row >
+                <Col span="4">
                 <div>
                   <img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ
                 </div>
@@ -135,12 +146,12 @@
                   <img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;" />微信
                 </div>
                 </Col>
-                <Col span="5" offset="10">
+                <Col span="5" offset="9">
                 <button type="button" class="reg">立即注册</button>
                 </Col>
               </Row>
 
-            </Row>
+            </div>
 
             <!--忘记密码-->
             <!-- <Row>
@@ -154,17 +165,13 @@
             <!--登录按钮-->
           </Card>
           </Col>
-          <Col span="1">&nbsp;</Col>
-        </Row>
-        </Col>
         <Col span="9">&nbsp;</Col>
         </Row>
       </div>
-      <!--</Content>-->
+     
 
       <!--脚部-->
       <Footer class="footer">
-        <!--<div class="footer">-->
         <Row>
           <Col span="14" offset="5">
           <ul>
@@ -211,7 +218,6 @@
           </Col>
           <Col span="8">&nbsp;</Col>
         </Row>
-        <!--</div>-->
       </Footer>
 
     </Layout>
@@ -338,6 +344,10 @@ export default {
 };
 </script>
 <style scoped>
+.a1{
+  height: 40px
+};
+
 .layout {
   width: 100%;
   height: 918px;
@@ -364,14 +374,7 @@ export default {
   list-style: none;
   cursor: pointer;
 }
-/* .content ul li:hover{
-		color: red
-	} */
-.content .loginPage {
-  height: 340px;
-  background-color: #ffffff;
-  margin-top: 76px;
-}
+
 /* 手机登录 */
 .content .phone_login {
   text-align: center;
@@ -396,12 +399,7 @@ export default {
 }
 .content .phone {
   width: 100%;
-  height: 40px;
-  border: 1px solid #a6a6a6;
-  border-left: 0;
-  border-right: 0;
-  outline: none;
-  text-indent: 1em;
+  margin-top: 20px;
   font-size: 14px;
 }
 .content .delete {
@@ -449,6 +447,15 @@ export default {
   font-size: 19px;
   color: white;
   margin-top: 26px;
+  letter-spacing: 10px;
+}
+.content .login1 {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ff3430;
+  background-color: #fe706e;
+  font-size: 19px;
+  color: white;
   letter-spacing: 10px;
 }
 .content .reg {

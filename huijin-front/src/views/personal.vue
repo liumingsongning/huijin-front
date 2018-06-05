@@ -277,10 +277,6 @@ export default {};
   background: url(../static.huijinjiu.com/personal/siderImg.png) no-repeat;
   background-size: 100% 100%;
 }
-/* .side {
-  width: 100%;
-  height: 100%;
-} */
 .sider .bk {
   width: 100%;
   height: 100%;
