@@ -1,6 +1,6 @@
 <template>
-	<div class="layout">
-		<Layout>
+	<div >
+		<Layout class="layout">
 			<!--头部-->
 			<Header class="header">
 				<Row>
@@ -305,11 +305,11 @@ export default {
 };
 </script>
 <style scoped>
-.ivu-layout {
+.layout {
   width: 100%;
-  height: 100%;
+  height: 918px;
   background: url(http://static.huijinjiu.com/467763290700598377.png) no-repeat;
-  background-size: 100% 918px;
+  background-size: 100% 100%;
 }
 /*头部*/
 .header {

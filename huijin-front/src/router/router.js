@@ -1,4 +1,11 @@
 const routers = [
+    {
+		path: '/shopcart',
+	    meta: {
+	        title: '购物车'
+	    },
+	    component: (resolve) => require(['../views/shopcart.vue'], resolve)
+	},
 	{
 		path: '/wineclass',
 	    meta: {
