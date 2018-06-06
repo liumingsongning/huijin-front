@@ -56,7 +56,7 @@
                     <Col span="22" offset="1">
                       <FormItem>
                         <Input type="text"  placeholder="请输入手机号码" class="phone" v-model="phone_d" clearable size="large">
-                            <Icon type="iphone" slot="prepend"></Icon>
+                            <Icon type="android-phone-portrait" slot="prepend"></Icon>
                         </Input>
                       </FormItem>
                     </Col>
@@ -95,43 +95,43 @@
 
             </div>
             <!-- 账号登录 -->
-            <div v-show='!phone_login_d'>
-              <Form>
+            <div v-show='!phone_login_d' class="form1">
+              <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" >
                 <!-- 账号 -->
-                  <Row style="margin-top: 28px">
-                      <Col span="22" offset="1">
-                             <FormItem>
-                                <Input type="text" placeholder="请输入账号" v-model="phone_d" clearable   size="large">
-                                   <!-- <Icon type="person" slot="prepend"></Icon> -->
-                                  <Icon type="person" slot="prepend" ></Icon>
-                                   
-                                </Input>
-                            </FormItem>
-                      </Col>
-                      <Col span="1">&nbsp;</Col>
-                  </Row>
+                  <FormItem prop="account_d">
+                    <Row style="margin-top: 28px">
+                        <Col span="22" offset="1">
+                              <Input type="text" placeholder="请输入账号" v-model="formValidate.account_d" clearable  size="large">
+                                <Icon type="person" slot="prepend" ></Icon>
+                              </Input>
+                        </Col>
+                        <Col span="1">&nbsp;</Col>
+                    </Row>
+                  </FormItem>
+                  
                   <!-- 密码 -->
-                  <Row>
+                  <FormItem prop="password_d">
+                    <Row>
+                        <Col span="22" offset="1">
+                            <Input type="password"  placeholder="请输入密码" v-model="formValidate.password_d" clearable size="large">
+                                <Icon type="locked" slot="prepend"></Icon>
+                            </Input>
+                        </Col>
+                        <Col span="1">&nbsp;</Col>
+                    </Row>
+                  </FormItem>
+                  
+                  <!-- 登录 -->
+                  <FormItem>
+                    <Row>
                       <Col span="22" offset="1">
-                             <FormItem>
-                                <Input type="password"  placeholder="请输入密码" v-model="password_d" clearable size="large">
-                                    <Icon type="locked" slot="prepend"></Icon>
-                                </Input>
-                            </FormItem>
+                          <Button  class="login1" @click="account_login_m('formValidate')">
+                            登录
+                          </Button>
                       </Col>
                       <Col span="1">&nbsp;</Col>
-                  </Row>
-                  <!-- 登录 -->
-                  <Row>
-                    <Col span="22" offset="1">
-                      <FormItem>
-                        <Button  class="login1" @click="account_login_m">
-                          登录
-                        </Button>
-                      </FormItem>
-                    </Col>
-                    <Col span="1">&nbsp;</Col>
-                </Row>
+                    </Row>
+                </FormItem>
               </Form>
               
               
@@ -233,10 +233,24 @@ export default {
     return {
       phone_d: "",
       code_d: "",
-      password_d: "",
       time_d: 60,
       phone_login_d: true,
-      checked_d: false
+      checked_d: false,
+      formValidate: {
+            account_d: "",
+            password_d: ""
+               
+        },
+      ruleValidate: {
+        account_d: [
+          {required:true,message: ' 账号不能为空',trigger: 'blur'},
+          { type: 'string', min: 8,message: '账号长度不少于8个字符', trigger: 'blur' }
+        ],
+        password_d: [
+          {required:true,message: ' 密码不能为空',trigger: 'blur'},
+          { type: 'string', min: 8, message: '密码长度不少于8个字符', trigger: 'blur' }
+        ]
+      }
     };
   },
   mounted() {
@@ -326,7 +340,7 @@ export default {
         }
       };
       var interval = setInterval(fun, 1000);
-    }
+    },
     //     Cookies.set('user', this.form.userName);
     //     Cookies.set('password', this.form.password);
     //  this.$store.commit('login',response.data.token)
@@ -340,14 +354,19 @@ export default {
     //         name: 'home_index'
     //     });
     // })
+    account_login_m(account_d) {
+      this.$refs[account_d].validate((valid) => {
+            if (valid) {
+                this.$Message.success('登陆成功');
+            } else {
+                this.$Message.error('登录失败');
+            }
+        })
+    }
   }
 };
 </script>
 <style scoped>
-.a1{
-  height: 40px
-};
-
 .layout {
   width: 100%;
   height: 918px;
@@ -398,7 +417,7 @@ export default {
   outline: none;
 }
 .content .phone {
-  width: 100%;
+  /* width: 100%; */
   margin-top: 20px;
   font-size: 14px;
 }

@@ -93,12 +93,108 @@
                <div >
                 <Row>
 				    <Col span="20" offset="1" class="content">
-                        
                         <div style="font-weight:bold;margin-top:25px">我的购物车</div>
-                         <Table :columns="columns1" ></Table>
+                        <!--  -->
+                        <Row>
+                            <table style="width:100%" class="tab">
+                                <tr>
+                                    <Col span="3">
+                                        <td>
+                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                            全选
+                                        </Checkbox>
+                                        </td>
+                                    </Col>
+                                    <Col span="11">
+                                        <td>
+                                        商品
+                                    </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
+                                        单价
+                                    </td>
+                                    </Col>
+                                    <Col span="3">
+                                        <td>
+                                        数量
+                                    </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
+                                        小计
+                                    </td>
+                                    </Col>
+                                    <Col span="3">
+                                        <td>
+                                        操作
+                                    </td>
+                                    </Col>
+                                </tr>
+                            </table>
+                        </Row>
+                        <!--  -->
+                        <div style="height:41px;border-bottom:2px solid #aaa;line-height:41px">
+                            <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                官方商品
+                            </Checkbox>
+                        </div>
+                        <!--  -->
+                        <Row>
+                            <table style="width:100%" class="tab1">
+                                <tr>
+                                    <Col span="3">
+                                        <td>
+                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                            
+                                        </Checkbox>
+                                        </td>
+                                    </Col>
+                                    <Col span="11">
+                                        <td>
+                                        商品
+                                    </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
+                                        ¥200.00
+                                    </td>
+                                    </Col>
+                                    <Col span="3">
+                                        <td>
+                                            
+                                            <!-- <Row>
+                                                <Col span="3">
+                                                     <button type="button">-</button>
+                                                </Col>
+                                                 <Col span="18">
+                                                    <input type="text" value="1"/>
+                                                </Col>
+                                                 <Col span="3">
+                                                    <button type="button">+</button>
+                                                </Col>
+                                            </Row> -->
+                                            <button type="button" style="width:24px">-</button><input type="text" value="1" style="width:50px;text-align:center"/><button type="button" style="width:24px">+</button>
+                                        </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
+                                        ¥200.00
+                                    </td>
+                                    </Col>
+                                    <Col span="3">
+                                        <td >
+                                            <a href="" style="color:#939393">删除</a><Br />
+                                            <a href="" style="color:#939393">加入收藏</a>
+                                        </td>
+                                    </Col>
+                                </tr>
+                            </table>
+                        </Row>
+
                     </Col>
                     <Col span="3">
-
+                        &nbsp;
                     </Col>
                 </Row>
                </div>
@@ -109,30 +205,7 @@
 </template>
 <script>
 export default {
-    data () {
-        return {
-            columns1: [
-                    {
-                        type: 'selection',
-                        width: 60,
-                        align: 'center',
-                       
-                    },
-                    {
-                        title: 'Name',
-                        key: 'name'
-                    },
-                    {
-                        title: 'Age',
-                        key: 'age'
-                    },
-                    {
-                        title: 'Address',
-                        key: 'address'
-                    }
-                ],
-        }
-    }
+  
 };
 </script>
 <style scoped>
@@ -201,11 +274,26 @@ export default {
   border-bottom: 4px solid #a8d3fe;
 }
 /* 内容 */
-.content{
-    height: 637px;
-    background: url(../static.huijinjiu.com/shopcart/diwen.png) no-repeat;
-    background-size: 100% 100%;
-    margin-top: 10px
+.content {
+  height: 637px;
+  background: url(../static.huijinjiu.com/shopcart/diwen.png) no-repeat;
+  background-size: 100% 100%;
+  margin-top: 10px;
+  padding: 6px;
+}
+.content .tab{
+  border: 1px solid #e9e9e9;
+  border-collapse: collapse;
+  height: 42px;
+  color: #939393;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 42px;
+}
+.content .tab1{
+  color: #939393;
+  font-size: 12px;
+  margin-top: 56px;
 }
 </style>
 
