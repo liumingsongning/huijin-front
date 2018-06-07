@@ -85,7 +85,7 @@
                             </Col>
                              <Col span="4">
                             <li>
-                                <a href="" @click="displaycart_m">购物车</a>
+                                <a href="">购物车</a>
                             </li>
                             </Col>
                         </ul>
@@ -105,12 +105,12 @@
                                     <Col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;padding-left:11px">
-                                            <!-- 全选 -->
+                                            全选
                                         </Checkbox>
                                         </td>
                                     </Col>
                                     <Col span="11">
-                                        <td>
+                                        <td style="padding-left:80px">
                                             商品
                                         </td>
                                     </Col>
@@ -173,8 +173,8 @@
                                     </td>
                                     </Col>
                                     <Col span="4">
-                                        <td style="margin-left:20px;">
-                                            <button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">-</button><input type="text" value="1" style="width:50px;text-align:center;border:none;height:22px;border:1px solid #aaaaaa"/><button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">+</button>
+                                        <td style="padding-left:20px;">
+                                            <button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa;outline:0">-</button><input type="text" value="1" style="width:50px;text-align:center;border:none;height:22px;border:1px solid #aaaaaa"/><button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa;outline:0">+</button>
                                         </td>
                                     </Col>
                                     <Col span="2">
@@ -226,31 +226,34 @@ export default {
         }
     },
     mounted () {
-        this.details()
+        this.displaycart_m()
     },
     methods: {
-        details () {
-                this.ajax.get("/api/goods/1")
-                .then(response => {
-                    this.good = response.data.good;
-                })
-                .catch(error => {
-                    if(error.status_code==404){
-                        console.log(error.message);
-                    }
-                })
-        },
+        // details () {
+        //         this.ajax.get("/api/goods/1")
+        //         .then(response => {
+        //             this.good = response.data.good;
+        //         })
+        //         .catch(error => {
+        //             if(error.status_code==404){
+        //                 console.log(error.message);
+        //             }
+        //         })
+        // },
         displaycart_m () {
-            this.ajax.post("/api/cart/display",{
-                rowId: this.good.id
-            }).then(function(res){
+            this.ajax.get("/api/cart/display")
+            .then(function(res){
                 console.log(res)
             }).catch(function(err){
                 if(err.status_code == 422){
                     console.log(error.message);
                 }
             })
-        }
+        },
+        
+        
+
+
     }
 };
 </script>

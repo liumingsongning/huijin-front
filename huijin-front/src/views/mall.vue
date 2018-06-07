@@ -77,10 +77,10 @@
    				<Col span="12" offset="6">
 	   				<div class="hz">
 	   					<!--上-->
-						<Col span="14" offset="5">
+						<Col span="15" offset="5">
 							<span style="font-size: 34px;">洪</span>,<span style="font-size: 19px;">水大而宽广之意</span>。<span style="font-size: 34px;">泽</span>,<span style="font-size: 19px;">众水所聚集之地。</span>
 						</Col>
-						<Col span="5">&nbsp;</Col>
+						<Col span="4">&nbsp;</Col>
 						<!--中--> 
 						<Col span="6" offset="9" style="text-indent: -2em;">
 							<span style="font-size: 18px;">一个大湖,一瓶美酒。</span>
@@ -125,12 +125,12 @@
    					<div class="gy">
    						<Row>
    							<Col span="24">
-   								<span style="font-size: 23px;">内心</span><span style="font-size: 18px;">的变化已经发生,</span><span style="font-size: 23px;">外在</span><span style="font-size: 18px;">的变化必然出现。</span>  								
+   								<span style="font-size: 23px;">内心</span><span style="font-size: 18px;">的变化已经发生,</span><span style="font-size: 23px;">外在</span><span style="font-size: 18px;">的变化必然出现.</span>  								
    							</Col>
    						</Row>
    						<div class="below">
    							<Col span="24">
-   								是的,这不像是一个酒瓶。&nbsp;至少不像中国白酒的酒瓶。那
+   								是的,这不像是一个酒瓶。至少不像中国白酒的酒瓶。那
    							</Col>
    							<Col span="24">
    								是因为,此前所见所有的白酒酒瓶,设计上有难以摆脱的理
@@ -292,7 +292,6 @@
 		margin-top: 90px;
 		background: url(../static.huijinjiu.com/mall/bird.png) no-repeat;
 		background-size: 100% 100%;
-		
 	}
 	.text2 .hz{
 		color: #919594;
@@ -302,10 +301,8 @@
 	}
 	.text2 .bottom{
 		color: #919594;
-		font-size: 12px;
 		height: 134px;
 		margin-top: 10px;
-		letter-spacing: 1.7px;
 	}
 	.text2 .bottom .col1{
 		margin-top: 4px;
@@ -328,7 +325,7 @@
 	}
 	.text3 .gy .below{
 		margin-top: 38px;
-		font-size: 16px;
+		font-size: 14px;
 	}
 	.text3 .gy .below .btn{
 		width: 134px;
@@ -339,7 +336,6 @@
 		outline: none;
 		background-color: transparent;
 		color: red;
-		
 	}
 	/*底部*/
 	.foot{
@@ -395,16 +391,16 @@
 		margin-top: 100px;
 		
 	}
-	@media screen and (min-width: 1920px){
-		.text2 .bottom{
+	@media screen and (max-width: 1920px){
+		.text2 .bottom {
 			font-size: 12px;
-			letter-spacing: 6.8px;
+			letter-spacing: 5px;
 		}
 	}
 	@media  screen and (max-width: 1366px) {
 		.text2 .bottom{
 			font-size: 12px;
-			letter-spacing: 1.7px;
+			letter-spacing: 0.6px;
 		}
 	}
 </style>

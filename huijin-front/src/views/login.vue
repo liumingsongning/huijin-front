@@ -29,7 +29,8 @@
                 </Col>
                 <Col span="12">
                 <li @click="phone_login_d=false" class="account_login"  v-bind:class="{select : !phone_login_d}">
-                  账户登录
+                  账户登录cd
+                  
                 </li>
                 </Col>
               </ul>
