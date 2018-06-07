@@ -21,11 +21,13 @@
 	    				<Col span="6">
 	    					<li><a href="">酒品分类</a></li>
 	    				</Col>
-	    				<Col span="5">
+	    				<Col span="6">
+								<Col span="12">
 	    					<li><a href="">个人中心</a></li>
-	    				</Col>
-	    				<Col span="1">
-	    					<li><a href="" @click='logout_m'>退出</a></li>
+								</Col>
+								<Col span='12'>
+								<li><a href="" @click='logout_m'>退出</a></li>
+								</Col>
 	    				</Col>
 	    			</ul>
 	    		</Col>
