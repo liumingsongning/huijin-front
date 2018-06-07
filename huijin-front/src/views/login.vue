@@ -28,9 +28,14 @@
 
                 </Col>
                 <Col span="12">
+<<<<<<< HEAD
                 <li @click="phone_login_d=false" class="account_login"  v-bind:class="{select : !phone_login_d}">
                   账户登录cd
                   
+=======
+                <li @click="phone_login_d=false" class="account_login" v-bind:class="{select : !phone_login_d}">
+                  账户登录
+>>>>>>> bc48e49bf58f97fd56077692d1e08e280aa62e99
                 </li>
                 </Col>
               </ul>
@@ -71,17 +76,17 @@
 
                 </Row>
 
-                <Row >
+                <Row>
                   <Col span="22" offset="1">
                   <FormItem prop='code_d'>
                     <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large">
-                    <span  slot="prepend" >手机验证码</span>
-                    <span v-show='!checked_d' slot="append"  @click='send_code_m'>请先进行人机验证</span>
-                    <span v-show='checked_d&&!sended_d' slot="append"  @click='send_code_m'>发送验证码</span>
-                    <span v-show='sended_d' slot="append" >{{time_d}}s后重新获取</span>
+                    <span slot="prepend">手机验证码</span>
+                    <span v-show='!checked_d' slot="append" @click='send_code_m'>请先进行人机验证</span>
+                    <span v-show='checked_d&&!sended_d' slot="append" @click='send_code_m'>发送验证码</span>
+                    <span v-show='sended_d' slot="append">{{time_d}}s后重新获取</span>
                     </Input>
                   </FormItem>
-                   </Col>
+                  </Col>
                   <Col span="1">&nbsp;</Col>
                 </Row>
 
@@ -90,11 +95,11 @@
                     <Col span="22" offset="1">
                     <Row>
                       <Col span='24'>
-                    <Button class='login' @click="phone_login_m('phoneFormValidate')">
-                      登录
-                    </Button>
-                    </Col>
-                    <!-- <Col span='12'>
+                      <Button class='login' @click="phone_login_m('phoneFormValidate')">
+                        登录
+                      </Button>
+                      </Col>
+                      <!-- <Col span='12'>
                     <Button style='width:100%;height:40px'  @click="phone_reset_m('phoneFormValidate')">
                       重置
                     </Button>
@@ -246,7 +251,7 @@ export default {
       time_d: 60,
       phone_login_d: true,
       checked_d: false,
-      sended_d:false,
+      sended_d: false,
       formValidate: {
         account_d: "",
         password_d: ""
@@ -308,49 +313,40 @@ export default {
   },
   methods: {
     phone_login_m(name) {
-      var self=this;
+      var self = this;
+
       this.$refs[name].validate(valid => {
         if (valid) {
           this.$Message.success("登陆成功");
+          self.ajax
+            .post("/api/login", {
+              phone: self.phoneFormValidate.phone_d,
+              code: self.phoneFormValidate.code_d
+            })
+            .then(response => {
+              self.$store.commit("login", response.data.token,response.data.user);
+              if (self.$route.query.redirect) {
+                self.$router.push({ path: self.$route.query.redirect });
+              } else {
+                self.$router.push({
+                  name: "home"
+                });
+              }
+            })
+            .catch(error => {
+              if (error.status_code == 403) {
+                self.$Message.error(error.message);
+                LUOCAPTCHA.reset();
+              }
+            });
         } else {
           this.$Message.error("登录失败");
-          // LUOCAPTCHA.reset();
-          // this.checked_d=false;
-          // this.sended_d=false;
-          // setTimeout(function(){
-          //   self.$refs[name].resetFields();
-          // },1500)
-          
         }
       });
-     
-      // var self = this;
-    
-      // this.ajax
-      //   .post("/api/login", {
-      //     phone: self.phone_d,
-      //     code: self.code_d
-      //   })
-      //   .then(response => {
-      //     this.$store.commit("login", response.data.token);
-      //     if (self.$route.query.redirect) {
-      //       self.$router.push({ path: self.$route.query.redirect });
-      //     } else {
-      //       self.$router.push({
-      //         name: "home"
-      //       });
-      //     }
-      //   })
-      //   .catch(error => {
-      //     if (error.status_code == 403) {
-      //       alert(error.message);
-      //       LUOCAPTCHA.reset();
-      //     }
-      //   });
     },
-     phone_reset_m(name){
-        this.$refs[name].resetFields();
-      },
+    phone_reset_m(name) {
+      this.$refs[name].resetFields();
+    },
     account_login_m() {},
     //人机验证成功返回
     getCaptchaResponse(resp) {
@@ -371,7 +367,7 @@ export default {
     },
     send_code_m() {
       var self = this;
-     
+
       this.ajax
         .post("/api/sendcode", {
           phone: self.phoneFormValidate.phone_d
@@ -425,8 +421,8 @@ export default {
 };
 </script>
 <style scoped>
-.select{
-    color:red
+.select {
+  color: red;
 }
 .layout {
   width: 100%;

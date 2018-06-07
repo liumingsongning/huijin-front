@@ -7,10 +7,11 @@ const user = {
         title: ''
     },
     mutations: {
-        login (state, data) {
+        login (state, data,user) {
             // localStorage.token = data;
-          
             Cookies.set('token', data);
+            Cookies.set('user', user);
+            state.user=user
             state.token = data;
        
         },
@@ -19,7 +20,9 @@ const user = {
             // Cookies.remove('password');
             // Cookies.remove('access');
             Cookies.remove('token');
+            Cookies.remove('user');
             state.token = null;
+            state.user = null;
             // 恢复默认样式
             // let themeLink = document.querySelector('link[name="theme"]');
             // themeLink.setAttribute('href', '');
