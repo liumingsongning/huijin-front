@@ -22,13 +22,13 @@
               <Col span="18" offset="3">
               <ul>
                 <Col span="12">
-                <li @click="phone_login_d=!phone_login_d" class="phone_login">
+                <li @click="phone_login_d=true" class="phone_login">
                   手机登录
                 </li>
 
                 </Col>
                 <Col span="12">
-                <li @click="phone_login_d=!phone_login_d" class="account_login">
+                <li @click="phone_login_d=false" class="account_login">
                   账户登录
                 </li>
                 </Col>
@@ -51,91 +51,101 @@
                 </Col>
                 <Col span="1">&nbsp;</Col>
               </Row> -->
-              <Form>
+              <Form ref="phoneFormValidate" :model="phoneFormValidate" :rules="phoneRuleValidate">
+
                 <Row>
+                  <Col span="22" offset="1">
+                  <FormItem prop='phone_d'>
+                    <Input type="text" placeholder="请输入手机号码" class="phone" v-model="phoneFormValidate.phone_d" clearable size="large">
+                    <Icon type="android-phone-portrait" slot="prepend"></Icon>
+                    </Input>
+                  </FormItem>
+                  </Col>
+                  <Col span="1">&nbsp;</Col>
+                </Row>
+
+                <Row v-show="phoneFormValidate.phone_d.length==11" style="margin:0 4%;margin-bottom:18px">
+
+                  <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
+
+                </Row>
+
+                <Row >
+                  <Col span="22" offset="1">
+                  <FormItem prop='code_d'>
+                    <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large">
+                    <span  slot="prepend" >手机验证码</span>
+                    <span v-show='!checked_d' slot="append"  @click='send_code_m'>请先进行人机验证</span>
+                    <span v-show='checked_d&&!sended_d' slot="append"  @click='send_code_m'>发送验证码</span>
+                    <span v-show='sended_d' slot="append" >{{time_d}}s后重新获取</span>
+                    </Input>
+                  </FormItem>
+                   </Col>
+                  <Col span="1">&nbsp;</Col>
+                </Row>
+
+                <FormItem>
+                  <Row>
                     <Col span="22" offset="1">
-                      <FormItem>
-                        <Input type="text"  placeholder="请输入手机号码" class="phone" v-model="phone_d" clearable size="large">
-                            <Icon type="android-phone-portrait" slot="prepend"></Icon>
-                        </Input>
-                      </FormItem>
+                    <Row>
+                      <Col span='24'>
+                    <Button class='login' @click="phone_login_m('phoneFormValidate')">
+                      登录
+                    </Button>
+                    </Col>
+                    <!-- <Col span='12'>
+                    <Button style='width:100%;height:40px'  @click="phone_reset_m('phoneFormValidate')">
+                      重置
+                    </Button>
+                    </Col> -->
+                    </Row>
                     </Col>
                     <Col span="1">&nbsp;</Col>
-                </Row>
-                
+                  </Row>
+                </FormItem>
               </Form>
-              <Row v-show="phone_d.length==11" style="margin:0 4%;margin-top:10px;">
-
-                <div class="l-captcha" data-site-key="a61ebded8b92ba71b5272a5f60fc1be7" data-callback='getCaptchaResponse'></div>
-
-              </Row>
-
-              <Row>
-                <Col span="6" offset="1">
-                <button type="button" style="outline:none;border:1px solid #e9e9e9;height:36px;background:transparent;border-right:none;width:100%;border-top-left-radius:4px;border-bottom-left-radius:4px;font-size:12px">手机验证码</button>
-                </Col>
-                <Col span="9">
-                <input type="text" v-model="code_d" placeholder="输入手机验证码" style="text-align:center;height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;font-size:12px">
-                </Col>
-                <Col span="7">
-                <button v-show='!checked_d' type="button" style="height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;border-top-right-radius:4px;border-bottom-right-radius:4px;font-size:12px" @click='send_code_m'>发送验证码</button>
-                <button v-show='checked_d' type="button" style="height:36px;width:100%;outline:none;border:1px solid #e9e9e9;border-left:none;border-top-right-radius:4px;border-bottom-right-radius:4px;font-size:12px">{{time_d}}s后重新获取</button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row>
-
-              <Row>
-                <Col span="22" offset="1">
-                <Button type="button" class="login" @click="phone_login_m">
-                  登录
-                </Button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row>
-
             </div>
             <!-- 账号登录 -->
             <div v-show='!phone_login_d' class="form1">
-              <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" >
+              <Form ref="formValidate" :model="formValidate" :rules="ruleValidate">
                 <!-- 账号 -->
-                  <FormItem prop="account_d">
-                    <Row style="margin-top: 28px">
-                        <Col span="22" offset="1">
-                              <Input type="text" placeholder="请输入账号" v-model="formValidate.account_d" clearable  size="large">
-                                <Icon type="person" slot="prepend" ></Icon>
-                              </Input>
-                        </Col>
-                        <Col span="1">&nbsp;</Col>
-                    </Row>
-                  </FormItem>
-                  
-                  <!-- 密码 -->
-                  <FormItem prop="password_d">
-                    <Row>
-                        <Col span="22" offset="1">
-                            <Input type="password"  placeholder="请输入密码" v-model="formValidate.password_d" clearable size="large">
-                                <Icon type="locked" slot="prepend"></Icon>
-                            </Input>
-                        </Col>
-                        <Col span="1">&nbsp;</Col>
-                    </Row>
-                  </FormItem>
-                  
-                  <!-- 登录 -->
-                  <FormItem>
-                    <Row>
-                      <Col span="22" offset="1">
-                          <Button  class="login1" @click="account_login_m('formValidate')">
-                            登录
-                          </Button>
-                      </Col>
-                      <Col span="1">&nbsp;</Col>
-                    </Row>
+                <FormItem prop="account_d">
+                  <Row style="margin-top: 28px">
+                    <Col span="22" offset="1">
+                    <Input type="text" placeholder="请输入账号" v-model="formValidate.account_d" clearable size="large">
+                    <Icon type="person" slot="prepend"></Icon>
+                    </Input>
+                    </Col>
+                    <Col span="1">&nbsp;</Col>
+                  </Row>
+                </FormItem>
+
+                <!-- 密码 -->
+                <FormItem prop="password_d">
+                  <Row>
+                    <Col span="22" offset="1">
+                    <Input type="password" placeholder="请输入密码" v-model="formValidate.password_d" clearable size="large">
+                    <Icon type="locked" slot="prepend"></Icon>
+                    </Input>
+                    </Col>
+                    <Col span="1">&nbsp;</Col>
+                  </Row>
+                </FormItem>
+
+                <!-- 登录 -->
+                <FormItem>
+                  <Row>
+                    <Col span="22" offset="1">
+                    <Button class="login1" @click="account_login_m('formValidate')">
+                      登录
+                    </Button>
+                    </Col>
+                    <Col span="1">&nbsp;</Col>
+                  </Row>
                 </FormItem>
               </Form>
-              
-              
-              <Row >
+
+              <Row>
                 <Col span="4">
                 <div>
                   <img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ
@@ -147,7 +157,7 @@
                 </div>
                 </Col>
                 <Col span="5" offset="9">
-                <button type="button" class="reg">立即注册</button>
+                <button class="reg">立即注册</button>
                 </Col>
               </Row>
 
@@ -165,10 +175,9 @@
             <!--登录按钮-->
           </Card>
           </Col>
-        <Col span="9">&nbsp;</Col>
+          <Col span="9">&nbsp;</Col>
         </Row>
       </div>
-     
 
       <!--脚部-->
       <Footer class="footer">
@@ -236,19 +245,53 @@ export default {
       time_d: 60,
       phone_login_d: true,
       checked_d: false,
+      sended_d:false,
       formValidate: {
-            account_d: "",
-            password_d: ""
-               
-        },
+        account_d: "",
+        password_d: ""
+      },
       ruleValidate: {
         account_d: [
-          {required:true,message: ' 账号不能为空',trigger: 'blur'},
-          { type: 'string', min: 8,message: '账号长度不少于8个字符', trigger: 'blur' }
+          { required: true, message: " 账号不能为空", trigger: "blur" },
+          {
+            type: "string",
+            min: 8,
+            message: "账号长度不少于8个字符",
+            trigger: "blur"
+          }
         ],
         password_d: [
-          {required:true,message: ' 密码不能为空',trigger: 'blur'},
-          { type: 'string', min: 8, message: '密码长度不少于8个字符', trigger: 'blur' }
+          { required: true, message: " 密码不能为空", trigger: "blur" },
+          {
+            type: "string",
+            min: 8,
+            message: "密码长度不少于8个字符",
+            trigger: "blur"
+          }
+        ]
+      },
+      phoneFormValidate: {
+        phone_d: "",
+        code_d: ""
+      },
+      phoneRuleValidate: {
+        phone_d: [
+          { required: true, message: " 账号不能为空", trigger: "blur" },
+          {
+            type: "string",
+            len: 11,
+            message: "请输入11位手机号",
+            trigger: "blur"
+          }
+        ],
+        code_d: [
+          { required: true, message: " 密码不能为空", trigger: "blur" },
+          {
+            type: "string",
+            len: 4,
+            message: "请输入四位验证码",
+            trigger: "blur"
+          }
         ]
       }
     };
@@ -263,33 +306,50 @@ export default {
     window.getCaptchaResponse = this.getCaptchaResponse;
   },
   methods: {
-    phone_login_m() {
-      var self = this;
-      if(self.phone_d==''){
-        alert('手机号不能为空')
-      }
-      this.ajax
-        .post("/api/login", {
-          phone: self.phone_d,
-          code: self.code_d
-        })
-        .then(response => {
-          this.$store.commit("login", response.data.token);
-          if (self.$route.query.redirect) {
-            self.$router.push({ path: self.$route.query.redirect });
-          } else {
-            self.$router.push({
-              name: "home"
-            });
-          }
-        })
-        .catch(error => {
-          if (error.status_code == 403) {
-            alert(error.message);
-            LUOCAPTCHA.reset();
-          }
-        });
+    phone_login_m(name) {
+      var self=this;
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.$Message.success("登陆成功");
+        } else {
+          this.$Message.error("登录失败");
+          // LUOCAPTCHA.reset();
+          // this.checked_d=false;
+          // this.sended_d=false;
+          // setTimeout(function(){
+          //   self.$refs[name].resetFields();
+          // },1500)
+          
+        }
+      });
+     
+      // var self = this;
+    
+      // this.ajax
+      //   .post("/api/login", {
+      //     phone: self.phone_d,
+      //     code: self.code_d
+      //   })
+      //   .then(response => {
+      //     this.$store.commit("login", response.data.token);
+      //     if (self.$route.query.redirect) {
+      //       self.$router.push({ path: self.$route.query.redirect });
+      //     } else {
+      //       self.$router.push({
+      //         name: "home"
+      //       });
+      //     }
+      //   })
+      //   .catch(error => {
+      //     if (error.status_code == 403) {
+      //       alert(error.message);
+      //       LUOCAPTCHA.reset();
+      //     }
+      //   });
     },
+     phone_reset_m(name){
+        this.$refs[name].resetFields();
+      },
     account_login_m() {},
     //人机验证成功返回
     getCaptchaResponse(resp) {
@@ -299,7 +359,7 @@ export default {
           captcha: resp
         })
         .then(function(response) {
-          self.checkcaptcha = true;
+          self.checked_d = true;
         })
         .catch(function(error) {
           if (error.status_code == 400) {
@@ -310,17 +370,14 @@ export default {
     },
     send_code_m() {
       var self = this;
-      if (self.phone === "") {
-        alert("请输入手机号");
-        return false;
-      }
+     
       this.ajax
         .post("/api/sendcode", {
-          phone: self.phone_d,
+          phone: self.phoneFormValidate.phone_d
         })
         .then(function(response) {
           self.Interval();
-          self.checked_d = true;
+          self.sended_d = true;
         })
         .catch(function(error) {
           if (error.status_code == 400) {
@@ -355,13 +412,13 @@ export default {
     //     });
     // })
     account_login_m(account_d) {
-      this.$refs[account_d].validate((valid) => {
-            if (valid) {
-                this.$Message.success('登陆成功');
-            } else {
-                this.$Message.error('登录失败');
-            }
-        })
+      this.$refs[account_d].validate(valid => {
+        if (valid) {
+          this.$Message.success("登陆成功");
+        } else {
+          this.$Message.error("登录失败");
+        }
+      });
     }
   }
 };
