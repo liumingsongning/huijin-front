@@ -89,7 +89,7 @@
 	    						<Button class="buy">立即购买</Button>
 	    					</Col>
 	    					<Col span="6" offset="5">
-	    						<Button class="shopcar" @click="add">加入购物车</Button>
+	    						<Button class="shopcar" @click="addcart_m">加入购物车</Button>
 	    					</Col>
 	    				</Row>
 	    			</div>
@@ -166,35 +166,23 @@
 						})
 						.catch(error => {
 							if(error.status_code==404){
-								console.log(error.message);
+								alert(error.message);
 
 							}
 						})
 				},
-				add () {
+				addcart_m () {
 						this.ajax.post("/api/cart/add",{
 								good_id : this.good.id
 						}).then(function(res){
-								console.log(res)
+								// console.log(res.data)
+								
 						}).catch(function(err){
 								if(err.status_code == 422){
-									console.log(error.message);
+									alert(error.message);
 								}
 						})	
-				},
-				// clear () {
-				// 	this.ajax.post("/api/cart/clear",{
-
-				// 	}).then(function(res){
-				// 			console.log(res)
-				// 	}).catch(function(err){
-				// 			if(err.status_code == 422){
-				// 				console.log(error.message);
-				// 			}
-				// 	})
-				// }
-
-
+				}
 			}
 		}
 

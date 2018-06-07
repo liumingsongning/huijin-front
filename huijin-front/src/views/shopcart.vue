@@ -1,8 +1,7 @@
 <template>
     <div class="shopcart">
         <Layout >
-            <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px">
-                    
+            <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px"> 
                 <Row>
                     <Col span="19" offset="2">
                     <img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
@@ -64,24 +63,29 @@
                         </Col>
                         <Col span="13" offset="3">
                         <ul>
-                            <Col span="6">
+                            <Col span="5">
                             <li>
                                 <a href="">商城首页</a>
                             </li>
                             </Col>
-                            <Col span="6">
+                            <Col span="5">
                             <li>
                                 <a href="">最新资讯</a>
                             </li>
                             </Col>
-                            <Col span="6">
+                            <Col span="5">
                             <li>
                                 <a href="">酒品分类</a>
                             </li>
                             </Col>
-                            <Col span="6">
+                            <Col span="5">
                             <li>
                                 <a href="">个人中心</a>
+                            </li>
+                            </Col>
+                             <Col span="4">
+                            <li>
+                                <a href="" @click="displaycart_m">购物车</a>
                             </li>
                             </Col>
                         </ul>
@@ -101,16 +105,16 @@
                                     <Col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;padding-left:11px">
-                                            全选
+                                            <!-- 全选 -->
                                         </Checkbox>
                                         </td>
                                     </Col>
                                     <Col span="11">
                                         <td>
-                                        商品
-                                    </td>
+                                            商品
+                                        </td>
                                     </Col>
-                                    <Col span="2">
+                                    <Col span="3">
                                         <td>
                                         单价
                                     </td>
@@ -125,7 +129,7 @@
                                         小计
                                     </td>
                                     </Col>
-                                    <Col span="3">
+                                    <Col span="2">
                                         <td>
                                         操作
                                     </td>
@@ -134,7 +138,7 @@
                             </table>
                         </Row>
                         <!--  -->
-                        <div style="height:41px;border-bottom:2px solid #aaa;line-height:41px">
+                        <div style="height:41px;line-height:41px">
                             <Checkbox style="letter-spacing:3px;padding-left:11px">
                                 官方商品
                             </Checkbox>
@@ -145,36 +149,22 @@
                                 <tr>
                                     <Col span="3">
                                         <td>
-                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                        <Checkbox style="letter-spacing:3px;margin-left:11px">
                                             
                                         </Checkbox>
                                         </td>
                                     </Col>
                                     <Col span="11">
                                         <td>
-                                        商品
-                                    </td>
-                                    </Col>
-                                    <Col span="2">
-                                        <td>
-                                        ¥200.00
-                                    </td>
-                                    </Col>
-                                    <Col span="3">
-                                        <td>
-                                            
-                                            <!-- <Row>
-                                                <Col span="3">
-                                                     <button type="button">-</button>
-                                                </Col>
-                                                 <Col span="18">
-                                                    <input type="text" value="1"/>
-                                                </Col>
-                                                 <Col span="3">
-                                                    <button type="button">+</button>
-                                                </Col>
-                                            </Row> -->
-                                            <button type="button" style="width:24px">-</button><input type="text" value="1" style="width:50px;text-align:center"/><button type="button" style="width:24px">+</button>
+                                            <div style="width:79px;height:79px;border:1px solid #aaaaaa;float:left"></div>
+                                            <div style="float:left;padding-left:10px">
+                                                <span>汇金酒业有限公司储藏酒</span><Br />
+                                                <span>出产日期: 2013-07-15</span>
+                                                <Br />
+                                                <span>储藏年限: 10年</span>
+                                                <Br />
+                                                <span>1000ml</span>
+                                            </div>
                                         </td>
                                     </Col>
                                     <Col span="2">
@@ -182,8 +172,18 @@
                                         ¥200.00
                                     </td>
                                     </Col>
-                                    <Col span="3">
-                                        <td >
+                                    <Col span="4">
+                                        <td style="margin-left:20px;">
+                                            <button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">-</button><input type="text" value="1" style="width:50px;text-align:center;border:none;height:22px;border:1px solid #aaaaaa"/><button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">+</button>
+                                        </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
+                                        ¥200.00
+                                    </td>
+                                    </Col>
+                                    <Col span="2">
+                                        <td>
                                             <a href="" style="color:#939393">删除</a><Br />
                                             <a href="" style="color:#939393">加入收藏</a>
                                         </td>
@@ -191,7 +191,22 @@
                                 </tr>
                             </table>
                         </Row>
-
+                        <!-- 脚部 -->
+                            <Row>
+                                <div style="width:100%" class="footer">
+                                    <Col span="15">
+                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                            全选
+                                        </Checkbox>
+                                    </Col>
+                                    <Col span="6">
+                                        总价: <span style="color:red">¥20000.00</span>
+                                    </Col>
+                                    <Col span="3">
+                                        <button type="button"  style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
+                                    </Col>
+                                </div>
+                            </Row>
                     </Col>
                     <Col span="3">
                         &nbsp;
@@ -205,16 +220,51 @@
 </template>
 <script>
 export default {
-  
+    data () {
+        return {
+            good:""
+        }
+    },
+    mounted () {
+        this.details()
+    },
+    methods: {
+        details () {
+                this.ajax.get("/api/goods/1")
+                .then(response => {
+                    this.good = response.data.good;
+                })
+                .catch(error => {
+                    if(error.status_code==404){
+                        console.log(error.message);
+                    }
+                })
+        },
+        displaycart_m () {
+            this.ajax.post("/api/cart/display",{
+                rowId: this.good.id
+            }).then(function(res){
+                console.log(res)
+            }).catch(function(err){
+                if(err.status_code == 422){
+                    console.log(error.message);
+                }
+            })
+        }
+    }
 };
 </script>
 <style scoped>
+::-webkit-scrollbar {
+        width: 0px;
+    }
 .ivu-layout {
   width: 100%;
   height: 100%;
   font-size: 16px;
   background: url(../static.huijinjiu.com/shopcart/beijing.jpg) no-repeat;
-  background-size: 100% 768px;
+  background-size: 100% 100%;
+  
 }
 /* 侧边栏 */
 .sider {
@@ -245,7 +295,7 @@ export default {
 }
 .sider ul li {
   list-style: none;
-  margin-top: 51px;
+  line-height: 55px;
   font-size: 12px;
 }
 .sider ul li a {
@@ -291,9 +341,19 @@ export default {
   line-height: 42px;
 }
 .content .tab1{
+  height: 150px;
   color: #939393;
   font-size: 12px;
-  margin-top: 56px;
+  border-top:2px solid #aaa;
+  border-bottom:2px solid #aaa;
+  padding-top:40px
+}
+/* 脚部 */
+.footer{
+    height: 40px;
+    background-color: #ffffff;
+    line-height: 40px;
+    margin-top: 300px
 }
 </style>
 
