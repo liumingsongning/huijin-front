@@ -22,13 +22,13 @@
               <Col span="18" offset="3">
               <ul>
                 <Col span="12">
-                <li @click="phone_login_d=true" class="phone_login">
+                <li @click="phone_login_d=true" class="phone_login" v-bind:class="{select : phone_login_d}">
                   手机登录
                 </li>
 
                 </Col>
                 <Col span="12">
-                <li @click="phone_login_d=false" class="account_login">
+                <li @click="phone_login_d=false" class="account_login"  v-bind:class="{select : !phone_login_d}">
                   账户登录
                 </li>
                 </Col>
@@ -424,6 +424,9 @@ export default {
 };
 </script>
 <style scoped>
+.select{
+    color:red
+}
 .layout {
   width: 100%;
   height: 918px;
