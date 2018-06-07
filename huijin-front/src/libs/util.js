@@ -3,6 +3,8 @@ import env from '../config/env';
 import store from '../store/index';
 import {router} from '../router/index';
 import qs from 'qs';
+import Cookies from 'js-cookie';
+
 let util = {
 
 };
@@ -28,8 +30,8 @@ var ajax = axios.create({
 // http request 拦截器
 ajax.interceptors.request.use(
     config => {
-        if (store.state.user.token) {
-            config.headers.authorization = `Bearer ${store.state.user.token}`;
+        if ( Cookies.get('token')) {
+            config.headers.authorization = `Bearer ${Cookies.get('token')}`;
         }
         if (config.method=="post"){
             config.data = qs.stringify(config.data);

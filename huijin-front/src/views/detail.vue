@@ -21,8 +21,11 @@
 	    				<Col span="6">
 	    					<li><a href="">酒品分类</a></li>
 	    				</Col>
-	    				<Col span="6">
+	    				<Col span="5">
 	    					<li><a href="">个人中心</a></li>
+	    				</Col>
+	    				<Col span="1">
+	    					<li><a href="" @click='logout_m'>退出</a></li>
 	    				</Col>
 	    			</ul>
 	    		</Col>
@@ -172,16 +175,21 @@
 						})
 				},
 				addcart_m () {
+					var self=this
 						this.ajax.post("/api/cart/add",{
 								good_id : this.good.id
 						}).then(function(res){
 								// console.log(res.data)
+								self.$Message.success('添加购物车成功')
 								
 						}).catch(function(err){
 								if(err.status_code == 422){
 									alert(error.message);
 								}
 						})	
+				},
+				logout_m(){
+					 this.$store.commit("logout");
 				}
 			}
 		}
