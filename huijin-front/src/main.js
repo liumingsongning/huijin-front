@@ -8,7 +8,9 @@ import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 import store from './store';
 import {router} from './router/index';
+import iviewArea from 'iview-area';
 
+Vue.use(iviewArea)
 Vue.use(VueRouter);
 Vue.use(Vuex);
 

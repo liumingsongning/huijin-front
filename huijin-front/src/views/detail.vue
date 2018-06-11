@@ -93,8 +93,8 @@
 	    					<Col span="6">
 	    						<Button class="buy">立即购买</Button>
 	    					</Col>
-	    					<Col span="6" offset="5">
-	    						<Button class="shopcar" @click="addcart_m">加入购物车</Button>
+	    					<Col span="6" offset="5" >
+	    						<Button class="addcart"  @click="addcart_m">加入购物车</Button>
 	    					</Col>
 	    				</Row>
 	    			</div>
@@ -157,7 +157,8 @@
 		export default {
 			data (){
 					return {
-						good:""
+						good:"",
+					
 					}
 			},
 			mounted() {
@@ -179,16 +180,16 @@
 				addcart_m () {
 					var self=this
 						this.ajax.post("/api/cart/add",{
-								good_id : this.good.id
+								good_id : self.good.id
 						}).then(function(res){
 								// console.log(res.data)
 								self.$Message.success('添加购物车成功')
-								
+
 						}).catch(function(err){
 								if(err.status_code == 422){
 									alert(error.message);
 								}
-						})	
+						})
 				},
 				logout_m(){
 					 this.$store.commit("logout");
@@ -264,7 +265,7 @@ ol li {
   margin-top: 40px;
 }
 .content .buy,
-.content .shopcar {
+.content .addcart {
   border-radius: 0;
   height: 36px;
   color: white;

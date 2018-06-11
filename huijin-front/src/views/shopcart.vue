@@ -63,29 +63,24 @@
                         </Col>
                         <Col span="13" offset="3">
                         <ul>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">商城首页</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">最新资讯</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">酒品分类</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">个人中心</a>
-                            </li>
-                            </Col>
-                             <Col span="4">
-                            <li>
-                                <a href="">购物车</a>
                             </li>
                             </Col>
                         </ul>
@@ -145,8 +140,8 @@
                         </div>
                         <!--  -->
                         <Row>
-                            <table style="width:100%" class="tab1">
-                                <tr>
+                            <table style="width:100%" class="tab1"  >
+                                <tr v-for="item in cart1">
                                     <Col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;margin-left:11px">
@@ -158,7 +153,7 @@
                                         <td>
                                             <div style="width:79px;height:79px;border:1px solid #aaaaaa;float:left"></div>
                                             <div style="float:left;padding-left:10px">
-                                                <span>汇金酒业有限公司储藏酒</span><Br />
+                                                <span>{{item.name}}</span><Br />
                                                 <span>出产日期: 2013-07-15</span>
                                                 <Br />
                                                 <span>储藏年限: 10年</span>
@@ -169,23 +164,25 @@
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                        ¥200.00
-                                    </td>
+                                        ¥{{item.price}}
+                                        </td>
                                     </Col>
                                     <Col span="4">
                                         <td style="padding-left:20px;">
-                                            <button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa;outline:0">-</button><input type="text" value="1" style="width:50px;text-align:center;border:none;height:22px;border:1px solid #aaaaaa"/><button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa;outline:0">+</button>
+                                            <button type="button" class="add" >+</button>
+                                            <div class="qty" >{{item.qty}}</div>
+                                            <button type="button" class="minus" >-</button>
                                         </td>
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                        ¥200.00
+                                        ¥{{item.subtotal}}
                                     </td>
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                            <a href="" style="color:#939393">删除</a><Br />
-                                            <a href="" style="color:#939393">加入收藏</a>
+                                            <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a><Br />
+                                            <a style="color:#939393">加入收藏</a>
                                         </td>
                                     </Col>
                                 </tr>
@@ -220,54 +217,56 @@
 </template>
 <script>
 export default {
-    data () {
-        return {
-            good:""
-        }
+  data() {
+    return {
+      cart1: []
+    };
+  },
+  mounted() {
+    this.displaycart_m();
+  },
+  methods: {
+    displaycart_m() {
+      var self = this;
+      this.ajax.get("/api/cart/display")
+        .then(function(res) {
+          console.log(res.data.cart);
+          self.cart1 = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(error.message);
+          }
+        });
     },
-    mounted () {
-        this.displaycart_m()
-    },
-    methods: {
-        // details () {
-        //         this.ajax.get("/api/goods/1")
-        //         .then(response => {
-        //             this.good = response.data.good;
-        //         })
-        //         .catch(error => {
-        //             if(error.status_code==404){
-        //                 console.log(error.message);
-        //             }
-        //         })
-        // },
-        displaycart_m () {
-            this.ajax.get("/api/cart/display")
-            .then(function(res){
-                console.log(res)
-            }).catch(function(err){
-                if(err.status_code == 422){
-                    console.log(error.message);
-                }
-            })
-        },
-        
-        
-
-
+    removecart_m(id) {
+        var self = this;
+        console.log(id)
+        this.ajax.post("/api/cart/remove",{
+            rowId:id
+        }).then(function(res){
+            alert(res.data)
+            
+        }).catch(function(err){
+            if (err.status_code == 422) {
+            console.log(error.message);
+          }
+        })
     }
-};
+    }
+  }
+
 </script>
 <style scoped>
 ::-webkit-scrollbar {
-        width: 0px;
-    }
+  width: 0px;
+}
 .ivu-layout {
   width: 100%;
   height: 100%;
   font-size: 16px;
   background: url(../static.huijinjiu.com/shopcart/beijing.jpg) no-repeat;
   background-size: 100% 100%;
-  
 }
 /* 侧边栏 */
 .sider {
@@ -334,7 +333,7 @@ export default {
   margin-top: 10px;
   padding: 6px;
 }
-.content .tab{
+.content .tab {
   border: 1px solid #e9e9e9;
   border-collapse: collapse;
   height: 42px;
@@ -343,20 +342,42 @@ export default {
   margin-top: 5px;
   line-height: 42px;
 }
-.content .tab1{
+.content .tab1 {
   height: 150px;
   color: #939393;
   font-size: 12px;
-  border-top:2px solid #aaa;
-  border-bottom:2px solid #aaa;
-  padding-top:40px
+  border-top: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
+  padding-top: 40px;
+}
+.content .add {
+  width: 24px;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  outline: 0;
+  float: left;
+}
+.content .qty {
+  width: 50px;
+  text-align: center;
+  border: none;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  float: left;
+  line-height: 22px;
+}
+.content .minus {
+  width: 24px;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  outline: 0;
 }
 /* 脚部 */
-.footer{
-    height: 40px;
-    background-color: #ffffff;
-    line-height: 40px;
-    margin-top: 300px
+.footer {
+  height: 40px;
+  background-color: #ffffff;
+  line-height: 40px;
+  margin-top: 300px;
 }
 </style>
 
