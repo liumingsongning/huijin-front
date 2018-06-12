@@ -63,29 +63,24 @@
                         </Col>
                         <Col span="13" offset="3">
                         <ul>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">商城首页</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">最新资讯</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">酒品分类</a>
                             </li>
                             </Col>
-                            <Col span="5">
+                            <Col span="6">
                             <li>
                                 <a href="">个人中心</a>
-                            </li>
-                            </Col>
-                             <Col span="4">
-                            <li>
-                                <a href="" @click="displaycart_m">购物车</a>
                             </li>
                             </Col>
                         </ul>
@@ -105,12 +100,12 @@
                                     <Col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;padding-left:11px">
-                                            <!-- 全选 -->
+                                            全选
                                         </Checkbox>
                                         </td>
                                     </Col>
                                     <Col span="11">
-                                        <td>
+                                        <td style="padding-left:80px">
                                             商品
                                         </td>
                                     </Col>
@@ -145,8 +140,8 @@
                         </div>
                         <!--  -->
                         <Row>
-                            <table style="width:100%" class="tab1">
-                                <tr>
+                            <table style="width:100%" class="tab1"  >
+                                <tr v-for="item in carts">
                                     <Col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;margin-left:11px">
@@ -156,9 +151,9 @@
                                     </Col>
                                     <Col span="11">
                                         <td>
-                                            <div style="width:79px;height:79px;border:1px solid #aaaaaa;float:left"></div>
+                                            <div style="width:79px;height:79px;float:left"><img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%"></div>
                                             <div style="float:left;padding-left:10px">
-                                                <span>汇金酒业有限公司储藏酒</span><Br />
+                                                <span>{{item.model.goods_name}}</span><Br />
                                                 <span>出产日期: 2013-07-15</span>
                                                 <Br />
                                                 <span>储藏年限: 10年</span>
@@ -169,44 +164,46 @@
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                        ¥200.00
-                                    </td>
+                                        ¥{{item.price}}
+                                        </td>
                                     </Col>
                                     <Col span="4">
-                                        <td style="margin-left:20px;">
-                                            <button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">-</button><input type="text" value="1" style="width:50px;text-align:center;border:none;height:22px;border:1px solid #aaaaaa"/><button type="button" style="width:24px;height:22px;border:1px solid #aaaaaa">+</button>
+                                        <td style="padding-left:20px;">
+                                            <button type="button" class="add" >+</button>
+                                            <div class="qty" >{{item.qty}}</div>
+                                            <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
                                         </td>
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                        ¥200.00
+                                        ¥{{item.subtotal}}
                                     </td>
                                     </Col>
                                     <Col span="2">
                                         <td>
-                                            <a href="" style="color:#939393">删除</a><Br />
-                                            <a href="" style="color:#939393">加入收藏</a>
+                                            <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a><Br />
+                                            <a style="color:#939393">加入收藏</a>
                                         </td>
                                     </Col>
                                 </tr>
+                               
                             </table>
+                                <Row>
+                                    <div style="width:100%" class="footer">
+                                        <Col span="15">
+                                            <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                                全选
+                                            </Checkbox>
+                                        </Col>
+                                        <Col span="6">
+                                            总价: <span style="color:red">¥20000.00</span>
+                                        </Col>
+                                        <Col span="3">
+                                            <button type="button"  style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
+                                        </Col>
+                                    </div>
+                                </Row>
                         </Row>
-                        <!-- 脚部 -->
-                            <Row>
-                                <div style="width:100%" class="footer">
-                                    <Col span="15">
-                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
-                                            全选
-                                        </Checkbox>
-                                    </Col>
-                                    <Col span="6">
-                                        总价: <span style="color:red">¥20000.00</span>
-                                    </Col>
-                                    <Col span="3">
-                                        <button type="button"  style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
-                                    </Col>
-                                </div>
-                            </Row>
                     </Col>
                     <Col span="3">
                         &nbsp;
@@ -220,51 +217,76 @@
 </template>
 <script>
 export default {
-    data () {
-        return {
-            good:""
-        }
+  data() {
+    return {
+      carts: []
+    };
+  },
+  mounted() {
+    this.displaycart_m();
+  },
+  methods: {
+    displaycart_m() {
+      var self = this;
+      this.ajax
+        .get("/api/cart/display")
+        .then(function(res) {
+          //   console.log(res.data.cart);
+          self.carts = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(error.message);
+          }
+        });
     },
-    mounted () {
-        this.details()
+    // 删除
+    removecart_m(id) {
+      var self = this;
+      this.ajax
+        .post("/api/cart/remove", {
+          rowId: id
+        })
+        .then(function(res) {
+          self.carts = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(error.message);
+          }
+        });
     },
-    methods: {
-        details () {
-                this.ajax.get("/api/goods/1")
-                .then(response => {
-                    this.good = response.data.good;
-                })
-                .catch(error => {
-                    if(error.status_code==404){
-                        console.log(error.message);
-                    }
-                })
-        },
-        displaycart_m () {
-            this.ajax.post("/api/cart/display",{
-                rowId: this.good.id
-            }).then(function(res){
-                console.log(res)
-            }).catch(function(err){
-                if(err.status_code == 422){
-                    console.log(error.message);
-                }
-            })
-        }
+    // 减少
+    minuscart_m(id) {
+      var self = this;
+      this.ajax
+        .post("/api/cart/minus", {
+          rowId: id
+        })
+        .then(function(res) {
+          self.carts = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(error.message);
+          }
+        });
     }
+    // 清空购物车
+    
+  }
 };
 </script>
 <style scoped>
 ::-webkit-scrollbar {
-        width: 0px;
-    }
+  width: 0px;
+}
 .ivu-layout {
   width: 100%;
   height: 100%;
   font-size: 16px;
   background: url(../static.huijinjiu.com/shopcart/beijing.jpg) no-repeat;
   background-size: 100% 100%;
-  
 }
 /* 侧边栏 */
 .sider {
@@ -331,7 +353,7 @@ export default {
   margin-top: 10px;
   padding: 6px;
 }
-.content .tab{
+.content .tab {
   border: 1px solid #e9e9e9;
   border-collapse: collapse;
   height: 42px;
@@ -340,20 +362,42 @@ export default {
   margin-top: 5px;
   line-height: 42px;
 }
-.content .tab1{
+.content .tab1 {
   height: 150px;
   color: #939393;
   font-size: 12px;
-  border-top:2px solid #aaa;
-  border-bottom:2px solid #aaa;
-  padding-top:40px
+  border-top: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
+  padding-top: 40px;
+}
+.content .add {
+  width: 24px;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  outline: 0;
+  float: left;
+}
+.content .qty {
+  width: 50px;
+  text-align: center;
+  border: none;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  float: left;
+  line-height: 22px;
+}
+.content .minus {
+  width: 24px;
+  height: 22px;
+  border: 1px solid #aaaaaa;
+  outline: 0;
 }
 /* 脚部 */
-.footer{
-    height: 40px;
-    background-color: #ffffff;
-    line-height: 40px;
-    margin-top: 300px
+.footer {
+  height: 40px;
+  background-color: #ffffff;
+  line-height: 40px;
+  margin-top: 300px;
 }
 </style>
 

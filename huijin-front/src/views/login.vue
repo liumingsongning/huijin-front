@@ -7,17 +7,16 @@
           <Col span="3" offset="1">
           <img src="http://static.huijinjiu.com/805351264090795932.png" class="logo" />
           </Col>
-          <Col span="2" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
+          <Col span="3" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
           </Col>
-          <Col span="17"></Col>
+          <Col span="16"></Col>
         </Row>
       </Header>
 
       <!--内容-->
-      <div class="content">
-        <Row>
-          <Col span="6" offset="9">
-          <Card style="width:100%;margin-top:76px">
+      <div class="content" >
+          <div style="width:405px;margin-left:auto;margin-right:auto">
+            <Card style="margin-top:76px;">
             <Row style="border-bottom:2px solid #bfbfbf;height:49px">
               <Col span="18" offset="3">
               <ul>
@@ -25,7 +24,6 @@
                 <li @click="phone_login_d=true" class="phone_login" v-bind:class="{select : phone_login_d}">
                   手机登录
                 </li>
-
                 </Col>
                 <Col span="12">
                 <li @click="phone_login_d=false" class="account_login" v-bind:class="{select : !phone_login_d}">
@@ -39,18 +37,6 @@
             <!-- 手机登录 -->
             <div v-show='phone_login_d'>
               <!--手机号-->
-              <!-- <Row style="margin-top: 28px;">
-                <Col span="3" offset="1">
-                <button type="button" class="personal"></button>
-                </Col>
-                <Col span="17">
-                <input type="text" class="phone" placeholder="请输入手机号码" v-model="phone_d" />
-                </Col>
-                <Col span="2">
-                <button type="button" class="delete"></button>
-                </Col>
-                <Col span="1">&nbsp;</Col>
-              </Row> -->
               <Form ref="phoneFormValidate" :model="phoneFormValidate" :rules="phoneRuleValidate">
 
                 <Row>
@@ -73,8 +59,8 @@
                 <Row>
                   <Col span="22" offset="1">
                   <FormItem prop='code_d'>
-                    <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large">
-                    <span slot="prepend">手机验证码</span>
+                    <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large" >
+                    <span slot="prepend" >手机验证码</span>
                     <span v-show='!checked_d' slot="append" @click='send_code_m'>请先进行人机验证</span>
                     <span v-show='checked_d&&!sended_d' slot="append" @click='send_code_m'>发送验证码</span>
                     <span v-show='sended_d' slot="append">{{time_d}}s后重新获取</span>
@@ -151,12 +137,12 @@
                   <a href="http://api.huijinjiu.com/auth/qq"><img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ</a>
                 </div>
                 </Col>
-                <Col span="4" offset="2">
+                <Col span="5" offset="2">
                 <div>
                   <img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;" />微信
                 </div>
                 </Col>
-                <Col span="5" offset="9">
+                <Col span="5" offset="8">
                 <button class="reg">立即注册</button>
                 </Col>
               </Row>
@@ -174,60 +160,52 @@
 						</Row> -->
             <!--登录按钮-->
           </Card>
-          </Col>
-          <Col span="9">&nbsp;</Col>
-        </Row>
+          </div>
       </div>
 
       <!--脚部-->
-      <Footer class="footer">
-        <Row>
-          <Col span="14" offset="5">
-          <ul>
-            <li>
-              <a href="">关于我们&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
-            </li>
-            <li>
-              <a href="">&nbsp;&nbsp;English Site</a>
-            </li>
-          </ul>
-          </Col>
-          <Col span="5">&nbsp;</Col>
-        </Row>
-        <Row>
-          <Col span="6" offset="10" style="margin-top: -15px;"> Copyright&copy;2004-2018 京东JD.com版权所有
-
-          </Col>
-          <Col span="8">&nbsp;</Col>
-        </Row>
-      </Footer>
+      <div class="footer">
+          <div style="width:750px;margin-left:auto;margin-right:auto;height:14px">
+            <ul>
+              <li>
+                <a href="">关于我们&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
+              </li>
+              <li>
+                <a href="">&nbsp;&nbsp;English Site</a>
+              </li>
+            </ul>
+          </div>
+        <div style="width:240px;margin-left:auto;margin-right:auto;padding-top:16px">
+           Copyright&copy;2004-2018 京东JD.com版权所有
+        </div>
+      </div>
 
     </Layout>
 
@@ -240,8 +218,6 @@ import Cookies from "js-cookie";
 export default {
   data() {
     return {
-      phone_d: "",
-      code_d: "",
       time_d: 60,
       phone_login_d: true,
       checked_d: false,
@@ -276,7 +252,7 @@ export default {
       },
       phoneRuleValidate: {
         phone_d: [
-          { required: true, message: " 账号不能为空", trigger: "blur" },
+          { required: true, message: "手机号码不能为空", trigger: "blur" },
           {
             type: "string",
             len: 11,
@@ -285,7 +261,7 @@ export default {
           }
         ],
         code_d: [
-          { required: true, message: " 密码不能为空", trigger: "blur" },
+          { required: true, message: " 验证码不能为空", trigger: "blur" },
           {
             type: "string",
             len: 4,
@@ -318,7 +294,11 @@ export default {
               code: self.phoneFormValidate.code_d
             })
             .then(response => {
-              self.$store.commit("login", response.data.token,response.data.user);
+              self.$store.commit(
+                "login",
+                response.data.token,
+                response.data.user
+              );
               if (self.$route.query.redirect) {
                 self.$router.push({ path: self.$route.query.redirect });
               } else {
@@ -341,7 +321,6 @@ export default {
     phone_reset_m(name) {
       this.$refs[name].resetFields();
     },
-    account_login_m() {},
     //人机验证成功返回
     getCaptchaResponse(resp) {
       var self = this;
@@ -459,14 +438,7 @@ export default {
   margin-top: 12px;
   text-align: center;
 }
-.content .personal {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #a6a6a6;
-  background: url(../static.huijinjiu.com/login/people.png) no-repeat center;
-  background-color: #f3f3f3;
-  outline: none;
-}
+
 .content .phone {
   /* width: 100%; */
   margin-top: 20px;
@@ -487,7 +459,6 @@ export default {
   background: url(../static.huijinjiu.com/login/pwd.png) no-repeat center;
   background-color: #f3f3f3;
   outline: none;
-  /*background-size: 100% 40px;*/
 }
 .content .forget {
   width: 100%;
@@ -541,12 +512,9 @@ export default {
 .footer {
   width: 100%;
   height: 40px;
-  background: transparent;
   margin-top: 22px;
 }
-.footer ul {
-  margin-top: -20px;
-}
+
 .footer ul li {
   list-style: none;
   float: left;
