@@ -40,7 +40,7 @@ const routers = [
         path: '/test',
         name:'test',
         meta: {
-            title: ''
+            title: '订单'
         },
         component: (resolve) => require(['../views/test.vue'], resolve)
     },
@@ -58,6 +58,14 @@ const routers = [
             title: ''
         },
         component: (resolve) => require(['../views/index.vue'], resolve)
+    },
+    {
+        path: '/bind',
+        name:'bind',
+        meta: {
+            title: ''
+        },
+        component: (resolve) => require(['../views/bind.vue'], resolve)
     },
    
 ];

@@ -1,142 +1,141 @@
 <template>
-<div class="layout">
-    <Layout>
-	<!--侧边栏-->
-<Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px">
-	<div class="side">
-		<Row>
-			<Col span="19" offset="2">
-			<img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
-			</Col>
-			<Col span="3">&nbsp;</Col>
-		</Row>
+	<div class="layout">
+		<Layout>
+			<!--侧边栏-->
+			<Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px">
+				<div class="side">
+					<Row>
+						<Col span="19" offset="2">
+						<img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
+						</Col>
+						<Col span="3">&nbsp;</Col>
+					</Row>
 
-		<Row>
-			<Col span="18" offset="3" class="col1"> 
-				用户名六个字
-			</Col>
-			<Col span="3">&nbsp;</Col>
-		</Row>
+					<Row>
+						<Col span="18" offset="3" class="col1"> 用户名六个字
+						</Col>
+						<Col span="3">&nbsp;</Col>
+					</Row>
 
-		<Row>
-			<Col span="13" offset="5" class="col2"> 
-				ID:12032123
-			</Col>
-			<Col span="6">&nbsp;</Col>
-		</Row>
-	<!--<img src="../../../../static.huijinjiu.com/personal/border0.png"/>-->
-		<div class="bottom">
-			<Row>
-				<Col span="11" offset="7">
-				<ul>	
-					<li>
-						<a href="">个人资料</a>
-					</li>
-					<li>
-						<a href="">我的酒窖</a>
-					</li>
-					<li>
-						<a href="">全部订单</a>
-					</li>
-					<li>
-						<a href="">我的主页</a>
-					</li>
-					<li>
-						<a href="">我的收藏</a>
-					</li>
-					<li>
-						<a href="">我的购物车</a>
-					</li>
-					<li>
-						<a href="">退出/切换</a>
-					</li>
-				</ul>
-				</Col>
-				<Col span="6"></Col>
-			</Row>
-		</div>
-	</div>
-</Sider>
-	
-	<Layout>
-		<!--头部-->
-		<div class="header">
-			<Row>
-				<Col span="3" offset="1">
-				<img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
-				</Col>
-				<Col span="13" offset="3">
-				<ul>
-					<Col span="6">
-					<li>
-						<a href="">商城首页</a>
-					</li>
-					</Col>
-					<Col span="6">
-					<li>
-						<a href="">最新资讯</a>
-					</li>
-					</Col>
-					<Col span="6">
-					<li>
-						<a href="">酒品分类</a>
-					</li>
-					</Col>
-					<Col span="6">
-					<li>
-						<a href="">个人中心</a>
-					</li>
-					</Col>
-				</ul>
-				</Col>
-				<Col span="4">&nbsp;</Col>
-			</Row>
-		</div>
-		<!--中部内容-->
-		<div class="content">
-			<Row>
-				<!--主题图-->
-				<Col span="20" offset="1">
-					<div class="zt">
-						<!--个人主页的英文-->
-						<div class="eg">
-							<Row>
-								<Col span="6" offset="10"> 
-									PERSONAL HOMEPAGE
-								</Col>
-								<Col span="8">&nbsp;</Col>
-							</Row>
-						</div>
-						<!--个人主页的中文-->
-						<div class="cn">
-							<Row>
-								<Col span="3" offset="11"> 
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人主页
-								</Col>
-								<Col span="10">&nbsp;</Col>
-							</Row>
-						</div>
+					<Row>
+						<Col span="13" offset="5" class="col2"> ID:12032123
+						</Col>
+						<Col span="6">&nbsp;</Col>
+					</Row>
+					<!--<img src="../../../../static.huijinjiu.com/personal/border0.png"/>-->
+					<div class="bottom">
+						<Row>
+							<Col span="11" offset="7">
+							<ul>
+								<li>
+									<a href="">个人资料</a>
+								</li>
+								<li>
+									<a href="">我的酒窖</a>
+								</li>
+								<li>
+									<a href="">全部订单</a>
+								</li>
+								<li>
+									<a href="">我的主页</a>
+								</li>
+								<li>
+									<a href="">我的收藏</a>
+								</li>
+								<li>
+									<a href="">我的购物车</a>
+								</li>
+								<li>
+									<a href="">退出/切换</a>
+								</li>
+							</ul>
+							</Col>
+							<Col span="6"></Col>
+						</Row>
 					</div>
-				</Col>
-				<!--分享按钮-->
-				<Col span="2">
-				<button type="button" class="fx"></button>
-				</Col>
-				<Col span="1">&nbsp;</Col>
-			</Row>
-		</div>
+				</div>
+			</Sider>
 
-		<!--脚部-->
-		<!--<Row>-->
-			<Col span="20" offset="1"class="footer">
+			<Layout>
+				<!--头部-->
+				<div class="header">
+					<Row>
+						<Col span="3" offset="1">
+						<img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
+						</Col>
+						<Col span="13" offset="3">
+						<ul>
+							<Col span="6">
+							<li>
+								<a href="">商城首页</a>
+							</li>
+							</Col>
+							<Col span="6">
+							<li>
+								<a href="">最新资讯</a>
+							</li>
+							</Col>
+							<Col span="6">
+							<li>
+								<a href="">酒品分类</a>
+							</li>
+							</Col>
+							<Col span="6">
+							<li>
+								<a href="">个人中心</a>
+							</li>
+							</Col>
+						</ul>
+						</Col>
+						<Col span="4">&nbsp;</Col>
+					</Row>
+				</div>
+				<!--中部内容-->
+				<div class="content">
+					<Row>
+						<!--主题图-->
+						<Col span="20" offset="1">
+						<div class="zt">
+							<!--个人主页的英文-->
+							<div class="eg">
+								<Row>
+									<Col span="6" offset="10">
+									
+										<h3 style="white-space:nowrap;">PERSONAL HOMEPAGE</h3>
+									
+									</Col>
+									<Col span="8">&nbsp;</Col>
+								</Row>
+							</div>
+							<!--个人主页的中文-->
+							<div class="cn">
+								<Row>
+									<Col span="3" offset="11"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人主页
+									</Col>
+									<Col span="10">&nbsp;</Col>
+								</Row>
+							</div>
+						</div>
+						</Col>
+						<!--分享按钮-->
+						<Col span="2">
+						<button type="button" class="fx"></button>
+						</Col>
+						<Col span="1">&nbsp;</Col>
+					</Row>
+				</div>
+
+				<!--脚部-->
+				<!--<Row>-->
+				<Col span="20" offset="1" class="footer">
 				<!--头像图片-->
 				<Row>
 					<Col span="3" offset="11">
-						<img src="../static.huijinjiu.com/personal/headImg.png" class="img1" />
+					<img src="../static.huijinjiu.com/personal/headImg.png" class="img1" />
 					</Col>
 					<Col span="10"></Col>
 				</Row>
-				
+
 				<!--name-->
 				<Row>
 					<Col span="2" offset="11">
@@ -144,8 +143,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME
 					</div>
 					</Col>
-					<Col span="11"> 
-						&nbsp;
+					<Col span="11"> &nbsp;
 					</Col>
 				</Row>
 				<!--用户名-->
@@ -155,79 +153,74 @@
 						&nbsp;&nbsp;&nbsp;用户名六个字
 					</div>
 					</Col>
-					<Col span="10"> 
-						&nbsp;
+					<Col span="10"> &nbsp;
 					</Col>
 				</Row>
 				<!--性别和地址-->
 				<Row>
 					<Col span="5" offset="10">
-						<Row>
-							<Col span="6">
-								<div class="sex">
-									<img src="../static.huijinjiu.com/personal/male.png" style="vertical-align: middle;" />&nbsp;男
-								</div>
-							</Col>
-							
-							<Col span="7" offset="11">
-								<div class="address">
-									<img src="../static.huijinjiu.com/personal/address.png" style="vertical-align: middle;" />&nbsp;北京
-								</div>
-							</Col>
-						</Row>
+					<Row>
+						<Col span="6">
+						<div class="sex">
+							<img src="../static.huijinjiu.com/personal/male.png" style="vertical-align: middle;" />&nbsp;男
+						</div>
+						</Col>
+
+						<Col span="7" offset="11">
+						<div class="address">
+							<img src="../static.huijinjiu.com/personal/address.png" style="vertical-align: middle;" />&nbsp;北京
+						</div>
+						</Col>
+					</Row>
 					</Col>
-					
+
 					<Col span="9">&nbsp;</Col>
 				</Row>
 				<!--分享心得的英文-->
 				<Row>
 					<Col span="6" offset="10">
-						<div class="xd">
-							SHARE EXPERIENCE
-						</div>
+					<div class="xd">
+						SHARE EXPERIENCE
+					</div>
 					</Col>
 					<Col span="8">&nbsp;</Col>
 				</Row>
 				<!--分享心得-->
 				<Row>
 					<Col span="6" offset="10">
-						<Row>
-							<Col span="6">
-								&nbsp;<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
-							</Col>
-							<Col span="8">
-								<div class="share">
-									分享心得
-								</div>
-							</Col>
-							<Col span="6">
-								<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
-							</Col>
-							<Col span="4">&nbsp;</Col>
-						</Row>
+					<Row>
+						<Col span="6"> &nbsp;
+						<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
+						</Col>
+						<Col span="8">
+						<div class="share">
+							分享心得
+						</div>
+						</Col>
+						<Col span="6">
+						<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
+						</Col>
+						<Col span="4">&nbsp;</Col>
+					</Row>
 					</Col>
 					<Col span="8">&nbsp;</Col>
 				</Row>
 				<!--介绍-->
 				<Row>
 					<div class="introduce">
-						<Col span="3" offset="11" style="margin-top: 52px;"> 
-							绵,而如缕不绝。
+						<Col span="3" offset="11" style="margin-top: 52px;"> 绵,而如缕不绝。
 						</Col>
 						<Col span="10">&nbsp;</Col>
-						
-						<Col span="17" offset="5"> 
-							江苏古称吴国,有东南形胜之美,自唐宋之后,文脉昌盛,商旅繁盛。耕读之家,以时代相续为要
+
+						<Col span="17" offset="5"> 江苏古称吴国,有东南形胜之美,自唐宋之后,文脉昌盛,商旅繁盛。耕读之家,以时代相续为要
 						</Col>
 						<Col span="2">&nbsp;</Col>
-						
-						<Col span="17" offset="5"> 
-							,商业人士,以诚信经营为本。不求爆发,不失其所,因为长久的价值,远胜于速成。一方物产乃
+
+						<Col span="17" offset="5"> ,商业人士,以诚信经营为本。不求爆发,不失其所,因为长久的价值,远胜于速成。一方物产乃
 						</Col>
 						<Col span="2">&nbsp;</Col>
-						
-						<Col span="6" offset="9"> 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至习俗人情,都源于一方水土。
+
+						<Col span="6" offset="9"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至习俗人情,都源于一方水土。
 						</Col>
 						<Col span="9">&nbsp;</Col>
 					</div>
@@ -235,29 +228,29 @@
 				<!--底部图片-->
 				<Row>
 					<Col span="10" offset="1">
-						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1"  />
+					<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1" />
 					</Col>
 					<Col span="10" offset="2">
-						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1"  />
+					<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal1" />
 					</Col>
 					<Col span="1">&nbsp;</Col>
-					
+
 					<Col span="10" offset="1">
-						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2"  />
+					<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2" />
 					</Col>
 					<Col span="10" offset="2">
-						<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2"  />
+					<img src="../static.huijinjiu.com/personal/wine.png" class="imgTotal2" />
 					</Col>
 					<Col span="1">&nbsp;</Col>
 				</Row>
-				
-			</Col>
-			<Col span="3">&nbsp;</Col>
-		<!--</Row>-->
-		
-	</Layout>
-</Layout>
-</div>
+
+				</Col>
+				<Col span="3">&nbsp;</Col>
+				<!--</Row>-->
+
+			</Layout>
+		</Layout>
+	</div>
 </template>
 <script>
 export default {};

@@ -148,7 +148,7 @@
               <Row>
                 <Col span="4">
                 <div>
-                  <img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ
+                  <a href="http://api.huijinjiu.com/auth/qq"><img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ</a>
                 </div>
                 </Col>
                 <Col span="4" offset="2">
