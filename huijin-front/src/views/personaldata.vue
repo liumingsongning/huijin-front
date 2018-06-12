@@ -155,11 +155,13 @@
                                     <div style="margin-top:8px">
                                         固定电话: &nbsp;<span style="color:#595959">12345678910</span>
                                     </div>
-                                    <div style="float:right;color:#023491">
-                                        <a>设为默认</a>
-                                        <a>编辑</a>
+                                    <div style="float:right;">
+                                        <a style="color:#023491;padding-right:10px">设为默认</a>
+                                        <a style="color:#023491">编辑</a>
                                     </div>
                                 </div>
+                                    <Button style="text-align:center">添加收货地址</Button>
+                                    
                             </div>
                         </Col>
                         <Col span="3">&nbsp;</Col>
