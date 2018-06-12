@@ -133,7 +133,7 @@
                                 <Col span="3">&nbsp;</Col>
                             </Row>
                             <!-- 地址管理 -->
-                            <div style="width:600px;margin-left:auto;margin-right:auto;margin-top:82px">
+                            <div style="width:700px;margin-left:auto;margin-right:auto;margin-top:82px">
                                 <!-- <span>地址管理</span> -->
                                 <h4 style="text-align:center">收货地址管理</h4>
                                 <div class="detail" >
@@ -160,8 +160,9 @@
                                         <a style="color:#023491">编辑</a>
                                     </div>
                                 </div>
-                                    <Button style="text-align:center">添加收货地址</Button>
-                                    
+                                <div style="text-align:center;">
+                                    <Button style="background:#f8fcff;margin-top:20px">添加收货地址</Button>
+                                </div>
                             </div>
                         </Col>
                         <Col span="3">&nbsp;</Col>
@@ -379,6 +380,10 @@ export default {
         }
       ]
     };
+  },
+
+  methods: {
+      
   }
 };
 </script>
