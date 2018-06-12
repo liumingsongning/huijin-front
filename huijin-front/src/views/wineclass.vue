@@ -48,7 +48,7 @@
 							<img src="../static.huijinjiu.com/wineclass/cloud1.png" />
 						<div class="pulp">
 							<Row>
-								<Col span="21" offset="3">
+								<Col span="21" offset="3" style="white-space:nowrap">
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">原浆酒(收藏)</span>
 								</Col>
 							</Row>
@@ -101,7 +101,7 @@
 						<!--定制-->
 						<div class="customize">
 							<Row>
-								<Col span="17">
+								<Col span="17" >
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">定制酒</span>
 								</Col>
 								<Col span="7">&nbsp;</Col>
@@ -185,7 +185,7 @@
 						<div class="eat">
 
 							<Row>
-								<Col span="14">
+								<Col span="14" style="white-space:nowrap">
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">食用酒</span>
 								</Col>
 								<Col span="10">&nbsp;</Col>
@@ -245,10 +245,10 @@
 						<Col span="12" offset="6">
 						<div class="hz">
 							<Row>
-								<Col span="14" offset="5" class="top1">
+								<Col span="16" offset="5" class="top1">
 									<span style="font-size: 34px;">洪</span>,<span style="font-size: 19px;">水大而宽广之意</span>。<span style="font-size: 34px;">泽</span>,<span style="font-size: 19px;">众水所聚集之地。</span>
 								</Col>
-								<Col span="5">&nbsp;</Col>
+								<Col span="3">&nbsp;</Col>
 							</Row>
 
 							<Row>
@@ -520,11 +520,13 @@
 	.footer .img3 {
 		margin-top: 100px;
 	}
-	
-	@media screen and (min-width: 1920px) {
-		.content .text4 .bottom .col1 {
-			margin-top: 3px;
-			letter-spacing: 7.9px;
+	.col1{
+		white-space: nowrap;
+	}
+	@media screen   and (min-width:1366px) and (max-width: 1920px) {
+		.content .text4 .bottom .col1{
+			margin-top: 3px;	
+			letter-spacing: 6px;
 		}
 		.content .text4 .top1 {
 			letter-spacing: 9px;
@@ -534,7 +536,7 @@
 		}
 	}
 	
-	@media screen and (max-width: 1366px) {
+	@media oscreen and (max-width: 1366px) {
 		.content .text4 .bottom .col1 {
 			margin-top: 3px;
 			letter-spacing: 2.2px;

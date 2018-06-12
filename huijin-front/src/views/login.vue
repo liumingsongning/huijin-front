@@ -321,7 +321,6 @@ export default {
     phone_reset_m(name) {
       this.$refs[name].resetFields();
     },
-    account_login_m() {},
     //人机验证成功返回
     getCaptchaResponse(resp) {
       var self = this;
@@ -439,14 +438,7 @@ export default {
   margin-top: 12px;
   text-align: center;
 }
-.content .personal {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #a6a6a6;
-  background: url(../static.huijinjiu.com/login/people.png) no-repeat center;
-  background-color: #f3f3f3;
-  outline: none;
-}
+
 .content .phone {
   /* width: 100%; */
   margin-top: 20px;
@@ -520,12 +512,9 @@ export default {
 .footer {
   width: 100%;
   height: 40px;
-  /* background: transparent; */
   margin-top: 22px;
 }
-/* .footer ul {
-  margin-top: -20px;
-} */
+
 .footer ul li {
   list-style: none;
   float: left;

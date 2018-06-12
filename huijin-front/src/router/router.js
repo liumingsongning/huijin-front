@@ -1,6 +1,7 @@
 const routers = [
     {
 		path: '/shopcart',
+		name: 'shopcart',
 	    meta: {
 	        title: '购物车'
 	    },
@@ -8,6 +9,7 @@ const routers = [
 	},
 	{
 		path: '/wineclass',
+		name: 'wineclass',
 	    meta: {
 	        title: '酒品分类'
 	    },
@@ -15,14 +17,24 @@ const routers = [
 	},
 	{
 		path: '/personal',
+		name: 'personal',
 	    meta: {
 	        title: '个人主页'
 	    },
 	    component: (resolve) => require(['../views/personal.vue'], resolve)
+    },
+    {
+		path: '/personaldata',
+		name: 'personaldata',
+	    meta: {
+	        title: '个人资料'
+	    },
+	    component: (resolve) => require(['../views/personaldata.vue'], resolve)
 	},
 	
 	{
 		path: '/mall',
+		name:"mall",
 	    meta: {
 	        title: '商城首页'
 	    },
@@ -30,7 +42,7 @@ const routers = [
 	},
 	{
     path: '/detail',
-    name:'good_detail',
+    name:'detail',
     meta: {
         title: '商品详情'
     },
@@ -45,11 +57,20 @@ const routers = [
         component: (resolve) => require(['../views/test.vue'], resolve)
     },
     {
-        path: '/login',
+		path: '/login',
+		name:"login",
         meta: {
             title: 'Login - 登录'
         },
         component: (resolve) => require(['../views/login.vue'], resolve)
+	},
+	{
+		path: '/reg',
+		name:"reg",
+        meta: {
+            title: 'Reg - 注册'
+        },
+        component: (resolve) => require(['../views/reg.vue'], resolve)
     },
     {
         path: '/',
