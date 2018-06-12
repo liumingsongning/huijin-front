@@ -23,14 +23,7 @@ const routers = [
 	    },
 	    component: (resolve) => require(['../views/personal.vue'], resolve)
     },
-    {
-		path: '/personaldata',
-		name: 'personaldata',
-	    meta: {
-	        title: '个人资料'
-	    },
-	    component: (resolve) => require(['../views/personaldata.vue'], resolve)
-	},
+    
 	
 	{
 		path: '/mall',
