@@ -71,14 +71,6 @@ const routers = [
         },
         component: (resolve) => require(['../views/login.vue'], resolve)
 	},
-	{
-		path: '/reg',
-		name:"reg",
-        meta: {
-            title: 'Reg - 注册'
-        },
-        component: (resolve) => require(['../views/reg.vue'], resolve)
-    },
     {
         path: '/',
         name:'home',
@@ -91,7 +83,7 @@ const routers = [
         path: '/bind',
         name:'bind',
         meta: {
-            title: ''
+            title: '绑定手机号'
         },
         component: (resolve) => require(['../views/bind.vue'], resolve)
     },
