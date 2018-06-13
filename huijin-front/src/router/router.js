@@ -87,6 +87,14 @@ const routers = [
         },
         component: (resolve) => require(['../views/bind.vue'], resolve)
     },
+    {
+        path: '/find_user',
+        name:'find_user',
+        meta: {
+            title: '绑定手机号'
+        },
+        component: (resolve) => require(['../views/find_user.vue'], resolve)
+    },
    
 ];
 export default routers;

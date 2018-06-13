@@ -138,12 +138,14 @@ export default {
   },
   methods: {
     phone_bind_m(name) {
+       
       var self = this;
 
       this.$refs[name].validate(valid => {
         if (valid) {
+            
           this.$Message.success("登陆成功");
-          console.log(44535354)
+         
           self.ajax
             .post("/api/phonebind", {
               phone: self.phoneFormValidate.phone_d,
@@ -157,10 +159,11 @@ export default {
                 response.data.token,
                 response.data.user
               );
-
+           
               self.$router.push({
                 name: "home"
               });
+
             })
             .catch(error => {
               if (error.status_code == 403) {
