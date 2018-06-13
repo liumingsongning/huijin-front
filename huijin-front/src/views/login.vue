@@ -362,8 +362,10 @@ export default {
         if (self.time_d == 0) {
           clearInterval(interval);
           self.time_d = 60;
+          self.checked_d= false;
+          self.sended_d= false;
           LUOCAPTCHA.reset();
-          self.codeShow = false;
+          
         }
       };
       var interval = setInterval(fun, 1000);
