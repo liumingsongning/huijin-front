@@ -55,7 +55,7 @@
                         </Row>
                     </div>
                 </div>
-	        </Sider>
+	          </Sider>
             <Layout>
                 <!-- 头部 -->
                 <div class="header">
@@ -169,11 +169,11 @@
                                       <Input type="text" style="width:474px" clearable></Input><Br />
                                       <div style="float:left">
                                           手机号码:<Br />
-                                          <Input type="text" style="width:230px" clearable number></Input>
+                                          <Input type="text" style="width:230px" clearable></Input>
                                       </div>
                                       <span style="margin-left:15px">固定电话:</span>
                                       <Br />
-                                      <Input type="text"  style="width:230px;margin-left:15px" clearable number></Input><Br />
+                                      <Input type="text"  style="width:230px;margin-left:15px" clearable ></Input><Br />
                                       邮箱:<Br />
                                       <Input type="text" style="width:230px" clearable></Input><Br />
                                       地址别名:<Br />
