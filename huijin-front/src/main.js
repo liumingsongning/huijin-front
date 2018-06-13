@@ -9,6 +9,7 @@ import 'iview/dist/styles/iview.css';
 import store from './store';
 import {router} from './router/index';
 import iviewArea from 'iview-area';
+import Cookies from 'js-cookie';
 
 Vue.use(iviewArea)
 Vue.use(VueRouter);
@@ -44,5 +45,14 @@ new Vue({
     el: '#app',
     router: router,
     store: store,
-    render: h => h(App)
+    render: h => h(App),
+    mounted () {
+        var user=Cookies.getJSON('user');
+        if(user&&Object.keys(user).length>0&&Object.keys(this.$store.state.user.userinfo).length===0){
+            this.$store.commit(
+                "synStore",
+                user,
+              );
+        };
+    }
 });

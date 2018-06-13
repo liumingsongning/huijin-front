@@ -3,200 +3,217 @@
 		<!--头部-->
 		<div class="header">
 			<Row>
-	    		<Col span="1">
-						&nbsp;
-					</Col>
-	    		<Col span="3">
-	    			<!--<img src="../../../../static.huijinjiu.com/mall/LOGO.png" class="logo"/>-->
-	    		</Col>
-	    		<Col span="3">&nbsp;</Col>
-	    		<Col span="12">
-	    			<ul>
-	    				<Col span="6">
-	    					<li><a href="">商城首页</a></li>
-	    				</Col>
-	    				<Col span="6">
-	    					<li><a href="">最新资讯</a></li>
-	    				</Col>
-	    				<Col span="6">
-	    					<li><a href="">酒品分类</a></li>
-	    				</Col>
-	    				<Col span="6">
-								<Col span="12">
-	    					<li><a href="">个人中心</a></li>
-								</Col>
-								<Col span='12'>
-								<li><a href="" @click='logout_m'>退出</a></li>
-								</Col>
-	    				</Col>
-	    			</ul>
-	    		</Col>
-	    		<Col span="5"></Col>
-	    	</Row>
+				<i-col span="1"> &nbsp;
+				</i-col>
+				<i-col span="3">
+					<!--<img src="../../../../static.huijinjiu.com/mall/LOGO.png" class="logo"/>-->
+				</i-col>
+				<i-col span="3">&nbsp;</i-col>
+				<i-col span="12">
+					<ul>
+						<i-col span="6">
+							<li>
+								<a href="">商城首页</a>
+							</li>
+						</i-col>
+						<i-col span="6">
+							<li>
+								<a href="">最新资讯</a>
+							</li>
+						</i-col>
+						<i-col span="6">
+							<li>
+								<a href="">酒品分类</a>
+							</li>
+						</i-col>
+						<i-col span="6">
+							<i-col span="12">
+								<li>
+									<a href="">个人中心</a>
+								</li>
+							</i-col>
+							<i-col span='12'>
+								<li>
+									<a href="" @click='logout_m'>退出</a>
+									<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
+								</li>
+								<a href="" v-show="user.userinfo.qq_user"><img :src="user.userinfo.qq_user?user.userinfo.qq_user.figureurl_qq_1:''" /></a>
+							</i-col>
+						</i-col>
+					</ul>
+				</i-col>
+				<i-col span="5"></i-col>
+			</Row>
 		</div>
 		<!--内容-->
 		<div class="content">
 			<Row>
-	    		<Col span="8" offset="1">
-	    			<div class="s1">
-	    				<span style="font-size: 58px;">汇金</span><span style="font-size: 42px;">原浆酒</span>
-	    				<ul>
-	    					<Row>
-		    					<Col span="6" offset="4">
-		    						<li>芝香清冽</li>
-		    					</Col>
-		    					<Col span="6">
-		    						<li>醉时愉悦</li>
-		    					</Col>
-		    					<Col span="6">
-		    						<li>醒后喜悦</li>
-		    					</Col>
-	    					</Row>
-	    				</ul>
-	    				<ol>
-	    					<Col span="12">&nbsp;</Col>
-	    					<Col span="6">
-	    						<li>十年陈酿</li>
-	    					</Col>
-	    					<Col span="6">
-	    						<li>惊世绽放</li>
-	    					</Col>
-	    				</ol>
-	    				<!--分量-->
-	    				<Row>
-	    					<Col span="18" style="margin-top: 58px;">
-	    						<Row>
-	    							<Col span="8">
-	    								<Button class="weight" >{{good.goods_weight}}ml</Button>
-	    							</Col>
-	    							<Col span="8">
-	    								<Button class="weight">{{good.goods_weight}}ml</Button>
-	    							</Col>
-	    							<Col span="8">
-	    								<Button class="weight">{{good.goods_weight}}ml</Button>
-	    							</Col>
-	    						</Row>
-	    					</Col>
-	    					<Col span="6">&nbsp;</Col>
-	    				</Row>
-	    				<!--价格-->
-	    				<Row>
-	    					<Col span="12" offset="1">
-	    						<div class="money">
-	    							¥<span style="font-size: 28px;" >{{good.market_price}}</span>
-	    						</div>
-	    						<Col span="11">&nbsp;</Col>
-	    					</Col>
-	    				</Row>
-	    				
-	    				<Row>
-	    					<Col span="6">
-	    						<Button class="buy">立即购买</Button>
-	    					</Col>
-	    					<Col span="6" offset="5" >
-	    						<Button class="addcart"  @click="addcart_m">加入购物车</Button>
-	    					</Col>
-	    				</Row>
-	    			</div>
-	    		</Col>
+				<i-col span="8" offset="1">
+					<div class="s1">
+						<span style="font-size: 58px;">汇金</span>
+						<span style="font-size: 42px;">原浆酒</span>
+						<ul>
+							<Row>
+								<i-col span="6" offset="4">
+									<li>芝香清冽</li>
+								</i-col>
+								<i-col span="6">
+									<li>醉时愉悦</li>
+								</i-col>
+								<i-col span="6">
+									<li>醒后喜悦</li>
+								</i-col>
+							</Row>
+						</ul>
+						<ol>
+							<i-col span="12">&nbsp;</i-col>
+							<i-col span="6">
+								<li>十年陈酿</li>
+							</i-col>
+							<i-col span="6">
+								<li>惊世绽放</li>
+							</i-col>
+						</ol>
+						<!--分量-->
+						<Row>
+							<i-col span="18" style="margin-top: 58px;">
+								<Row>
+									<i-col span="8">
+										<Button class="weight">{{good.goods_weight}}ml</Button>
+									</i-col>
+									<i-col span="8">
+										<Button class="weight">{{good.goods_weight}}ml</Button>
+									</i-col>
+									<i-col span="8">
+										<Button class="weight">{{good.goods_weight}}ml</Button>
+									</i-col>
+								</Row>
+							</i-col>
+							<i-col span="6">&nbsp;</i-col>
+						</Row>
+						<!--价格-->
+						<Row>
+							<i-col span="12" offset="1">
+								<div class="money">
+									¥
+									<span style="font-size: 28px;">{{good.market_price}}</span>
+								</div>
+								<i-col span="11">&nbsp;</i-col>
+							</i-col>
+						</Row>
 
-	    		<Col span="14">
-							<img :src="good.goods_img" class="img1"/>
-	    		</Col>
-	    		<Col span="1">&nbsp;</Col>
-   			</Row>
+						<Row>
+							<i-col span="6">
+								<Button class="buy">立即购买</Button>
+							</i-col>
+							<i-col span="6" offset="5">
+								<Button class="addcart" @click="addcart_m">加入购物车</Button>
+							</i-col>
+						</Row>
+					</div>
+				</i-col>
+
+				<i-col span="14">
+					<img :src="good.goods_img" class="img1" />
+				</i-col>
+				<i-col span="1">&nbsp;</i-col>
+			</Row>
 		</div>
-		
+
 		<!--中部内容-->
 		<div class="center">
-			
+
 		</div>
 		<!--脚部-->
 		<div class="footer">
 			<Row>
-				<Col span="6">
+				<i-col span="6">
 					<img src="../static.huijinjiu.com/wineclass/lotus.png" />
-				</Col>
+				</i-col>
 
-				<Col span="1">
-				<ul>
-					<li>
-						<a href="">关于我们</a>
-					</li>
-					<li>
-						<a href="">联系我们</a>
-					</li>
-					<li>
-						<a href="">加入我们</a>
-					</li>
-				</ul>
+				<i-col span="1">
+					<ul>
+						<li>
+							<a href="">关于我们</a>
+						</li>
+						<li>
+							<a href="">联系我们</a>
+						</li>
+						<li>
+							<a href="">加入我们</a>
+						</li>
+					</ul>
 
-				</Col>
-				<Col span="4" offset="2">
+				</i-col>
+				<i-col span="4" offset="2">
 					<p class="p1">注意未满十八岁,禁止购买!</p>
-				</Col>
-				<Col span="2" offset="3">
-				<div class="gz">
-					关注公众号
-					<div class="we">
-						加入我们
+				</i-col>
+				<i-col span="2" offset="3">
+					<div class="gz">
+						关注公众号
+						<div class="we">
+							加入我们
+						</div>
 					</div>
-				</div>
-				</Col>
-				<Col span="2" offset="1">
+				</i-col>
+				<i-col span="2" offset="1">
 					<img src="../static.huijinjiu.com/wineclass/code.png" class="img3" />
-				</Col>
-				<Col span="3">&nbsp;</Col>
+				</i-col>
+				<i-col span="3">&nbsp;</i-col>
 			</Row>
 		</div>
-		
+
 	</div>
 </template>
 
 <script>
-		export default {
-			data (){
-					return {
-						good:"",
-					
-					}
-			},
-			mounted() {
-				this.details()
-			},
-			methods: {
-				details () {
-						this.ajax.get("/api/goods/1")
-						.then(response => {
-								this.good = response.data.good;
-						})
-						.catch(error => {
-							if(error.status_code==404){
-								alert(error.message);
-
-							}
-						})
-				},
-				addcart_m () {
-					var self=this
-						this.ajax.post("/api/cart/add",{
-								good_id : self.good.id
-						}).then(function(res){
-								// console.log(res.data)
-								self.$Message.success('添加购物车成功')
-
-						}).catch(function(err){
-								if(err.status_code == 422){
-									alert(error.message);
-								}
-						})
-				},
-				logout_m(){
-					 this.$store.commit("logout");
-				}
-			}
-		}
-
+import { mapState } from "vuex";
+export default {
+  data() {
+    return {
+      good: ""
+    };
+  },
+  mounted() {
+    this.details();
+  },
+  computed: {
+    ...mapState(["user"])
+  },
+  methods: {
+    details() {
+      this.ajax
+        .get("/api/goods/1")
+        .then(response => {
+          this.good = response.data.good;
+        })
+        .catch(error => {
+          if (error.status_code == 404) {
+            alert(error.message);
+          }
+        });
+    },
+    addcart_m() {
+      var self = this;
+      this.ajax
+        .post("/api/cart/add", {
+          good_id: self.good.id
+        })
+        .then(function(res) {
+          // console.log(res.data)
+          self.$Message.success("添加购物车成功");
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            alert(error.message);
+          }
+        });
+    },
+    logout_m() {
+      this.$store.commit("logout");
+    }
+  }
+};
 </script>
 
 
@@ -224,7 +241,7 @@
   letter-spacing: 2.5px;
 }
 .header ul li a {
-  color: #010101;
+  i-color: #010101;
 }
 .header ul li:hover {
   border-bottom: 4px solid #a8d3fe;
@@ -243,7 +260,7 @@ ol li {
   float: left;
   list-style: none;
   font-size: 17px;
-  color: #000000;
+  i-color: #000000;
   margin-top: 20px;
 }
 
@@ -253,14 +270,14 @@ ol li {
 }
 .content .weight {
   border-radius: 0;
-  color: red;
+  i-color: red;
   border: 1px solid #b5b5b5;
   height: 28px;
   /*font-size: 9px;*/
 }
 .content .s1 .money {
   font-size: 37px;
-  color: red;
+  i-color: red;
   letter-spacing: 2px;
   margin-top: 40px;
 }
@@ -268,8 +285,8 @@ ol li {
 .content .addcart {
   border-radius: 0;
   height: 36px;
-  color: white;
-  background-color: #fc9b8a;
+  i-color: white;
+  background-i-color: #fc9b8a;
   width: 100%;
 }
 /*中部内容*/
@@ -282,7 +299,7 @@ ol li {
 .footer {
   width: 100%;
   height: 252px;
-	/* border: 1px solid red */
+  /* border: 1px solid red */
 }
 
 .footer ul {
@@ -297,11 +314,11 @@ ol li {
 }
 
 .footer ul li a {
-  color: #838288;
+  i-color: #838288;
 }
 
 .footer .p1 {
-  color: #838288;
+  i-color: #838288;
   font-size: 16px;
   margin-top: 156px;
 }

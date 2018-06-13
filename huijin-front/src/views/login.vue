@@ -14,9 +14,9 @@
       </Header>
 
       <!--内容-->
-      <div class="content" >
-          <div style="width:405px;margin-left:auto;margin-right:auto">
-            <Card style="margin-top:76px;">
+      <div class="content">
+        <div style="width:405px;margin-left:auto;margin-right:auto">
+          <Card style="margin-top:76px;">
             <Row style="border-bottom:2px solid #bfbfbf;height:49px">
               <Col span="18" offset="3">
               <ul>
@@ -59,8 +59,8 @@
                 <Row>
                   <Col span="22" offset="1">
                   <FormItem prop='code_d'>
-                    <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large" >
-                    <span slot="prepend" >手机验证码</span>
+                    <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large">
+                    <span slot="prepend">手机验证码</span>
                     <span v-show='!checked_d' slot="append" @click='send_code_m'>请先进行人机验证</span>
                     <span v-show='checked_d&&!sended_d' slot="append" @click='send_code_m'>发送验证码</span>
                     <span v-show='sended_d' slot="append">{{time_d}}s后重新获取</span>
@@ -160,50 +160,50 @@
 						</Row> -->
             <!--登录按钮-->
           </Card>
-          </div>
+        </div>
       </div>
 
       <!--脚部-->
       <div class="footer">
-          <div style="width:750px;margin-left:auto;margin-right:auto;height:14px">
-            <ul>
-              <li>
-                <a href="">关于我们&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
-              </li>
-              <li>
-                <a href="">&nbsp;&nbsp;English Site</a>
-              </li>
-            </ul>
-          </div>
+        <div style="width:750px;margin-left:auto;margin-right:auto;height:14px">
+          <ul>
+            <li>
+              <a href="">关于我们&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;联系我们&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;人才招聘&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;商家入驻&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;广告服务&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;手机京东&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;友情链接&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;销售联盟&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;京东社区&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;京东公益&nbsp;&nbsp;</a>
+            </li>
+            <li>
+              <a href="">&nbsp;&nbsp;English Site</a>
+            </li>
+          </ul>
+        </div>
         <div style="width:240px;margin-left:auto;margin-right:auto;padding-top:16px">
-           Copyright&copy;2004-2018 京东JD.com版权所有
+          Copyright&copy;2004-2018 京东JD.com版权所有
         </div>
       </div>
 
@@ -294,11 +294,7 @@ export default {
               code: self.phoneFormValidate.code_d
             })
             .then(response => {
-              self.$store.commit(
-                "login",
-                response.data.token,
-                response.data.user
-              );
+              self.$store.commit("login", response.data);
               if (self.$route.query.redirect) {
                 self.$router.push({ path: self.$route.query.redirect });
               } else {
@@ -362,10 +358,9 @@ export default {
         if (self.time_d == 0) {
           clearInterval(interval);
           self.time_d = 60;
-          self.checked_d= false;
-          self.sended_d= false;
+          self.checked_d = false;
+          self.sended_d = false;
           LUOCAPTCHA.reset();
-          
         }
       };
       var interval = setInterval(fun, 1000);
