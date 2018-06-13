@@ -1,5 +1,13 @@
 const routers = [
     {
+		path: '/submitorder',
+		name: 'submitorder',
+	    meta: {
+	        title: '提交订单'
+	    },
+	    component: (resolve) => require(['../views/submitorder.vue'], resolve)
+	},
+    {
 		path: '/shopcart',
 		name: 'shopcart',
 	    meta: {
@@ -14,7 +22,15 @@ const routers = [
 	        title: '酒品分类'
 	    },
 	    component: (resolve) => require(['../views/wineclass.vue'], resolve)
-	},
+    },
+    {
+		path: '/personaldata',
+		name: 'personaldata',
+	    meta: {
+	        title: '个人资料'
+	    },
+	    component: (resolve) => require(['../views/personaldata.vue'], resolve)
+    },
 	{
 		path: '/personal',
 		name: 'personal',
@@ -23,8 +39,6 @@ const routers = [
 	    },
 	    component: (resolve) => require(['../views/personal.vue'], resolve)
     },
-    
-	
 	{
 		path: '/mall',
 		name:"mall",

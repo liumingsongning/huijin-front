@@ -101,7 +101,7 @@
 						<!--个人主页的英文-->
 						<div class="eg">
 							<Row>
-								<Col span="6" offset="10"> 
+								<Col span="6" offset="10" class="wrap"> 
 									PERSONAL HOMEPAGE
 								</Col>
 								<Col span="8">&nbsp;</Col>
@@ -150,7 +150,7 @@
 				</Row>
 				<!--用户名-->
 				<Row>
-					<Col span="3" offset="11">
+					<Col span="3" offset="11" class="wrap">
 					<div class="user">
 						&nbsp;&nbsp;&nbsp;用户名六个字
 					</div>
@@ -193,7 +193,7 @@
 					<Col span="6" offset="10">
 						<Row>
 							<Col span="6">
-								&nbsp;<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
+								<img src="../static.huijinjiu.com/personal/blue.png" style="vertical-align: middle;" />
 							</Col>
 							<Col span="8">
 								<div class="share">
@@ -211,22 +211,22 @@
 				<!--介绍-->
 				<Row>
 					<div class="introduce">
-						<Col span="3" offset="11" style="margin-top: 52px;"> 
+						<Col span="3" offset="11" style="margin-top: 52px;" class="wrap"> 
 							绵,而如缕不绝。
 						</Col>
 						<Col span="10">&nbsp;</Col>
 						
-						<Col span="17" offset="5"> 
+						<Col span="17" offset="5" class="wrap"> 
 							江苏古称吴国,有东南形胜之美,自唐宋之后,文脉昌盛,商旅繁盛。耕读之家,以时代相续为要
 						</Col>
 						<Col span="2">&nbsp;</Col>
 						
-						<Col span="17" offset="5"> 
+						<Col span="17" offset="5" class="wrap"> 
 							,商业人士,以诚信经营为本。不求爆发,不失其所,因为长久的价值,远胜于速成。一方物产乃
 						</Col>
 						<Col span="2">&nbsp;</Col>
 						
-						<Col span="6" offset="9"> 
+						<Col span="6" offset="9" class="wrap"> 
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至习俗人情,都源于一方水土。
 						</Col>
 						<Col span="9">&nbsp;</Col>
@@ -307,11 +307,6 @@ export default {};
   color: #000000;
 }
 
-/*.side ul li:hover{
-		background: url(../../../../static.huijinjiu.com/personal/border0.png) no-repeat;
-		background-size: 100% 22px;
-		
-	}*/
 /*头部*/
 .header {
   width: 100%;
@@ -416,15 +411,18 @@ export default {};
   box-shadow: 0 0 5px #b5b5b5;
 }
 
-@media screen and (min-width: 1920px) {
-  .eg {
-    letter-spacing: 3px;
-  }
-  .footer .xd {
-    letter-spacing: 4px;
-  }
-  .introduce {
-    letter-spacing: 5px;
-  }
+.wrap{
+	white-space: nowrap;
 }
+	@media only screen and (min-width :1366px) and (max-width:1900px) {
+		 .eg{
+			letter-spacing: 3px;
+		};
+		.footer .xd{
+			letter-spacing: 3px;
+		};
+		.introduce{
+			letter-spacing: 5px;
+		}
+	}
 </style>
