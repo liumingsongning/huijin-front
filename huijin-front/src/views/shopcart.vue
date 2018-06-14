@@ -169,7 +169,7 @@
                                     </i-col>
                                     <i-col span="4">
                                         <td style="padding-left:20px;">
-                                            <button type="button" class="add" >+</button>
+                                            <button type="button" class="add" @click="addcart_m(item.model.id)">+</button>
                                             <div class="qty" >{{item.qty}}</div>
                                             <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
                                         </td>
@@ -182,6 +182,8 @@
                                     <i-col span="2">
                                         <td>
                                             <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a><Br />
+                                            <!-- <Modal v-model= "modal1" @on-ok= "ok" @on-cancel = "cancel" title="确定删除吗?"> -->
+                                            <!-- </Modal> -->
                                             <a style="color:#939393">加入收藏</a>
                                         </td>
                                     </i-col>
@@ -219,7 +221,8 @@
 export default {
   data() {
     return {
-      carts: []
+      carts: [],
+    //   modal1:false
     };
   },
   mounted() {
@@ -231,7 +234,7 @@ export default {
       this.ajax
         .get("/api/cart/display")
         .then(function(res) {
-          //   console.log(res.data.cart);
+            console.log(res.data.cart);
           self.carts = res.data.cart;
         })
         .catch(function(err) {
@@ -240,12 +243,40 @@ export default {
           }
         });
     },
+    // ok () {
+    //     this.$Message.info('Clicked ok');
+        
+        
+    // },
+    // cancel () {
+    //     this.$Message.info('Clicked cancel');    
+    // },
     // 删除
     removecart_m(id) {
+    //   this.modal1 = true;
+      var self = this;
+      if(confirm("确定要删除吗?")){
+          this.ajax
+            .post("/api/cart/remove", {
+            rowId: id
+            })
+            .then(function(res) {
+            self.carts = res.data.cart;
+            })
+            .catch(function(err) {
+            if (err.status_code == 422) {
+                console.log(error.message);
+            }
+        });
+      }
+      
+    },
+    // 增加
+     addcart_m(id) {
       var self = this;
       this.ajax
-        .post("/api/cart/remove", {
-          rowId: id
+        .post("/api/cart/add", {
+          good_id: id
         })
         .then(function(res) {
           self.carts = res.data.cart;
