@@ -4,12 +4,12 @@
       <!--头部-->
       <Header class="header">
         <Row>
-          <Col span="3" offset="1">
+          <i-col span="3" offset="1">
           <img src="http://static.huijinjiu.com/805351264090795932.png" class="logo" />
-          </Col>
-          <Col span="3" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
-          </Col>
-          <Col span="16"></Col>
+          </i-col>
+          <i-col span="3" offset="1" style="font-size: 23px;margin-top: 30px;"> 欢迎登录
+          </i-col>
+          <i-col span="16"></i-col>
         </Row>
       </Header>
 
@@ -18,21 +18,21 @@
         <div style="width:405px;margin-left:auto;margin-right:auto">
           <Card style="margin-top:76px;">
             <Row style="border-bottom:2px solid #bfbfbf;height:49px">
-              <Col span="18" offset="3">
+              <i-col span="18" offset="3">
               <ul>
-                <Col span="12">
+                <i-col span="12">
                 <li @click="phone_login_d=true" class="phone_login" v-bind:class="{select : phone_login_d}">
                   手机登录
                 </li>
-                </Col>
-                <Col span="12">
+                </i-col>
+                <i-col span="12">
                 <li @click="phone_login_d=false" class="account_login" v-bind:class="{select : !phone_login_d}">
                   账户登录
                 </li>
-                </Col>
+                </i-col>
               </ul>
-              </Col>
-              <Col span="3">&nbsp;</Col>
+              </i-col>
+              <i-col span="3">&nbsp;</i-col>
             </Row>
             <!-- 手机登录 -->
             <div v-show='phone_login_d'>
@@ -40,14 +40,14 @@
               <Form ref="phoneFormValidate" :model="phoneFormValidate" :rules="phoneRuleValidate">
 
                 <Row>
-                  <Col span="22" offset="1">
+                  <i-col span="22" offset="1">
                   <FormItem prop='phone_d'>
                     <Input type="text" placeholder="请输入手机号码" class="phone" v-model="phoneFormValidate.phone_d" clearable size="large">
                     <Icon type="android-phone-portrait" slot="prepend"></Icon>
                     </Input>
                   </FormItem>
-                  </Col>
-                  <Col span="1">&nbsp;</Col>
+                  </i-col>
+                  <i-col span="1">&nbsp;</i-col>
                 </Row>
 
                 <Row v-show="phoneFormValidate.phone_d.length==11" style="margin:0 4%;margin-bottom:18px">
@@ -57,7 +57,7 @@
                 </Row>
 
                 <Row>
-                  <Col span="22" offset="1">
+                  <i-col span="22" offset="1">
                   <FormItem prop='code_d'>
                     <Input type="text" placeholder="请输入短信验证码" v-model="phoneFormValidate.code_d" clearable size="large">
                     <span slot="prepend">手机验证码</span>
@@ -66,27 +66,27 @@
                     <span v-show='sended_d' slot="append">{{time_d}}s后重新获取</span>
                     </Input>
                   </FormItem>
-                  </Col>
-                  <Col span="1">&nbsp;</Col>
+                  </i-col>
+                  <i-col span="1">&nbsp;</i-col>
                 </Row>
 
                 <FormItem>
                   <Row>
-                    <Col span="22" offset="1">
+                    <i-col span="22" offset="1">
                     <Row>
-                      <Col span='24'>
+                      <i-col span='24'>
                       <Button class='login' @click="phone_login_m('phoneFormValidate')">
                         登录
                       </Button>
-                      </Col>
-                      <!-- <Col span='12'>
+                      </i-col>
+                      <!-- <i-col span='12'>
                     <Button style='width:100%;height:40px'  @click="phone_reset_m('phoneFormValidate')">
                       重置
                     </Button>
-                    </Col> -->
+                    </i-col> -->
                     </Row>
-                    </Col>
-                    <Col span="1">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="1">&nbsp;</i-col>
                   </Row>
                 </FormItem>
               </Form>
@@ -97,66 +97,66 @@
                 <!-- 账号 -->
                 <FormItem prop="account_d">
                   <Row style="margin-top: 28px">
-                    <Col span="22" offset="1">
+                    <i-col span="22" offset="1">
                     <Input type="text" placeholder="请输入账号" v-model="formValidate.account_d" clearable size="large">
                     <Icon type="person" slot="prepend"></Icon>
                     </Input>
-                    </Col>
-                    <Col span="1">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="1">&nbsp;</i-col>
                   </Row>
                 </FormItem>
 
                 <!-- 密码 -->
                 <FormItem prop="password_d">
                   <Row>
-                    <Col span="22" offset="1">
+                    <i-col span="22" offset="1">
                     <Input type="password" placeholder="请输入密码" v-model="formValidate.password_d" clearable size="large">
                     <Icon type="locked" slot="prepend"></Icon>
                     </Input>
-                    </Col>
-                    <Col span="1">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="1">&nbsp;</i-col>
                   </Row>
                 </FormItem>
 
                 <!-- 登录 -->
                 <FormItem>
                   <Row>
-                    <Col span="22" offset="1">
+                    <i-col span="22" offset="1">
                     <Button class="login1" @click="account_login_m('formValidate')">
                       登录
                     </Button>
-                    </Col>
-                    <Col span="1">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="1">&nbsp;</i-col>
                   </Row>
                 </FormItem>
               </Form>
 
               <Row>
-                <Col span="4">
+                <i-col span="4">
                 <div>
                   <a href="http://api.huijinjiu.com/auth/qq"><img src="../static.huijinjiu.com/login/qq.png" style="vertical-align: middle;" />QQ</a>
                 </div>
-                </Col>
-                <Col span="5" offset="2">
+                </i-col>
+                <i-col span="5" offset="2">
                 <div>
                   <img src="../static.huijinjiu.com/login/wchat.png" style="vertical-align: middle;" />微信
                 </div>
-                </Col>
-                <Col span="5" offset="8">
+                </i-col>
+                <i-col span="5" offset="8">
                 <button class="reg">立即注册</button>
-                </Col>
+                </i-col>
               </Row>
 
             </div>
 
             <!--忘记密码-->
             <!-- <Row>
-							<Col span="4" offset="19">
+							<i-col span="4" offset="19">
 								<button type="button" class="forget">
 									忘记密码
 								</button>
-							</Col>
-							<Col span="1">&nbsp;</Col>
+							</i-col>
+							<i-col span="1">&nbsp;</i-col>
 						</Row> -->
             <!--登录按钮-->
           </Card>

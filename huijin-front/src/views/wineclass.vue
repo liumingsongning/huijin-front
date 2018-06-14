@@ -4,36 +4,36 @@
 			<!--头部-->
 			<Header class="header">
 				<Row>
-					<Col span="3" offset="1">
+					<i-col span="3" offset="1">
 					<img src="../static.huijinjiu.com/wineclass/LOGO.png" class="logo" />
-					</Col>
-					<Col span="12" offset="3">
+					</i-col>
+					<i-col span="12" offset="3">
 					<ul>
 						<Row>
-							<Col span="6">
+							<i-col span="6">
 								<li>
 									<a href="">商城首页</a>
 								</li>
-								</Col>
-								<Col span="6">
+								</i-col>
+								<i-col span="6">
 								<li>
 									<a href="">最新资讯</a>
 								</li>
-								</Col>
-								<Col span="6">
+								</i-col>
+								<i-col span="6">
 								<li>
 									<a href="">酒品分类</a>
 								</li>
-								</Col>
-								<Col span="6">
+								</i-col>
+								<i-col span="6">
 								<li>
 									<a href="">个人中心</a>
 								</li>
-							</Col>
+							</i-col>
 						</Row>
 					</ul>
-					</Col>
-					<Col span="5"></Col>
+					</i-col>
+					<i-col span="5"></i-col>
 				</Row>
 			</Header>
 			<!--内容-->
@@ -41,200 +41,200 @@
 				<!--中部内容1-->
 				<div class="text1">
 					<Row>
-						<Col span="7" offset="3">
+						<i-col span="7" offset="3">
 							<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;" />
-						</Col>
-						<Col span="8" offset="1">
+						</i-col>
+						<i-col span="8" offset="1">
 							<img src="../static.huijinjiu.com/wineclass/cloud1.png" />
 						<div class="pulp">
 							<Row>
-								<Col span="21" offset="3" style="white-space:nowrap">
+								<i-col span="21" offset="3" style="white-space:nowrap">
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">原浆酒(收藏)</span>
-								</Col>
+								</i-col>
 							</Row>
 							<ul>
 								<Row>
-									<Col span="15" offset="4">
-									<Col span="8">
+									<i-col span="15" offset="4">
+									<i-col span="8">
 										<li>芝香清冽</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醉时愉悦</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醒后喜悦</li>
-									</Col>
-									</Col>
-									<Col span="5">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="5">&nbsp;</i-col>
 								</Row>
 							</ul>
 
 							<ol>
 								<Row>
-									<Col span="11" offset="10">
-									<Col span="12">
+									<i-col span="11" offset="10">
+									<i-col span="12">
 										<li>十年陈酿</li>
-									</Col>
-									<Col span="12">
+									</i-col>
+									<i-col span="12">
 										<li>惊世绽放</li>
-									</Col>
-									</Col>
-									<Col span="3">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="3">&nbsp;</i-col>
 								</Row>
 							</ol>
 							<Row>
-								<Col span="7" offset="4">
+								<i-col span="7" offset="4">
 									<Button type="text" class="btn">查看详情</Button>
-								</Col>
-								<Col span="13">&nbsp;</Col>
+								</i-col>
+								<i-col span="13">&nbsp;</i-col>
 							</Row>
 						</div>
-						</Col>
-						<Col span="5">&nbsp;</Col>
+						</i-col>
+						<i-col span="5">&nbsp;</i-col>
 					</Row>
 				</div>
 
 				<!--中部内容2-->
 				<div class="text2">
 					<Row>
-						<Col span="7" offset="6">
+						<i-col span="7" offset="6">
 						<!--定制-->
 						<div class="customize">
 							<Row>
-								<Col span="17" >
+								<i-col span="17" >
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">定制酒</span>
-								</Col>
-								<Col span="7">&nbsp;</Col>
+								</i-col>
+								<i-col span="7">&nbsp;</i-col>
 							</Row>
 
 							<ul>
 								<Row>
-									<Col span="17" offset="1">
-									<Col span="8">
+									<i-col span="17" offset="1">
+									<i-col span="8">
 										<li>芝香清冽</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醉时愉悦</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醒后喜悦</li>
-									</Col>
-									</Col>
-									<Col span="6">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="6">&nbsp;</i-col>
 								</Row>
 							</ul>
 
 							<ol>
 								<Row>
-									<Col span="11" offset="8">
-									<Col span="12">
+									<i-col span="11" offset="8">
+									<i-col span="12">
 										<li>十年陈酿</li>
-									</Col>
-									<Col span="12">
+									</i-col>
+									<i-col span="12">
 										<li>惊世绽放</li>
-									</Col>
-									</Col>
-									<Col span="5">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="5">&nbsp;</i-col>
 								</Row>
 							</ol>
 
 							<Row>
-								<Col span="7" offset="1">
+								<i-col span="7" offset="1">
 									<Button type="text" class="btn">查看详情</Button>
-								</Col>
-								<Col span="16">&nbsp;</Col>
+								</i-col>
+								<i-col span="16">&nbsp;</i-col>
 							</Row>
 
 							<Row>
-								<Col span="10" offset="14">
+								<i-col span="10" offset="14">
 									<img src="../static.huijinjiu.com/wineclass/cloud1.png" />
-								</Col>
+								</i-col>
 							</Row>
 						</div>
-						</Col>
+						</i-col>
 
-						<Col span="9" offset="1">
+						<i-col span="9" offset="1">
 						<Row>
-							<Col span="14" offset="10">
+							<i-col span="14" offset="10">
 								<img src="../static.huijinjiu.com/wineclass/cloud2.png" />
-							</Col>
+							</i-col>
 						</Row>
 						<Row>
-							<Col span="18">
+							<i-col span="18">
 								<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;" />
-							</Col>
-							<Col span="6">&nbsp;</Col>
+							</i-col>
+							<i-col span="6">&nbsp;</i-col>
 						</Row>
-						</Col>
-						<Col span="1">&nbsp;</Col>
+						</i-col>
+						<i-col span="1">&nbsp;</i-col>
 					</Row>
 				</div>
 
 				<!--中部内容3-->
 				<div class="text3">
 					<Row>
-						<Col span="7" offset="4">
+						<i-col span="7" offset="4">
 							<img src="../static.huijinjiu.com/wineclass/banner.png" style="width: 100%;height: 423px;margin-top: 32px;" />
-						</Col>
-						<Col span="8" offset="2">
+						</i-col>
+						<i-col span="8" offset="2">
 						<Row>
-							<Col span="15" offset="9">
+							<i-col span="15" offset="9">
 								<img src="../static.huijinjiu.com/wineclass/cloud2.png" />
-							</Col>
+							</i-col>
 						</Row>
 						<div class="eat">
 
 							<Row>
-								<Col span="14" style="white-space:nowrap">
+								<i-col span="14" style="white-space:nowrap">
 									<span style="font-size: 58px;">汇金</span><span style="font-size: 45px;">食用酒</span>
-								</Col>
-								<Col span="10">&nbsp;</Col>
+								</i-col>
+								<i-col span="10">&nbsp;</i-col>
 							</Row>
 
 							<ul>
 								<Row>
-									<Col span="15" offset="1">
-									<Col span="8">
+									<i-col span="15" offset="1">
+									<i-col span="8">
 										<li>芝香清冽</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醉时愉悦</li>
-									</Col>
-									<Col span="8">
+									</i-col>
+									<i-col span="8">
 										<li>醒后喜悦</li>
-									</Col>
-									</Col>
-									<Col span="8">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="8">&nbsp;</i-col>
 								</Row>
 							</ul>
 
 							<ol>
 								<Row>
-									<Col span="10" offset="7">
-									<Col span="12">
+									<i-col span="10" offset="7">
+									<i-col span="12">
 										<li>十年陈酿</li>
-									</Col>
-									<Col span="12">
+									</i-col>
+									<i-col span="12">
 										<li>惊世绽放</li>
-									</Col>
-									</Col>
-									<Col span="7">&nbsp;</Col>
+									</i-col>
+									</i-col>
+									<i-col span="7">&nbsp;</i-col>
 								</Row>
 							</ol>
 
 							<Row>
-								<Col span="7" offset="1">
+								<i-col span="7" offset="1">
 									<Button type="text" class="btn">查看详情</Button>
-								</Col>
-								<Col span="16">&nbsp;</Col>
+								</i-col>
+								<i-col span="16">&nbsp;</i-col>
 							</Row>
 
 						</div>
-						</Col>
+						</i-col>
 
-						<Col span="3">
+						<i-col span="3">
 							<img src="../static.huijinjiu.com/wineclass/bell.png" style="width: 100%;height: 348px;margin-top: 120px;" />
-						</Col>
+						</i-col>
 					</Row>
 
 				</div>
@@ -242,64 +242,64 @@
 				<!--中部内容4-->
 				<div class="text4">
 					<Row>
-						<Col span="12" offset="6">
+						<i-col span="12" offset="6">
 						<div class="hz">
 							<Row>
-								<Col span="16" offset="5" class="top1">
+								<i-col span="16" offset="5" class="top1">
 									<span style="font-size: 34px;">洪</span>,<span style="font-size: 19px;">水大而宽广之意</span>。<span style="font-size: 34px;">泽</span>,<span style="font-size: 19px;">众水所聚集之地。</span>
-								</Col>
-								<Col span="3">&nbsp;</Col>
+								</i-col>
+								<i-col span="3">&nbsp;</i-col>
 							</Row>
 
 							<Row>
-								<Col span="7" offset="9" class="top2">
+								<i-col span="7" offset="9" class="top2">
 									<span style="font-size: 18px;">一个大湖,一瓶美酒。</span>
-								</Col>
-								<Col span="8">&nbsp;</Col>
+								</i-col>
+								<i-col span="8">&nbsp;</i-col>
 							</Row>
 						</div>
 
 						<div class="bottom">
 							<Row>
-								<Col span="24" class="col1"> 洪泽湖,中国腹地最清澈的大湖,在中国以富庶知名的大省江苏。明清以来著名的鱼米之乡有了上佳谷物,再
-								</Col>
+								<i-col span="24" class="col1"> 洪泽湖,中国腹地最清澈的大湖,在中国以富庶知名的大省江苏。明清以来著名的鱼米之乡有了上佳谷物,再
+								</i-col>
 							</Row>
 
 							<Row>
-								<Col span="24" class="col1"> 凭借大湖湿地,产生了独特风格的白酒。湖畔众多饭馆食肆,少不了又美味的鱼禽佐酒,飘扬的酒旗连绵招展。
-								</Col>
+								<i-col span="24" class="col1"> 凭借大湖湿地,产生了独特风格的白酒。湖畔众多饭馆食肆,少不了又美味的鱼禽佐酒,飘扬的酒旗连绵招展。
+								</i-col>
 							</Row>
 							<Row>
-								<Col span="24" class="col1"> 淮扬水系便利,南来北往,文人墨客,大商巨贾,每每把洪泽湖所产的美酒,携往他乡。水与水是不同的,酒与
-								</Col>
+								<i-col span="24" class="col1"> 淮扬水系便利,南来北往,文人墨客,大商巨贾,每每把洪泽湖所产的美酒,携往他乡。水与水是不同的,酒与
+								</i-col>
 							</Row>
 							<Row>
-								<Col span="24" class="col1"> 酒是不同的。那大湖的上方,时常有云。云美好而多变,于光影间形成万千景致。酒自粮、水而变,正如云自大
-								</Col>
+								<i-col span="24" class="col1"> 酒是不同的。那大湖的上方,时常有云。云美好而多变,于光影间形成万千景致。酒自粮、水而变,正如云自大
+								</i-col>
 							</Row>
 							<Row>
-								<Col span="24" class="col1"> 湖所生。观云白酒,是以"观云"为名。来自洪湖的观云,是最清冽的浓香型白酒。观云带给你一个大湖上&nbsp;,
-								</Col>
+								<i-col span="24" class="col1"> 湖所生。观云白酒,是以"观云"为名。来自洪湖的观云,是最清冽的浓香型白酒。观云带给你一个大湖上&nbsp;,
+								</i-col>
 							</Row>
 							<Row>
-								<Col span="13" offset="6" class="col1"> 自然清新的气息,心旷神怡的视野,甚至,众流归宗的气象
-								</Col>
-								<Col span="5">&nbsp;</Col>
+								<i-col span="13" offset="6" class="col1"> 自然清新的气息,心旷神怡的视野,甚至,众流归宗的气象
+								</i-col>
+								<i-col span="5">&nbsp;</i-col>
 							</Row>
 						</div>
-						</Col>
-						<Col span="6">&nbsp;</Col>
+						</i-col>
+						<i-col span="6">&nbsp;</i-col>
 					</Row>
 				</div>
 			</Content>
 			<!--脚部-->
 			<div class="footer">
 				<Row>
-					<Col span="6">
+					<i-col span="6">
 						<img src="../static.huijinjiu.com/wineclass/lotus.png" />
-					</Col>
+					</i-col>
 
-					<Col span="1">
+					<i-col span="1">
 					<ul>
 						<li>
 							<a href="">关于我们</a>
@@ -312,22 +312,22 @@
 						</li>
 					</ul>
 
-					</Col>
-					<Col span="4" offset="2">
+					</i-col>
+					<i-col span="4" offset="2">
 						<p class="p1">注意未满十八岁,禁止购买!</p>
-					</Col>
-					<Col span="2" offset="3">
+					</i-col>
+					<i-col span="2" offset="3">
 					<div class="gz">
 						关注公众号
 						<div class="we">
 							加入我们
 						</div>
 					</div>
-					</Col>
-					<Col span="2" offset="1">
+					</i-col>
+					<i-col span="2" offset="1">
 						<img src="../static.huijinjiu.com/wineclass/code.png" class="img3" />
-					</Col>
-					<Col span="3">&nbsp;</Col>
+					</i-col>
+					<i-col span="3">&nbsp;</i-col>
 				</Row>
 			</div>
 		</Layout>

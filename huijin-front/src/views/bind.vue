@@ -3,15 +3,15 @@
         <Layout class="layout">
             <Header class="header">
                 <Row>
-                    <Col span="3" offset="1">
+                    <i-col span="3" offset="1">
                     <img src="http://static.huijinjiu.com/805351264090795932.png" class="logo" />
-                    </Col>
-                    <Col span="3" style="font-size: 23px;margin-top: 30px;margin-left:30px"> 欢迎注册
-                    </Col>
-                    <Col span="3" offset="12" style="color:#8b8b8b;font-size:15px;margin-top:50px"> 已有账号? &nbsp;
+                    </i-col>
+                    <i-col span="3" style="font-size: 23px;margin-top: 30px;margin-left:30px"> 欢迎注册
+                    </i-col>
+                    <i-col span="3" offset="12" style="color:#8b8b8b;font-size:15px;margin-top:50px"> 已有账号? &nbsp;
                     <a style="color:red">请登录</a>
-                    </Col>
-                    <Col span="2"></Col>
+                    </i-col>
+                    <i-col span="2"></i-col>
                 </Row>
             </Header>
             <div class="content">

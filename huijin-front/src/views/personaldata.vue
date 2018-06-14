@@ -2,31 +2,31 @@
     <div class="layout">
         <Layout>
             <!-- 侧边栏 -->
-            <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px">
+          <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px"> 
                 <div class="side">
                     <Row>
-                        <Col span="19" offset="2">
+                        <i-col span="19" offset="2">
                         <img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
-                        </Col>
-                        <Col span="3">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="3">&nbsp;</i-col>
                     </Row>
 
                     <Row>
-                        <Col span="18" offset="3" class="col1"> 
+                        <i-col span="18" offset="3" class="col1"> 
                             用户名六个字
-                        </Col>
-                        <Col span="3">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="3">&nbsp;</i-col>
                     </Row>
 
                     <Row>
-                        <Col span="13" offset="5" class="col2"> 
+                        <i-col span="13" offset="5" class="col2"> 
                             ID:12032123
-                        </Col>
-                        <Col span="6">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="6">&nbsp;</i-col>
                     </Row>
                     <div class="bottom">
                         <Row>
-                            <Col span="11" offset="7">
+                            <i-col span="11" offset="7">
                             <ul>	
                                 <li>
                                     <a href="">个人资料</a>
@@ -50,57 +50,58 @@
                                     <a href="">退出/切换</a>
                                 </li>
                             </ul>
-                            </Col>
-                            <Col span="6"></Col>
+                            </i-col>
+                            <i-col span="6"></i-col>
                         </Row>
                     </div>
                 </div>
-	          </Sider>
+	        </Sider>
+
             <Layout>
                 <!-- 头部 -->
                 <div class="header">
                     <Row>
-                        <Col span="3" offset="1">
+                        <i-col span="3" offset="1">
                         <img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
-                        </Col>
-                        <Col span="13" offset="3">
+                        </i-col>
+                        <i-col span="13" offset="3">
                         <ul>
-                            <Col span="6">
+                            <i-col span="6">
                             <li>
                                 <a href="">商城首页</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">最新资讯</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">酒品分类</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">个人中心</a>
                             </li>
-                            </Col>
+                            </i-col>
                         </ul>
-                        </Col>
-                        <Col span="4">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="4">&nbsp;</i-col>
                     </Row>
                 </div>
                 <!-- 中部 -->
                 <div>
                     <Row>
-                        <Col span="20" offset="1" class="content">
+                        <i-col span="20" offset="1" class="content">
                             <div style="font-weight:bold;padding-left:44px;height:120px;line-height:120px">个人资料</div>
                             <!--  -->
                             <Row>
-                                <Col span="12" style="padding-left:45px">
+                                <i-col span="12" style="padding-left:45px">
                                     <div style="height:296px;background:#858383;margin-top:64px;"></div>
-                                </Col>
-                                <Col span="9">
+                                </i-col>
+                                <i-col span="9">
                                     <div style="margin-left:38px;margin-top:105px;font-size:14px">
                                         <span style="font-size:22px;font-weight:bold">用户名六个字</span><button class="redact"></button><br />
                                         <div class="data">
@@ -129,12 +130,11 @@
                                             <span>手机验证: &nbsp;150****0976</span> <a style="float:right;color:#01338d">立即修改</a>
                                         </div>
                                     </div>
-                                </Col>
-                                <Col span="3">&nbsp;</Col>
+                                </i-col>
+                                <i-col span="3">&nbsp;</i-col>
                             </Row>
                             <!-- 地址管理 -->
-                            <div style="width:700px;margin-left:auto;margin-right:auto;margin-top:82px">
-                              
+                            <div style="width:700px;margin-left:auto;margin-right:auto;margin-top:82px;">
                                 <h4 style="text-align:center">收货地址管理</h4>
                                 <div class="detail" v-show="address_d">
                                     <div>
@@ -160,11 +160,12 @@
                                         <a style="color:#023491">编辑</a>
                                     </div>
                                 </div>
-                                    <Card style="width:600px;margin-left:auto;margin-right:auto" v-show="!address_d">
+                                    <Card style="width:600px;margin-left:auto;margin-right:auto;" v-show="!address_d" >
                                       收货人:<Br />
                                       <Input type="text" style="width:230px" clearable></Input><Br />
                                       所在地区:<Br />
-                                      <Input type="text" style="width:170px" clearable></Input><Br />
+                                      <!-- <Input type="text" style="width:170px" clearable></Input><Br /> -->
+                                      <al-selector datatype="code" />
                                       详细地址:<Br />
                                       <Input type="text" style="width:474px" clearable></Input><Br />
                                       <div style="float:left">
@@ -173,7 +174,7 @@
                                       </div>
                                       <span style="margin-left:15px">固定电话:</span>
                                       <Br />
-                                      <Input type="text"  style="width:230px;margin-left:15px" clearable ></Input><Br />
+                                      <Input type="text"  style="width:230px;margin-left:15px" clearable></Input><Br />
                                       邮箱:<Br />
                                       <Input type="text" style="width:230px" clearable></Input><Br />
                                       地址别名:<Br />
@@ -182,13 +183,13 @@
                                   </Card>
 
                                 <div style="text-align:center;">
-                                    <Button style="background:#f8fcff;margin-top:20px" @click="address_d=false">添加收货地址</Button>
+                                    <Button style="background:#f8fcff;margin-top:20px" @click="address_m">添加收货地址</Button>
                                 </div>
                             </div>
 
                             
-                        </Col>
-                        <Col span="3">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="3">&nbsp;</i-col>
                     </Row>
                 </div>
             </Layout>
@@ -407,7 +408,20 @@ export default {
   },
 
   methods: {
-      
+      address_m () {
+        var self = this;
+        this.address_d = false;
+        this.ajax.post("/api/address",{
+          
+        }).then(function(res){
+
+        }).catch(function(err){
+          if(err.status_code==403){
+            alert(err.message)
+          }
+        })
+
+      }
   }
 };
 </script>
@@ -498,12 +512,15 @@ export default {
   margin-top: 20px;
 }
 .content .detail {
+  
   border: 2px solid #bfbfbf;
   height: 196px;
   margin-top: 56px;
   padding: 8px;
   font-size: 12px;
-  color:#8c8c8c
+  color:#8c8c8c;
+  /* position: absolute; */
+  /* z-index: 0 */
 }
 </style>
 

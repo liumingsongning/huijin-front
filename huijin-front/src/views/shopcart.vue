@@ -3,28 +3,28 @@
         <Layout >
             <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px"> 
                 <Row>
-                    <Col span="19" offset="2">
+                    <i-col span="19" offset="2">
                     <img src="../static.huijinjiu.com/personal/headborder.png" class="bk" />
-                    </Col>
-                    <Col span="3">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="3">&nbsp;</i-col>
                 </Row>
 
                 <Row>
-                    <Col span="18" offset="3" class="col1"> 
+                    <i-col span="18" offset="3" class="col1"> 
                         用户名六个字
-                    </Col>
-                    <Col span="3">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="3">&nbsp;</i-col>
                 </Row>
 
                 <Row>
-                    <Col span="13" offset="5" class="col2"> 
+                    <i-col span="13" offset="5" class="col2"> 
                         ID:12032123
-                    </Col>
-                    <Col span="6">&nbsp;</Col>
+                    </i-col>
+                    <i-col span="6">&nbsp;</i-col>
                 </Row>
                 <div class="bottom">
                     <Row>
-                        <Col span="11" offset="7">
+                        <i-col span="11" offset="7">
                         <ul>	
                             <li>
                                 <a href="">个人资料</a>
@@ -48,8 +48,8 @@
                                 <a href="">退出/切换</a>
                             </li>
                         </ul>
-                        </Col>
-                        <Col span="6"></Col>
+                        </i-col>
+                        <i-col span="6"></i-col>
                     </Row>
 		        </div>
             </Sider>
@@ -58,77 +58,77 @@
                 <!-- 头部 -->
                 <div class="header">
                     <Row>
-                        <Col span="3" offset="1">
+                        <i-col span="3" offset="1">
                         <img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
-                        </Col>
-                        <Col span="13" offset="3">
+                        </i-col>
+                        <i-col span="13" offset="3">
                         <ul>
-                            <Col span="6">
+                            <i-col span="6">
                             <li>
                                 <a href="">商城首页</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">最新资讯</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">酒品分类</a>
                             </li>
-                            </Col>
-                            <Col span="6">
+                            </i-col>
+                            <i-col span="6">
                             <li>
                                 <a href="">个人中心</a>
                             </li>
-                            </Col>
+                            </i-col>
                         </ul>
-                        </Col>
-                        <Col span="4">&nbsp;</Col>
+                        </i-col>
+                        <i-col span="4">&nbsp;</i-col>
                     </Row>
                 </div>
                <!-- 内容 -->
                <div >
                 <Row>
-				    <Col span="20" offset="1" class="content">
+				    <i-col span="20" offset="1" class="content">
                         <div style="font-weight:bold;margin-top:25px">我的购物车</div>
                         <!--  -->
                         <Row>
                             <table style="width:100%" class="tab">
                                 <tr>
-                                    <Col span="3">
+                                    <i-col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;padding-left:11px">
                                             全选
                                         </Checkbox>
                                         </td>
-                                    </Col>
-                                    <Col span="11">
+                                    </i-col>
+                                    <i-col span="11">
                                         <td style="padding-left:80px">
                                             商品
                                         </td>
-                                    </Col>
-                                    <Col span="3">
+                                    </i-col>
+                                    <i-col span="3">
                                         <td>
                                         单价
                                     </td>
-                                    </Col>
-                                    <Col span="3">
+                                    </i-col>
+                                    <i-col span="3">
                                         <td>
                                         数量
                                     </td>
-                                    </Col>
-                                    <Col span="2">
+                                    </i-col>
+                                    <i-col span="2">
                                         <td>
                                         小计
                                     </td>
-                                    </Col>
-                                    <Col span="2">
+                                    </i-col>
+                                    <i-col span="2">
                                         <td>
                                         操作
                                     </td>
-                                    </Col>
+                                    </i-col>
                                 </tr>
                             </table>
                         </Row>
@@ -142,14 +142,14 @@
                         <Row>
                             <table style="width:100%" class="tab1"  >
                                 <tr v-for="item in carts">
-                                    <Col span="3">
+                                    <i-col span="3">
                                         <td>
                                         <Checkbox style="letter-spacing:3px;margin-left:11px">
                                             
                                         </Checkbox>
                                         </td>
-                                    </Col>
-                                    <Col span="11">
+                                    </i-col>
+                                    <i-col span="11">
                                         <td>
                                             <div style="width:79px;height:79px;float:left"><img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%"></div>
                                             <div style="float:left;padding-left:10px">
@@ -161,53 +161,53 @@
                                                 <span>1000ml</span>
                                             </div>
                                         </td>
-                                    </Col>
-                                    <Col span="2">
+                                    </i-col>
+                                    <i-col span="2">
                                         <td>
                                         ¥{{item.price}}
                                         </td>
-                                    </Col>
-                                    <Col span="4">
+                                    </i-col>
+                                    <i-col span="4">
                                         <td style="padding-left:20px;">
                                             <button type="button" class="add" >+</button>
                                             <div class="qty" >{{item.qty}}</div>
                                             <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
                                         </td>
-                                    </Col>
-                                    <Col span="2">
+                                    </i-col>
+                                    <i-col span="2">
                                         <td>
                                         ¥{{item.subtotal}}
                                     </td>
-                                    </Col>
-                                    <Col span="2">
+                                    </i-col>
+                                    <i-col span="2">
                                         <td>
                                             <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a><Br />
                                             <a style="color:#939393">加入收藏</a>
                                         </td>
-                                    </Col>
+                                    </i-col>
                                 </tr>
                                
                             </table>
                                 <Row>
                                     <div style="width:100%" class="footer">
-                                        <Col span="15">
+                                        <i-col span="15">
                                             <Checkbox style="letter-spacing:3px;padding-left:11px">
                                                 全选
                                             </Checkbox>
-                                        </Col>
-                                        <Col span="6">
+                                        </i-col>
+                                        <i-col span="6">
                                             总价: <span style="color:red">¥20000.00</span>
-                                        </Col>
-                                        <Col span="3">
+                                        </i-col>
+                                        <i-col span="3">
                                             <button type="button"  style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
-                                        </Col>
+                                        </i-col>
                                     </div>
                                 </Row>
                         </Row>
-                    </Col>
-                    <Col span="3">
+                    </i-col>
+                    <i-col span="3">
                         &nbsp;
-                    </Col>
+                    </i-col>
                 </Row>
                </div>
                 
