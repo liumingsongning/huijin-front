@@ -118,7 +118,7 @@
                                 </div>
                                 <Br />
                                 <div style="margin-top:8px">
-                                    所在地区: &nbsp;<span style="color:#595959" v-for = "i in resArr">{{i.name}}</span>
+                                    所在地区: &nbsp;<span style="color:#595959" >{{areaData['86'][item.country]+areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]}}</span>
                                 </div>
                                 <div style="margin-top:8px">
                                     详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
@@ -275,6 +275,7 @@
     </div>
 </template>
 <script>
+import areaData from 'area-data';
 export default {
   data() {
     return {
@@ -335,12 +336,14 @@ export default {
       address_d: "",
       mobile_d: "",
       status: true,
-      orders: []
+      orders: [],
+      pca:{}
     };
   },
   mounted() {
     this.ordershow_m();
     this.getaddress();
+    this.areaData=areaData;
   },
   methods: {
     getaddress() {
