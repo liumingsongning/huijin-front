@@ -9,12 +9,12 @@ let util = {
 
 };
 util.title = function(title) {
-    title = title ? title + ' - Home' : 'iView project';
+    title = title ? title + ' - Home' : '汇金酒庄';
     window.document.title = title;
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://api.huijinjiu.com' :
+    'http://test.huijinjiu.com' :
     env === 'production' ?
     'http://api.huijinjiu.com' :
     'https://debug.url.com';

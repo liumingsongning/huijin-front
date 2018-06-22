@@ -104,7 +104,9 @@
                             </div>
 
                             <!-- 地址展示 -->
-                            <div style="width:320px;border:4px solid red;padding:10px;font-size:12px;margin-left:47px;margin-top:40px;position:absolute;z-index:1" v-for="item in goodaddress">
+                            <div v-show="goodaddress.length>0" 
+                                style="width:320px;border:4px solid red;padding:10px;font-size:12px;margin-left:47px;margin-top:40px;position:absolute;z-index:1" 
+                                v-for="item in goodaddress" >
                                 <div style="margin-top:10px;">
                                     <div style="float:left">
                                         收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
@@ -125,12 +127,12 @@
                                     手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
                                 </div>
                             </div>
-                            <Button v-show="status" @click="click" style="background:#f8fcff;margin-top:15px;margin-left:47px">添加收货地址</Button>
+                            <Button v-show="status||goodaddress.length>0" @click="click" style="background:#f8fcff;margin-top:15px;margin-left:47px">添加收货地址</Button>
                             
                             <Row>
                                 <i-col span="14" offset="4" >
                                     <!-- 添加地址 -->
-                                    <Card style="width:650px;margin-left:auto;marin-right:auto;font-size:13px;position:fixed;z-index:999" v-show="!site">
+                                    <Card style="width:650px;margin-left:auto;marin-right:auto;font-size:13px;position:fixed;z-index:999" v-show="!site||goodaddress.length==0">
                                         <div>
                                             &nbsp;&nbsp;&nbsp;收货人 <Input type="text" style="width:220px" v-model="consignee_d"></Input><Br />
                                         </div>
@@ -169,11 +171,11 @@
                                     <th>购买数量</th>
                                     <th>总计</th>
                                 </tr>
-                                <tr>
+                                <tr v-for="(item,index) in orders" >
                                     <td style="width:400px">
                                         <div style="width:60px;height:60px;background:black;margin-left:50px;margin-top:10px;float:left"></div>
                                         <div style="margin-top:10px;flaot:left;margin-left:120px"> 
-                                            <span>汇金杏林收藏酒 &nbsp; 精装酒</span><Br />
+                                            <span>{{item.model.goods_id}} &nbsp; 精装酒</span><Br />
                                             <span>生产日期:2008年5月21日 10年 浓度50%</span>
                                         </div>
                                     </td>
@@ -332,33 +334,54 @@ export default {
       consignee_d: "",
       address_d: "",
       mobile_d: "",
-      status:true
+      status: true,
+      orders: []
     };
   },
   mounted() {
-      this.ordershow_m()
+    this.ordershow_m();
+    this.getaddress();
   },
   methods: {
-    ordershow_m() {
-        var self = this;
-        this.ajax.get("/api/order/"+id)
-        .then(function(res){
-            consol.log(res.data)
-        }).catch(function(err){
-            if (err.status_code == 404) {
+    getaddress() {
+      var self = this;
+      this.ajax
+        .get("/api/address")
+        .then(function(res) {
+          console.log(234243);
+          self.goodaddress = res.data.address;
+        })
+        .catch(function(err) {
+          if (err.status_code == 404) {
             alert(err.message);
           }
-        })
+        });
     },
-    click (){
-        this.site = false;
-        this.status = false;
+    ordershow_m() {
+      var self = this;
+      this.ajax
+        .get("/api/cart/getAssign", {
+          params: { rowIds: self.$route.query.rowId }
+        })
+        .then(function(res) {
+          console.log(res.data.cart);
+          self.orders = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 404) {
+            alert(err.message);
+          }
+        });
+    },
+    click() {
+      this.site = false;
+      this.status = false;
     },
     // 添加地址
     address_m() {
       var self = this;
       this.site = true;
-      this.status = true
+      this.status = true;
       this.ajax
         .post("/api/address", {
           consignee: self.consignee_d,
@@ -372,8 +395,7 @@ export default {
         })
         .then(function(res) {
           console.log(res.data);
-          self.goodaddress = res.data;
-      
+          self.goodaddress = res.data.address;
         })
         .catch(function(err) {
           if (err.status_code == 403) {
@@ -382,12 +404,12 @@ export default {
         });
     },
     //删除地址
-     deleteaddress_m(id) {
+    deleteaddress_m(id) {
       var self = this;
       this.ajax
-        .delete("/api/address/"+id)
+        .delete("/api/address/" + id)
         .then(function(res) {
-          self.goodaddress = ""
+          self.goodaddress = "";
         })
         .catch(function(err) {
           if (err.status_code == 403) {
@@ -396,17 +418,19 @@ export default {
         });
     },
     // 修改地址
-   updateaddress_m(id) {
-      this.site = false
+    updateaddress_m(id) {
+      this.site = false;
       var self = this;
-      this.ajax.put("/api/address/"+id)
-      .then(function(res){
-        self.goodaddress = res.data
-      }).catch(function(err){
-        if (err.status_code == 403) {
+      this.ajax
+        .put("/api/address/" + id)
+        .then(function(res) {
+          self.goodaddress = res.data.address;
+        })
+        .catch(function(err) {
+          if (err.status_code == 403) {
             alert(err.message);
           }
-      })
+        });
     }
   }
 };

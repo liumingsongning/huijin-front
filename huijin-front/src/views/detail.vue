@@ -178,15 +178,16 @@ export default {
     };
   },
   mounted() {
-    this.details();
+		this.details();
   },
   computed: {
     ...mapState(["user"])
   },
   methods: {
     details() {
+			var self=this;
       this.ajax
-        .get("/api/goods/1")
+        .get("/api/goods/"+self.$route.params.id)
         .then(response => {
           this.good = response.data.good;
         })
