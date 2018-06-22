@@ -14,7 +14,7 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://test.huijinjiu.com' :
+    'http://api.huijinjiu.com' :
     env === 'production' ?
     'http://api.huijinjiu.com' :
     'https://debug.url.com';
