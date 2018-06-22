@@ -9,40 +9,43 @@
 					<!--<img src="../../../../static.huijinjiu.com/mall/LOGO.png" class="logo"/>-->
 				</i-col>
 				<i-col span="3">&nbsp;</i-col>
-				<i-col span="12">
+				<i-col span="17">
 					<ul>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">商城首页</a>
 							</li>
 						</i-col>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">最新资讯</a>
 							</li>
 						</i-col>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">酒品分类</a>
 							</li>
 						</i-col>
-						<i-col span="6">
-							<i-col span="12">
+						<i-col span="5">
+							<!-- <i-col span="12"> -->
 								<li>
 									<a href="">个人中心</a>
 								</li>
-							</i-col>
-							<i-col span='12'>
-								<li>
-									<a href="" @click='logout_m'>退出</a>
-									<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
-								</li>
+							<!-- </i-col> -->
+							<!-- <i-col span='12'> -->
+						</i-col>	
+						<i-col span="4">	
+							<li>
+								<a href="" @click='logout_m'>退出</a>
+								<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
 								<a href="" v-show="user.userinfo.qq_user"><img :src="user.userinfo.qq_user?user.userinfo.qq_user.figureurl_qq_1:''" /></a>
-							</i-col>
+							</li>
+					<!-- </i-col> -->
 						</i-col>
+
 					</ul>
 				</i-col>
-				<i-col span="5"></i-col>
+				<!-- <i-col span="5"></i-col> -->
 			</Row>
 		</div>
 		<!--内容-->

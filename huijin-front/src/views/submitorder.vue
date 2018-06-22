@@ -102,32 +102,56 @@
                             <div style="height:36px">
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">收货人信息</span>
                             </div>
+
+                            <!-- 地址展示 -->
+                            <div style="width:320px;border:4px solid red;padding:10px;font-size:12px;margin-left:47px;margin-top:40px;position:absolute;z-index:1" v-for="item in goodaddress">
+                                <div style="margin-top:10px;">
+                                    <div style="float:left">
+                                        收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
+                                    </div>
+                                    <div style="float:right">
+                                        <a style="color:red" @click="updateaddress_m">修改</a>
+                                        <a style="color:red" @click="deleteaddress_m(item.id)">删除</a>
+                                    </div>
+                                </div>
+                                <Br />
+                                <div style="margin-top:8px">
+                                    所在地区: &nbsp;<span style="color:#595959" v-for = "i in resArr">{{i.name}}</span>
+                                </div>
+                                <div style="margin-top:8px">
+                                    详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
+                                </div>
+                                <div style="margin-top:8px">
+                                    手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
+                                </div>
+                            </div>
+                            <Button v-show="status" @click="click" style="background:#f8fcff;margin-top:15px;margin-left:47px">添加收货地址</Button>
+                            
                             <Row>
-                                <i-col span="14" offset="4" style="font-size:13px">
-                                    <div style="margin-top:30px">
-                                        &nbsp;&nbsp;&nbsp;收件人 <Input type="text" style="width:220px"></Input><Br />
-                                    </div>
-                                    <div style="margin-top:5px">
-                                        所在地区
-                                        <Select style="width:154px">
-                                            <Option value="请选择省"></Option>
-                                        </Select>
-                                        <Br />
-                                    </div>
-                                    <div style="margin-top:5px">
-                                        街道地址 <Input type="text" style="width:400px"></Input><Br />
-                                    </div>
-                                    <div style="margin-top:5px;">
-                                        <div style="text-indent:-2em;float:left">输入手机号码</div> &nbsp;<Input type="text" style="width:220px;"></Input>
-                                    </div>
-                                    <div style="margin-left:60px;margin-top:15px">
-                                         <Button style="background:#fe706e;border-color:#ff4948;color:white;width:70px">确定</Button>
-                                         <Button style="margin-left:10px;background:#eeeeee;border-color:#a6a6a6;color:#acacac;width:70px">取消</Button>
-                                    </div>
-                                   
+                                <i-col span="14" offset="4" >
+                                    <!-- 添加地址 -->
+                                    <Card style="width:650px;margin-left:auto;marin-right:auto;font-size:13px;position:fixed;z-index:999" v-show="!site">
+                                        <div>
+                                            &nbsp;&nbsp;&nbsp;收货人 <Input type="text" style="width:220px" v-model="consignee_d"></Input><Br />
+                                        </div>
+                                        <div style="margin-top:5px">
+                                            <div style="float:left;margin-top:6px">所在地区</div><al-selector v-model="resArr" style="width:500px;float:left"/>
+                                            <Br /><Br />
+                                        </div>
+                                        <div style="margin-top:5px">
+                                            详细地址 <Input type="text" style="width:400px" v-model="address_d"></Input><Br />
+                                        </div>
+                                        <div style="margin-top:5px;">
+                                            <div style="float:left;margin-top:6px">手机号码</div> &nbsp;<Input type="text" style="width:220px;" v-model="mobile_d"></Input>
+                                        </div>
+                                        <div style="margin-left:60px;margin-top:15px">
+                                            <Button style="background:#fe706e;border-color:#ff4948;color:white;width:70px" @click="address_m">确定</Button>
+                                            <Button style="margin-left:10px;background:#eeeeee;border-color:#a6a6a6;color:#acacac;width:70px">取消</Button>
+                                        </div>
+                                    </Card>
                                 </i-col>
                                 <i-col spa="6"></i-col>
-                            </Row>
+                            </Row> 
 
                         </div>
 
@@ -301,8 +325,89 @@ export default {
           value: "12个月",
           label: "12个月"
         }
-      ]
+      ],
+      resArr: [],
+      site: true,
+      goodaddress: [],
+      consignee_d: "",
+      address_d: "",
+      mobile_d: "",
+      status:true
     };
+  },
+  mounted() {
+      this.ordershow_m()
+  },
+  methods: {
+    ordershow_m() {
+        var self = this;
+        this.ajax.get("/api/order/"+id)
+        .then(function(res){
+            consol.log(res.data)
+        }).catch(function(err){
+            if (err.status_code == 404) {
+            alert(err.message);
+          }
+        })
+    },
+    click (){
+        this.site = false;
+        this.status = false;
+    },
+    // 添加地址
+    address_m() {
+      var self = this;
+      this.site = true;
+      this.status = true
+      this.ajax
+        .post("/api/address", {
+          consignee: self.consignee_d,
+          email: self.email_d,
+          mobile: self.mobile_d,
+          address: self.address_d,
+          country: self.resArr[0].code,
+          province: self.resArr[1].code,
+          city: self.resArr[2].code,
+          district: self.resArr[3].code
+        })
+        .then(function(res) {
+          console.log(res.data);
+          self.goodaddress = res.data;
+      
+        })
+        .catch(function(err) {
+          if (err.status_code == 403) {
+            alert(err.message);
+          }
+        });
+    },
+    //删除地址
+     deleteaddress_m(id) {
+      var self = this;
+      this.ajax
+        .delete("/api/address/"+id)
+        .then(function(res) {
+          self.goodaddress = ""
+        })
+        .catch(function(err) {
+          if (err.status_code == 403) {
+            alert(err.message);
+          }
+        });
+    },
+    // 修改地址
+   updateaddress_m(id) {
+      this.site = false
+      var self = this;
+      this.ajax.put("/api/address/"+id)
+      .then(function(res){
+        self.goodaddress = res.data
+      }).catch(function(err){
+        if (err.status_code == 403) {
+            alert(err.message);
+          }
+      })
+    }
   }
 };
 </script>

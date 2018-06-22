@@ -56,7 +56,6 @@
                     </div>
                 </div>
 	        </Sider>
-
             <Layout>
                 <!-- 头部 -->
                 <div class="header">
@@ -136,60 +135,61 @@
                             <!-- 地址管理 -->
                             <div style="width:700px;margin-left:auto;margin-right:auto;margin-top:82px;">
                                 <h4 style="text-align:center">收货地址管理</h4>
-                                <div class="detail" v-show="address_d">
+                                <div class="detail"  v-for="item in goodaddress" >
                                     <div>
-                                        <span style="color:#595959">呵呵呵</span> <a style="float:right"> <img src="../static.huijinjiu.com/personaldata/delete.png" /></a>
+                                        <span style="color:#595959">{{item.consignee}}</span> <a style="float:right" @click="deleteaddress_m(item.id)"> 删除</a>
                                     </div>
                                     <div style="padding-left:13px;margin-top:20px">
-                                         收货人: &nbsp;<span style="color:#595959">呵呵呵</span>
+                                         收货人: &nbsp;<span style="color:#595959">{{item.consignee}}</span>
                                     </div>
                                     <div style="margin-top:8px">
-                                        所在地区: &nbsp;<span style="color:#595959">北京市朝阳区建设大街</span>
+                                        所在地区: &nbsp;<span style="color:#595959" v-for="i in resArr">{{i.name}}</span>
                                     </div>
                                     <div style="margin-top:8px">
-                                        详细地址: &nbsp;<span style="color:#595959">3号楼1204</span>
+                                        详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
                                     </div>
                                     <div style="margin-top:8px">
-                                        手机号码: &nbsp;<span style="color:#595959">12345678910</span>
+                                        手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
                                     </div>
                                     <div style="margin-top:8px">
-                                        固定电话: &nbsp;<span style="color:#595959">12345678910</span>
+                                        固定电话: &nbsp;<span style="color:#595959">{{item.tel}}</span>
                                     </div>
                                     <div style="float:right;">
                                         <a style="color:#023491;padding-right:10px">设为默认</a>
-                                        <a style="color:#023491">编辑</a>
+                                        <a style="color:#023491" @click="updateaddress_m(item.id)">编辑</a>
                                     </div>
                                 </div>
-                                    <Card style="width:600px;margin-left:auto;margin-right:auto;" v-show="!address_d" >
-                                      收货人:<Br />
-                                      <Input type="text" style="width:230px" clearable></Input><Br />
-                                      所在地区:<Br />
-                                      <!-- <Input type="text" style="width:170px" clearable></Input><Br /> -->
-                                      <al-selector datatype="code" />
-                                      详细地址:<Br />
-                                      <Input type="text" style="width:474px" clearable></Input><Br />
-                                      <div style="float:left">
-                                          手机号码:<Br />
-                                          <Input type="text" style="width:230px" clearable></Input>
-                                      </div>
-                                      <span style="margin-left:15px">固定电话:</span>
-                                      <Br />
-                                      <Input type="text"  style="width:230px;margin-left:15px" clearable></Input><Br />
-                                      邮箱:<Br />
-                                      <Input type="text" style="width:230px" clearable></Input><Br />
-                                      地址别名:<Br />
-                                      <Input type="text" style="width:230px" clearable></Input><Br /><Br />
-                                      <Button @click="address_d=true">保存收货地址</Button>
-                                  </Card>
+                                
+                                <Card style="width:600px;margin-left:auto;margin-right:auto;" v-show="!site" >
+                                  <div>
+                                  收货人:<Br />
+                                  <Input type="text" style="width:230px" clearable v-model="consignee_d"></Input><Br />
+                                  所在地区:<Br />
+                                  <al-selector  v-model="resArr"/>
+                                  详细地址:<Br />
+                                  <Input type="text" style="width:474px" clearable v-model="address_d"></Input><Br />
+                                  <div style="float:left">
+                                      手机号码:<Br />
+                                      <Input type="text" style="width:230px" clearable v-model="mobile_d"></Input>
+                                  </div>
+                                  <span style="margin-left:15px" >固定电话:</span>
+                                  <Br />
+                                  <Input type="text"  style="width:230px;margin-left:15px" clearable v-model="tel_d"></Input><Br />
+                                  邮箱:<Br />
+                                  <Input type="text" style="width:230px" clearable v-model="email_d"></Input><Br />
+                                  <!-- 地址别名:<Br /> -->
+                                  <!-- <Input type="text" style="width:230px" clearable ></Input><Br /><Br /> -->
+                                   <Button @click="address_m">保存收货地址</Button>
+                                  </div>
+                                </Card> 
 
                                 <div style="text-align:center;">
-                                    <Button style="background:#f8fcff;margin-top:20px" @click="address_m">添加收货地址</Button>
+                                    <Button style="background:#f8fcff;margin-top:20px" @click="site=false">添加收货地址</Button>
                                 </div>
                             </div>
-
-                            
                         </i-col>
                         <i-col span="3">&nbsp;</i-col>
+
                     </Row>
                 </div>
             </Layout>
@@ -201,7 +201,15 @@
 export default {
   data() {
     return {
-      address_d:true,
+      resArr: [],
+      site: true,
+      goodaddress: [],
+      consignee_d: "",
+      address_d: "",
+      mobile_d: "",
+      tel_d: "",
+      email_d: "",
+
       years: [
         {
           value: "2011",
@@ -406,22 +414,63 @@ export default {
       ]
     };
   },
-
   methods: {
-      address_m () {
-        var self = this;
-        this.address_d = false;
-        this.ajax.post("/api/address",{
-          
-        }).then(function(res){
-
-        }).catch(function(err){
-          if(err.status_code==403){
-            alert(err.message)
-          }
+    //添加地址
+    address_m() {
+      var self = this;
+      this.site = true;
+      this.ajax
+        .post("/api/address", {
+          consignee: self.consignee_d,
+          email: self.email_d,
+          tel: self.tel_d,
+          mobile: self.mobile_d,
+          address: self.address_d,
+          country: self.resArr[0].code,
+          province: self.resArr[1].code,
+          city: self.resArr[2].code,
+          district: self.resArr[3].code
         })
+        .then(function(res) {
+          console.log(res.data);
+          self.goodaddress = res.data;
+        
+        })
+        .catch(function(err) {
+          if (err.status_code == 403) {
+            alert(err.message);
+          }
+        });
+    },
+    //删除地址
+    deleteaddress_m(id) {
+      var self = this;
+      this.ajax
+        .delete("/api/address/"+id)
+        .then(function(res) {
+          self.goodaddress = ""
+        })
+        .catch(function(err) {
+          if (err.status_code == 403) {
+            alert(err.message);
+          }
+        });
+    },
+    //修改地址
+    updateaddress_m(id) {
+      this.site = false
+      var self = this;
+      this.ajax.put("/api/address/"+id)
+      .then(function(res){
+        self.goodaddress = res.data
 
-      }
+      }).catch(function(err){
+        if (err.status_code == 403) {
+            alert(err.message);
+          }
+      })
+
+    }
   }
 };
 </script>
@@ -502,8 +551,7 @@ export default {
 .content .redact {
   width: 16px;
   height: 16px;
-  background: url(../static.huijinjiu.com/personaldata/redact.png) no-repeat
-    100% 100%;
+  background: url(../static.huijinjiu.com/personaldata/redact.png) no-repeat 100% 100%;
   border: none;
   outline: none;
   margin-left: 14px;
@@ -512,15 +560,16 @@ export default {
   margin-top: 20px;
 }
 .content .detail {
-  
+  width:100%;
   border: 2px solid #bfbfbf;
   height: 196px;
   margin-top: 56px;
   padding: 8px;
   font-size: 12px;
-  color:#8c8c8c;
-  /* position: absolute; */
-  /* z-index: 0 */
+  color: #8c8c8c;
+  
+  
+  
 }
 </style>
 

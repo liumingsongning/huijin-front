@@ -98,41 +98,42 @@
                             <table style="width:100%" class="tab">
                                 <tr>
                                     <i-col span="3">
-                                        <td>
-                                        <Checkbox style="letter-spacing:3px;padding-left:11px">
+                                        <th>
+                                        <!-- <Checkbox v-model="checkAll" style="letter-spacing:3px;padding-left:11px">
                                             全选
-                                        </Checkbox>
-                                        </td>
+                                        </Checkbox> -->
+                                        <input  @change="checkedAllBtn(checkedAll)" v-model="checkedAll" style="letter-spacing:3px;margin-left:11px;" type="checkbox" /> &nbsp;全选
+                                        </th>
                                     </i-col>
                                     <i-col span="11">
-                                        <td style="padding-left:80px">
+                                        <th style="padding-left:80px">
                                             商品
-                                        </td>
+                                        </th>
                                     </i-col>
                                     <i-col span="3">
-                                        <td>
+                                        <th>
                                         单价
-                                    </td>
+                                        </th>
                                     </i-col>
                                     <i-col span="3">
-                                        <td>
+                                        <th>
                                         数量
-                                    </td>
+                                    </th>
                                     </i-col>
                                     <i-col span="2">
-                                        <td>
+                                        <th>
                                         小计
-                                    </td>
+                                    </th>
                                     </i-col>
                                     <i-col span="2">
-                                        <td>
+                                        <th>
                                         操作
-                                    </td>
+                                    </th>
                                     </i-col>
                                 </tr>
                             </table>
                         </Row>
-                        <!--  -->
+                        <!-- 官方商品 -->
                         <div style="height:41px;line-height:41px">
                             <Checkbox style="letter-spacing:3px;padding-left:11px">
                                 官方商品
@@ -141,12 +142,13 @@
                         <!--  -->
                         <Row>
                             <table style="width:100%" class="tab1"  >
-                                <tr v-for="item in carts">
+                                <tr v-for="(item,$index) in carts">
                                     <i-col span="3">
                                         <td>
-                                        <Checkbox style="letter-spacing:3px;margin-left:11px">
+                                        <!-- <Checkbox  :value="item.id" v-model="checked" @click="currClick(item,$index)" style="letter-spacing:3px;margin-left:11px"> -->
                                             
-                                        </Checkbox>
+                                        <!-- </Checkbox> -->
+                                        <input @change="checkedRadioBtn($index)"  type="checkbox"  style="letter-spacing:3px;margin-left:11px" />
                                         </td>
                                     </i-col>
                                     <i-col span="11">
@@ -169,9 +171,9 @@
                                     </i-col>
                                     <i-col span="4">
                                         <td style="padding-left:20px;">
-                                            <button type="button" class="add" @click="addcart_m(item.model.id)">+</button>
-                                            <div class="qty" >{{item.qty}}</div>
                                             <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
+                                            <div class="qty" >{{item.qty}}</div>
+                                            <button type="button" class="add" @click="addcart_m(item.model.id)">+</button>
                                         </td>
                                     </i-col>
                                     <i-col span="2">
@@ -182,29 +184,25 @@
                                     <i-col span="2">
                                         <td>
                                             <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a><Br />
-                                            <!-- <Modal v-model= "modal1" @on-ok= "ok" @on-cancel = "cancel" title="确定删除吗?"> -->
-                                            <!-- </Modal> -->
                                             <a style="color:#939393">加入收藏</a>
                                         </td>
                                     </i-col>
                                 </tr>
                                
                             </table>
-                                <Row>
-                                    <div style="width:100%" class="footer">
-                                        <i-col span="15">
-                                            <Checkbox style="letter-spacing:3px;padding-left:11px">
-                                                全选
-                                            </Checkbox>
-                                        </i-col>
-                                        <i-col span="6">
-                                            总价: <span style="color:red">¥20000.00</span>
-                                        </i-col>
-                                        <i-col span="3">
-                                            <button type="button"  style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
-                                        </i-col>
-                                    </div>
-                                </Row>
+                        </Row>
+                        <Row>
+                            <div style="width:100%" class="footer">
+                                <i-col span="15">
+                                    <Button @click="clearcart_m" style="letter-spacing:3px;padding-left:11px">清空购物车</Button>
+                                </i-col>
+                                <i-col span="6">
+                                    总价: &nbsp;&nbsp;<span style="color:red">¥{{totalMoney}}</span>
+                                </i-col>
+                                <i-col span="3">
+                                    <button type="button"  @click="close" style="width:100%;background:red;color:white;border:none;outline:none">结算</button>
+                                </i-col>
+                            </div>
                         </Row>
                     </i-col>
                     <i-col span="3">
@@ -222,38 +220,60 @@ export default {
   data() {
     return {
       carts: [],
-    //   modal1:false
+      checkedAll:false,
+      totalMoney:0
     };
   },
+
   mounted() {
     this.displaycart_m();
   },
   methods: {
+        // 总价
+      countTotalMoney:function(){
+			var self = this;
+			self.totalMoney = 0;
+			this.carts.forEach(function(item,index){
+				if(item.checked == true){
+					self.totalMoney += item.qty*item.price
+				}
+			})
+        },
+        // 单选
+        checkedRadioBtn:function(id){
+            console.log(id);
+            this.countTotalMoney();
+        },
+        // 多选
+        checkedAllBtn:function(checkedAll){
+			if(checkedAll == true){
+				for(var i = 0;i<this.carts.length;i++){
+					this.carts[i].checked = true;					
+				}
+			}else{
+				for(var i = 0;i<this.carts.length;i++){
+					this.carts[i].checked = false;					
+				}
+			}
+			this.countTotalMoney()
+		},
+    
     displaycart_m() {
       var self = this;
       this.ajax
         .get("/api/cart/display")
         .then(function(res) {
-            console.log(res.data.cart);
           self.carts = res.data.cart;
         })
         .catch(function(err) {
           if (err.status_code == 422) {
-            console.log(error.message);
+            console.log(err.message);
           }
         });
     },
-    // ok () {
-    //     this.$Message.info('Clicked ok');
-        
-        
-    // },
-    // cancel () {
-    //     this.$Message.info('Clicked cancel');    
-    // },
+
     // 删除
     removecart_m(id) {
-    //   this.modal1 = true;
       var self = this;
       if(confirm("确定要删除吗?")){
           this.ajax
@@ -265,11 +285,10 @@ export default {
             })
             .catch(function(err) {
             if (err.status_code == 422) {
-                console.log(error.message);
+                console.log(err.message);
             }
         });
       }
-      
     },
     // 增加
      addcart_m(id) {
@@ -283,7 +302,7 @@ export default {
         })
         .catch(function(err) {
           if (err.status_code == 422) {
-            console.log(error.message);
+            console.log(err.message);
           }
         });
     },
@@ -291,7 +310,7 @@ export default {
     minuscart_m(id) {
       var self = this;
       this.ajax
-        .post("/api/cart/minus", {
+        .post("/api/cart/minus", { 
           rowId: id
         })
         .then(function(res) {
@@ -299,12 +318,34 @@ export default {
         })
         .catch(function(err) {
           if (err.status_code == 422) {
-            console.log(error.message);
+            console.log(err.message);
           }
         });
-    }
+    },
     // 清空购物车
-    
+    clearcart_m() {
+      var self = this;
+      this.ajax
+        .post("/api/cart/clear")
+        .then(function(res) {
+          self.carts = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(err.message);
+          }
+        });
+    },
+    close() {
+        var self = this;
+        this.$router.push ({
+            name:'submitorder',
+            query:{
+                
+            }
+            
+        })
+    }
   }
 };
 </script>
@@ -401,7 +442,7 @@ export default {
   border-bottom: 2px solid #aaa;
   padding-top: 40px;
 }
-.content .add {
+.content .minus{
   width: 24px;
   height: 22px;
   border: 1px solid #aaaaaa;
@@ -417,7 +458,7 @@ export default {
   float: left;
   line-height: 22px;
 }
-.content .minus {
+.content .add {
   width: 24px;
   height: 22px;
   border: 1px solid #aaaaaa;
