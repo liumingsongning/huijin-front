@@ -9,40 +9,43 @@
 					<!--<img src="../../../../static.huijinjiu.com/mall/LOGO.png" class="logo"/>-->
 				</i-col>
 				<i-col span="3">&nbsp;</i-col>
-				<i-col span="12">
+				<i-col span="17">
 					<ul>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">商城首页</a>
 							</li>
 						</i-col>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">最新资讯</a>
 							</li>
 						</i-col>
-						<i-col span="6">
+						<i-col span="5">
 							<li>
 								<a href="">酒品分类</a>
 							</li>
 						</i-col>
-						<i-col span="6">
-							<i-col span="12">
+						<i-col span="5">
+							<!-- <i-col span="12"> -->
 								<li>
 									<a href="">个人中心</a>
 								</li>
-							</i-col>
-							<i-col span='12'>
-								<li>
-									<a href="" @click='logout_m'>退出</a>
-									<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
-								</li>
+							<!-- </i-col> -->
+							<!-- <i-col span='12'> -->
+						</i-col>	
+						<i-col span="4">	
+							<li>
+								<a href="" @click='logout_m'>退出</a>
+								<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
 								<a href="" v-show="user.userinfo.qq_user"><img :src="user.userinfo.qq_user?user.userinfo.qq_user.figureurl_qq_1:''" /></a>
-							</i-col>
+							</li>
+					<!-- </i-col> -->
 						</i-col>
+
 					</ul>
 				</i-col>
-				<i-col span="5"></i-col>
+				<!-- <i-col span="5"></i-col> -->
 			</Row>
 		</div>
 		<!--内容-->
@@ -241,7 +244,7 @@ export default {
   letter-spacing: 2.5px;
 }
 .header ul li a {
-  i-color: #010101;
+  color: #010101;
 }
 .header ul li:hover {
   border-bottom: 4px solid #a8d3fe;
@@ -260,7 +263,7 @@ ol li {
   float: left;
   list-style: none;
   font-size: 17px;
-  i-color: #000000;
+  color: #000000;
   margin-top: 20px;
 }
 
@@ -270,14 +273,14 @@ ol li {
 }
 .content .weight {
   border-radius: 0;
-  i-color: red;
+  color: red;
   border: 1px solid #b5b5b5;
   height: 28px;
   /*font-size: 9px;*/
 }
 .content .s1 .money {
   font-size: 37px;
-  i-color: red;
+  color: red;
   letter-spacing: 2px;
   margin-top: 40px;
 }
@@ -285,8 +288,8 @@ ol li {
 .content .addcart {
   border-radius: 0;
   height: 36px;
-  i-color: white;
-  background-i-color: #fc9b8a;
+  color: white;
+  background-color: #fc9b8a;
   width: 100%;
 }
 /*中部内容*/
@@ -314,11 +317,11 @@ ol li {
 }
 
 .footer ul li a {
-  i-color: #838288;
+  color: #838288;
 }
 
 .footer .p1 {
-  i-color: #838288;
+  color: #838288;
   font-size: 16px;
   margin-top: 156px;
 }
