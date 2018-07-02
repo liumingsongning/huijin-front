@@ -1,5 +1,13 @@
 const routers = [
     {
+		path: '/immediatepay',
+		name: 'immediatepay',
+	    meta: {
+	        title: '立即付款'
+	    },
+	    component: (resolve) => require(['../views/immediatepay.vue'], resolve)
+	},
+    {
 		path: '/submitorder',
 		name: 'submitorder',
 	    meta: {

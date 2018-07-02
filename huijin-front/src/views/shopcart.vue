@@ -58,7 +58,7 @@
                 <!-- 头部 -->
                 <div class="header">
                     <Row>
-                        <i-col span="3" offset="1">
+                        <i-col span="3" style="padding-left:32px">
                             <img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
                         </i-col>
                         <i-col span="13" offset="3">
@@ -85,13 +85,13 @@
                                 </i-col>
                             </ul>
                         </i-col>
-                        <i-col span="4">&nbsp;</i-col>
+                        <i-col span="5">&nbsp;</i-col>
                     </Row>
                 </div>
                 <!-- 内容 -->
                 <div>
                     <Row>
-                        <i-col span="20" offset="1" class="content">
+                        <i-col span="22" class="content">
                             <div style="font-weight:bold;margin-top:25px">我的购物车</div>
                             <!--  -->
                             <Row>
@@ -100,10 +100,9 @@
                                         <i-col span="3">
                                             <th>
                                                 <!-- <Checkbox v-model="checkAll" style="letter-spacing:3px;padding-left:11px">
-                                            全选
-                                        </Checkbox> -->
-                                                <!-- <input  @change="checkedAllBtn(checkedAll)" v-model="checkedAll" style="letter-spacing:3px;margin-left:11px;" type="checkbox" /> &nbsp;全选 -->
-                                                <Checkbox :indeterminate="indeterminate" :value="checkAll" @click.prevent.native="handleCheckAll">全选</Checkbox>
+                                                    全选
+                                                </Checkbox> -->
+                                                <Checkbox style="letter-spacing:3px;padding-left:11px" :indeterminate="indeterminate" :value="checkAll" @click.prevent.native="handleCheckAll">全选</Checkbox>
                                             </th>
                                         </i-col>
                                         <i-col span="11">
@@ -135,6 +134,7 @@
                                 </table>
                             </Row>
                             <!-- 官方商品 -->
+                  
                             <div style="height:41px;line-height:41px">
                                 <Checkbox style="letter-spacing:3px;padding-left:11px">
                                     官方商品
@@ -149,10 +149,8 @@
                                             <i-col span="3">
                                                 <td>
                                                     <!-- <Checkbox  :value="item.id" v-model="checked" @click="currClick(item,$index)" style="letter-spacing:3px;margin-left:11px"> -->
-
                                                     <!-- </Checkbox> -->
-                                                    <Checkbox :label="index">{{item.model.goods_name}}</Checkbox>
-                                                    <!-- <input @change="checkedRadioBtn($index)"  type="checkbox"  style="letter-spacing:3px;margin-left:11px" /> -->
+                                                    <Checkbox :label="index" style="letter-spacing:3px;margin-left:11px" >{{item.model.goods_name}}</Checkbox>
                                                 </td>
                                             </i-col>
                                             <i-col span="11">
@@ -213,7 +211,7 @@
                                 </div>
                             </Row>
                         </i-col>
-                        <i-col span="3">
+                        <i-col span="2">
                             &nbsp;
                         </i-col>
                     </Row>
@@ -230,14 +228,11 @@ export default {
       carts: [],
       checkedAll: false,
       indeterminate: true,
-
-     
       checkAllGroup: [],
       cartAll: [],
       checkAll: false
     };
   },
-
   mounted() {
     this.displaycart_m();
   },
@@ -354,6 +349,7 @@ export default {
           }
         });
     },
+    //结算
     close() {
       var self = this;
       var rowId=[];
@@ -371,17 +367,13 @@ export default {
   },
   computed:{
         totalMoney() {
-
             var total = 0;
-            
             for (const key in this.checkAllGroup) {
                 if (this.checkAllGroup.hasOwnProperty(key)) {
                 total += this.carts[key].subtotal;
                 }
             }
-
             return total;
-        
         }
   }
 
@@ -393,7 +385,6 @@ export default {
 }
 .ivu-layout {
   width: 100%;
-  height: 1000px;
   font-size: 16px;
   background: url(../static.huijinjiu.com/shopcart/beijing.jpg) no-repeat;
   background-size: 100% 100%;
@@ -401,7 +392,7 @@ export default {
 /* 侧边栏 */
 .sider {
   width: 100%;
-  height: 768px;
+  /* height: 768px; */
   background: url(../static.huijinjiu.com/personal/siderImg.png) no-repeat;
   background-size: 100% 100%;
 }
@@ -462,6 +453,7 @@ export default {
   background-size: 100% 100%;
   margin-top: 10px;
   padding: 6px;
+  margin-left: 32px;
 }
 .content .tab {
   border: 1px solid #e9e9e9;
@@ -507,7 +499,7 @@ export default {
   height: 40px;
   background-color: #ffffff;
   line-height: 40px;
-  margin-top: 300px;
+  margin-top: 235px;
 }
 </style>
 
