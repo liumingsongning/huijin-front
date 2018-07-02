@@ -527,9 +527,6 @@ export default {
 }
 
 @media screen and (min-width: 1920px) {
-  .footer ul {
-    letter-spacing: 3px;
-  }
   .phone_login {
     letter-spacing: 10px;
   }
@@ -539,7 +536,6 @@ export default {
     letter-spacing: 2px;
   }
 }
-.active {
-  color: red;
-}
+
+
 </style>

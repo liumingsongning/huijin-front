@@ -60,7 +60,7 @@
                 <!-- 头部 -->
                 <div class="header">
                     <Row>
-                        <i-col span="3" offset="1">
+                        <i-col span="3" style="padding-left:32px">
                         <img src="../static.huijinjiu.com/personal/LOGO.png" class="logo" />
                         </i-col>
                         <i-col span="13" offset="3">
@@ -87,13 +87,13 @@
                             </i-col>
                         </ul>
                         </i-col>
-                        <i-col span="4">&nbsp;</i-col>
+                        <i-col span="5">&nbsp;</i-col>
                     </Row>
                 </div>
                 <!-- 中部 -->
                 <div>
                     <Row>
-                        <i-col span="20" offset="1" class="content">
+                        <i-col span="22" class="content">
                             <div style="font-weight:bold;padding-left:44px;height:120px;line-height:120px">个人资料</div>
                             <!--  -->
                             <Row>
@@ -143,7 +143,7 @@
                                          收货人: &nbsp;<span style="color:#595959">{{item.consignee}}</span>
                                     </div>
                                     <div style="margin-top:8px">
-                                        所在地区: &nbsp;<span style="color:#595959" v-for="i in resArr">{{i.name}}</span>
+                                        所在地区: &nbsp;<span style="color:#595959">{{areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]+areaData[item.district][item.street]}}</span>
                                     </div>
                                     <div style="margin-top:8px">
                                         详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
@@ -156,7 +156,7 @@
                                     </div>
                                     <div style="float:right;">
                                         <a style="color:#023491;padding-right:10px">设为默认</a>
-                                        <a style="color:#023491" @click="updateaddress_m(item.id)">编辑</a>
+                                        <a style="color:#023491" @click="updateaddress_m(item)">编辑</a>
                                     </div>
                                 </div>
                                 
@@ -179,7 +179,9 @@
                                   <Input type="text" style="width:230px" clearable v-model="email_d"></Input><Br />
                                   <!-- 地址别名:<Br /> -->
                                   <!-- <Input type="text" style="width:230px" clearable ></Input><Br /><Br /> -->
-                                   <Button @click="address_m">保存收货地址</Button>
+                                   <Button @click="address_m" v-show="btn">保存收货地址</Button>
+                                   <Button @click="update(rowId)" v-show="!btn">更新收货地址</Button>
+                                   
                                   </div>
                                 </Card> 
 
@@ -188,7 +190,7 @@
                                 </div>
                             </div>
                         </i-col>
-                        <i-col span="3">&nbsp;</i-col>
+                        <!-- <i-col span="3">&nbsp;</i-col> -->
 
                     </Row>
                 </div>
@@ -198,6 +200,7 @@
 </template>
 
 <script>
+import areaData from 'area-data';
 export default {
   data() {
     return {
@@ -209,6 +212,9 @@ export default {
       mobile_d: "",
       tel_d: "",
       email_d: "",
+      pca:{},
+      rowId:"",
+      btn:true,
 
       years: [
         {
@@ -414,6 +420,9 @@ export default {
       ]
     };
   },
+  mounted (){
+    this.areaData=areaData;
+  },
   methods: {
     //添加地址
     address_m() {
@@ -426,14 +435,15 @@ export default {
           tel: self.tel_d,
           mobile: self.mobile_d,
           address: self.address_d,
-          country: self.resArr[0].code,
-          province: self.resArr[1].code,
-          city: self.resArr[2].code,
-          district: self.resArr[3].code
+          province: self.resArr[0].code,
+          city: self.resArr[1].code,
+          district: self.resArr[2].code,
+          street: self.resArr[3].code,
+          
         })
         .then(function(res) {
           console.log(res.data);
-          self.goodaddress = res.data;
+          self.goodaddress = res.data.address;
         
         })
         .catch(function(err) {
@@ -448,7 +458,7 @@ export default {
       this.ajax
         .delete("/api/address/"+id)
         .then(function(res) {
-          self.goodaddress = ""
+          self.goodaddress = res.data.address
         })
         .catch(function(err) {
           if (err.status_code == 403) {
@@ -457,20 +467,48 @@ export default {
         });
     },
     //修改地址
-    updateaddress_m(id) {
-      this.site = false
+    updateaddress_m(item) {
       var self = this;
-      this.ajax.put("/api/address/"+id)
-      .then(function(res){
-        self.goodaddress = res.data
+      this.site = false;
+      this.btn = false;
+      self.consignee_d = item.consignee;
+      self.email_d = item.email;
+      self.mobile_d = item.mobile;
+      self.address_d = item.address;
+      self.tel_d = item.tel;
+      
+      self.rowId = item.id;
+      console.log(item.province);
+    },
+    //确认修改
+    update(id) {
+        var self = this;
+        this.site = true;
+        
+        this.ajax.put("/api/address/"+id,{
+          consignee: self.consignee_d,
+          email: self.email_d,
+          mobile: self.mobile_d,
+          address: self.address_d,
+          tel:self.tel_d,
+          province: self.resArr[0].code,
+          city: self.resArr[1].code,
+          district: self.resArr[2].code,
+          street: self.resArr[3].code,
+          
+        })
+        .then(function(res){
+            self.goodaddress = res.data.address 
+            console.log(res.data.address)
 
-      }).catch(function(err){
-        if (err.status_code == 403) {
+        }).catch(function(err){
+            if (err.status_code == 403) {
             alert(err.message);
           }
-      })
-
+        })
     }
+
+
   }
 };
 </script>
@@ -543,6 +581,7 @@ export default {
 }
 
 .content {
+  margin-left: 24px;
   height: 1236px;
   margin-top: 10px;
   background: url(../static.huijinjiu.com/personaldata/bj.png) no-repeat;

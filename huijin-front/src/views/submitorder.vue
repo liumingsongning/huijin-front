@@ -94,31 +94,33 @@
                 <Row>
                     <i-col span="22"  class="content">
                         <div style="height:95px;border-bottom:4px solid #4a5b77;padding:45px;font-weight:bold">
-                            <span>提交订单</span>
+                            <span style="float:left">提交订单</span>
+                            <img style="float:right" src="../static.huijinjiu.com/submitorder/web1.png" />
                         </div>
                         <!-- 收货人信息 -->
-                        <div style="margin-top:32px;height:258px;">
+                        <div style="margin-top:32px;">
                             <div class="icon"></div>
                             <div style="height:36px">
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">收货人信息</span>
                             </div>
 
                             <!-- 地址展示 -->
+                            <div style="display:flex;flex-wrap:wrap">
                             <div v-show="goodaddress.length>0" 
-                                style="width:320px;border:4px solid red;padding:10px;font-size:12px;margin-left:47px;margin-top:40px;position:absolute;z-index:1" 
-                                v-for="item in goodaddress" >
+                                class="address_show" 
+                                v-for="(item,index) in goodaddress" v-bind:class="{'active':ind === index}" @click = "change(index)">
                                 <div style="margin-top:10px;">
                                     <div style="float:left">
                                         收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
                                     </div>
                                     <div style="float:right">
-                                        <a style="color:red" @click="updateaddress_m">修改</a>
+                                        <a style="color:red" @click="updateaddress_m(item)">修改</a>
                                         <a style="color:red" @click="deleteaddress_m(item.id)">删除</a>
                                     </div>
                                 </div>
                                 <Br />
                                 <div style="margin-top:8px">
-                                    所在地区: &nbsp;<span style="color:#595959" >{{areaData['86'][item.country]+areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]}}</span>
+                                    所在地区: &nbsp;<span style="color:#595959" >{{areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]+areaData[item.district][item.street]}}</span>
                                 </div>
                                 <div style="margin-top:8px">
                                     详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
@@ -127,8 +129,8 @@
                                     手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
                                 </div>
                             </div>
-                            <Button v-show="status||goodaddress.length>0" @click="click" style="background:#f8fcff;margin-top:15px;margin-left:47px">添加收货地址</Button>
-                            
+                            </div>
+
                             <Row>
                                 <i-col span="14" offset="4" >
                                     <!-- 添加地址 -->
@@ -147,18 +149,22 @@
                                             <div style="float:left;margin-top:6px">手机号码</div> &nbsp;<Input type="text" style="width:220px;" v-model="mobile_d"></Input>
                                         </div>
                                         <div style="margin-left:60px;margin-top:15px">
-                                            <Button style="background:#fe706e;border-color:#ff4948;color:white;width:70px" @click="address_m">确定</Button>
-                                            <Button style="margin-left:10px;background:#eeeeee;border-color:#a6a6a6;color:#acacac;width:70px">取消</Button>
+                                            <Button style="background:#fe706e;border-color:#ff4948;color:white;width:70px" @click="address_m" v-show="btn">确定</Button>
+                                            <Button style="background:#fe706e;border-color:#ff4948;color:white;width:80px" @click="update(rowId)" v-show="!btn">确认修改</Button>
+                                            <Button style="margin-left:10px;background:#eeeeee;border-color:#a6a6a6;color:#acacac;width:70px" @click="site=true" >取消</Button>
                                         </div>
                                     </Card>
+
+                                    
                                 </i-col>
                                 <i-col spa="6"></i-col>
                             </Row> 
-
+                            <!-- <Button v-show="status||goodaddress.length>0" @click="click" style="background:#f8fcff;margin-top:15px;margin-left:47px">添加收货地址</Button> -->
+                            <Button v-show="goodaddress.length>0" @click="site=false" style="background:#f8fcff;margin-top:15px;margin-left:47px"  v-if="goodaddress.length==6?false:true">添加收货地址</Button>
                         </div>
 
                         <!-- 商品列表 -->
-                        <div style="width:100%;margin-top:68px;height:220px;font-size:12px">
+                        <div style="width:100%;margin-top:68px;font-size:12px">
                             <div class="icon"></div>
                             <div style="height:36px">
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">商品列表</span>
@@ -173,7 +179,9 @@
                                 </tr>
                                 <tr v-for="(item,index) in orders" >
                                     <td style="width:400px">
-                                        <div style="width:60px;height:60px;background:black;margin-left:50px;margin-top:10px;float:left"></div>
+                                        <div style="width:60px;height:60px;margin-left:50px;margin-top:10px;float:left">
+                                            <img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%">
+                                        </div>
                                         <div style="margin-top:10px;flaot:left;margin-left:120px"> 
                                             <span>{{item.model.goods_id}} &nbsp; 精装酒</span><Br />
                                             <span>生产日期:2008年5月21日 10年 浓度50%</span>
@@ -183,13 +191,13 @@
                                         属性
                                     </td>
                                     <td style="text-align:center">
-                                        ¥30.00
+                                        {{item.price}}
                                     </td>
                                     <td style="text-align:center">
-                                        10
+                                        {{item.qty}}
                                     </td>
                                     <td style="text-align:center">
-                                        ¥300.00
+                                        ¥{{item.subtotal}}
                                     </td>
                                 </tr>
 
@@ -201,48 +209,28 @@
                         </div>
 
                         <!-- 支付方式 -->
-                        <div style="margin-top:32px;height:110px;">
+                        <div style="margin-top:50px;">
                             <div class="icon"></div>
-                            <div style="height:36px">
+                            <div>
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">支付方式</span>
                             </div>
                             <div style="margin-left:58px;margin-top:20px">
-                                <Button style="width:96px;height:40px;">支付宝</Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Button style="width:96px;height:40px">微信支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Button style="width:96px;height:40px">线下支付</Button>
+                                <!-- <RadioGroup v-model="btn1" type="button" size="large">
+                                    <Radio label="支付宝" v-on:change="alipay_m"></Radio> 
+                                    <Radio label="微信支付" @click="wxpay_m"></Radio>
+                                    <Radio label="线下支付" @click="offlinepay_m"></Radio>
+                                    <Radio label="余额"></Radio>
+                                </RadioGroup> -->
+                                <Button style="width:96px;height:40px;" v-bind:class="{'select': pay_d}" @click="alipay_m" >支付宝</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px"  @click="wxpay_m">微信支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px" @click="offlinepay_m">线下支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px" >余额支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
-                        <!-- 储藏 -->
-                        <div style="margin-top:50px;height:170px;font-size:12px">
-                             <div class="icon"></div>
-                            <div style="height:36px">
-                                <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">是否储藏</span> &nbsp;<a style="color:#898989">储藏说明</a>
-                                <table style="width:100%;border-collapse:collapse;margin-top:18px;color:#898989;">
-                                    <tr style="height:35px;background:#f5f5f5">
-                                        <th>是否储藏</th>
-                                        <th>价格/月</th>
-                                        <th>时间/月</th>
-                                        <th>小计</th>
-                                    </tr>
-                                    <tr style="text-align:center">
-                                        <td style="width:300px">
-                                            <Radio style="margin-top:18px">储藏此酒</Radio><Br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<Radio style="margin-top:26px">不需要储藏</Radio>
-                                        </td>
-                                        <td>¥110.00</td>
-                                        <td style="width:100px">
-                                            <Select>
-                                                <Option v-for="month in months" :value = "month.value" :key="month.value">{{month.label}}</Option>
-                                            </Select>
-                                        </td>
-                                        <td>¥110.00</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                       
 
                         <!-- 运费 -->
-                        <div style="margin-top:42px;height:125px;font-size:12px">
+                        <div style="margin-top:60px;font-size:12px">
                             <div class="icon"></div>
                             <div style="height:36px">
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">相关运费</span> &nbsp;<a style="color:#898989">运费说明</a>
@@ -251,12 +239,126 @@
                                 运费价格: &nbsp;¥888.00
                             </div>
                         </div>
+                        
+                         <!-- 发票信息 -->
+                        <div style="margin-top:50px;font-size:12px">
+                             <div class="icon"></div>
+                            <div style="height:36px">
+                                <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">发票信息</span>
+                                <div style="margin-top:50px;margin-left:105px;">
+                                    普通发票&nbsp;&nbsp;(电子) &nbsp;&nbsp;个人发票 &nbsp;&nbsp;<a @click="update_inv">修改</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 发票 -->
+                        <Card v-if="inv_show" style="width:650px;margin-left:auto;margin-right:auto;">
+                            <div>
+                                <Button @click="invoice_d=true" v-bind:class="{select:invoice_d}">电子普通发票</Button>
+                                <Button @click="invoice_d=false" v-bind:class="{select:!invoice_d}">增值税专业用发票</Button>
+                            </div>
+                            <!-- 电子普通发票 -->
+                            <div v-show="invoice_d">
+                                <div style="background:#fffaea;margin-top:15px">
+                                    我公司依法开具发票,请您按照税法规定使用发票.<Br />
+                                    <a>发票制度说明</a> &nbsp;&nbsp;&nbsp;&nbsp;<a>首次开具增值税专用发票</a><Br />
+                                    如商品由第三方卖家销售,发票类型和内容将由该卖家决定,发票由卖家开具并提供.<a>发票信息相关问题</a>
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                    开票方式 <Button v-bind:class="{select:invoice_d}"  style="margin-left:20px">订单完成后开票</Button><Br />
+                                </div>
+                                <div style="margin-top:10px;margin-left:50px">
+                                    发票内容 <Button v-bind:class="{select:invoice_d}" style="margin-left:20px;width:115px">商品明细</Button><Br />
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                     单位名称 
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:22px;margin-top:10px">
+                                      纳税人识别码 
+                                    <Input type="text"style="width:240px;margin-left:20px" >
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                     注册地址
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                     注册电话 
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                     开户银行 
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                    银行账户
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:36px;margin-top:10px">
+                                     收票人姓名
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>
+                                <div style="margin-left:36px;margin-top:10px">
+                                    收票人手机
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div>    
+                            </div>
+                            <!-- 增值税专业用发票 -->
+                            <div v-show="!invoice_d">
+                                 <div style="background:#fffaea;margin-top:15px">
+                                    电子普通发票平和纸质普通发票具备同等法律效力,可支持报销入账,全面启动电子普通发票<Br />
+                                    非京东自营发票由第三防商家实际开具. <a>电子普通发票相关信息>></a><Br />
+                                    如商品由第三方卖家销售,发票类型及内容将由卖家决定. <a>发票信息相关问题>></a>
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                    发票抬头 <Input type="text" style="width:240px;margin-left:20px"></Input><Br /><Br />
+                                            <Input type="text" placeholder="请写公司发票抬头" style="width:240px;margin-left:80px"></Input>
+                                </div>
+                                <div style="margin-left:50px;margin-top:10px">
+                                    发票内容 <Button @click="content_d=true" v-bind:class="{select:content_d}" style="margin-left:20px">商品明细</Button>&nbsp;&nbsp;
+                                            <Button @click="content_d=false" v-bind:class="{select:!content_d}">商品类别</Button>
+                                </div>
+                                 <div style="margin-left:36px;margin-top:10px">
+                                    收票人手机
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input><Br />
+                                </div> 
+                                 <div style="margin-left:36px;margin-top:10px">
+                                    收票人邮箱
+                                    <Input type="text" style="width:240px;margin-left:20px">
+                                        
+                                    </Input>
+                                </div> 
+                            </div>
+                            <div style="margin-top:30px;margin-left:50px">
+                                <Button style="width:100px" v-show="invoice_d" @click="complete">完成</Button>
+                                <Button style="width:100px" v-show="!invoice_d" @click="save">保存</Button>
+                                <Button style="width:100px" @click="cancel">取消</Button>
+                            </div>
+                            
+                        </Card>
 
                         <!-- 费用总计 -->
-                        <div style="margin-top:80px;height:96px">
+                        <div style="margin-top:100px;">
                             <div class="icon"></div>
                             <div style="height:36px">
-                                <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">费用总价</span>
+                                <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">费用总计</span>
                             </div>
                             <div style="margin-top:48px;float:right;margin-right:108px;font-size:12px">
                                 商品总价: &nbsp;<span style="color:red;font-size:16px">¥88888.00</span>
@@ -264,10 +366,10 @@
                         </div>
 
                         <div style="margin-top:114px;text-align:center">
-                            <Button style="font-size:20px;color:white;background:#fe706e;border-color:#ff4948;">提交订单</Button>
+                            <Button @click="addorder_m" style="font-size:20px;color:white;background:#fe706e;border-color:#ff4948;">提交订单</Button>
                         </div>
                     </i-col>
-                    <!-- <i-col span="2">&nbsp;</i-col> -->
+                    <i-col span="2">&nbsp;</i-col>
                 </Row>
             </Layout>
 
@@ -275,83 +377,68 @@
     </div>
 </template>
 <script>
-import areaData from 'area-data';
+import areaData from "area-data";
 export default {
   data() {
     return {
-      months: [
-        {
-          value: "1个月",
-          label: "1个月"
-        },
-        {
-          value: "2个月",
-          label: "2个月"
-        },
-        {
-          value: "3个月",
-          label: "3个月"
-        },
-        {
-          value: "4个月",
-          label: "4个月"
-        },
-        {
-          value: "5个月",
-          label: "5个月"
-        },
-        {
-          value: "6个月",
-          label: "6个月"
-        },
-        {
-          value: "7个月",
-          label: "7个月"
-        },
-        {
-          value: "8个月",
-          label: "8个月"
-        },
-        {
-          value: "9个月",
-          label: "9个月"
-        },
-        {
-          value: "10个月",
-          label: "10个月"
-        },
-        {
-          value: "11个月",
-          label: "11个月"
-        },
-        {
-          value: "12个月",
-          label: "12个月"
-        }
-      ],
+      btn1:"",
+      payId: "",
+      invoice_d: true,
+      content_d: true,
+      inv_show: false,
+      ind:"",
       resArr: [],
-      site: true,
+      site: true, //显示收货地址的状态
       goodaddress: [],
       consignee_d: "",
       address_d: "",
       mobile_d: "",
-      status: true,
+      status: true, //按钮的状态
       orders: [],
-      pca:{}
+      pca: {},
+      btn: true, //确认修改按钮的状态
+      rowId: "",
+      province: "",
+      city: "",
+      district: "",
+      street: "",
+      pay_d:''
     };
   },
   mounted() {
-    this.ordershow_m();
+    this.getassign_m();
     this.getaddress();
-    this.areaData=areaData;
+    this.areaData = areaData;
   },
   methods: {
+    //点击修改发票
+    update_inv() {
+      this.inv_show = true;
+    },
+    //完成
+    complete() {
+      console.log(1);
+    },
+    // 保存
+    save() {
+      console.log(1);
+    },
+    //取消
+    cancel() {
+      this.inv_show = false;
+    },
+    //   选中出现红框
+    change(i) {
+        console.log(i)
+        this.ind = i
+        this.getaddress()
+    },
     getaddress() {
       var self = this;
       this.ajax
         .get("/api/address")
         .then(function(res) {
-          console.log(234243);
+            // console.log(res.data)
           self.goodaddress = res.data.address;
         })
         .catch(function(err) {
@@ -360,7 +447,8 @@ export default {
           }
         });
     },
-    ordershow_m() {
+    // 商品分类
+    getassign_m() {
       var self = this;
       this.ajax
         .get("/api/cart/getAssign", {
@@ -376,10 +464,7 @@ export default {
           }
         });
     },
-    click() {
-      this.site = false;
-      this.status = false;
-    },
+
     // 添加地址
     address_m() {
       var self = this;
@@ -391,14 +476,14 @@ export default {
           email: self.email_d,
           mobile: self.mobile_d,
           address: self.address_d,
-          country: self.resArr[0].code,
-          province: self.resArr[1].code,
-          city: self.resArr[2].code,
-          district: self.resArr[3].code
+          province: self.resArr[0].code,
+          city: self.resArr[1].code,
+          district: self.resArr[2].code,
+          street: self.resArr[3].code
         })
         .then(function(res) {
-          console.log(res.data);
           self.goodaddress = res.data.address;
+          console.log(self.goodaddress);
         })
         .catch(function(err) {
           if (err.status_code == 403) {
@@ -412,7 +497,7 @@ export default {
       this.ajax
         .delete("/api/address/" + id)
         .then(function(res) {
-          self.goodaddress = "";
+          self.goodaddress = res.data.address;
         })
         .catch(function(err) {
           if (err.status_code == 403) {
@@ -421,16 +506,89 @@ export default {
         });
     },
     // 修改地址
-    updateaddress_m(id) {
-      this.site = false;
+    updateaddress_m(item) {
       var self = this;
+      this.site = false;
+      this.btn = false;
+      self.consignee_d = item.consignee;
+      self.email_d = item.email;
+      self.mobile_d = item.mobile;
+      self.address_d = item.address;
+      self.rowId = item.id;
+      //   console.log(item.province);
+    },
+    //确认修改
+    update(id) {
+      var self = this;
+      this.site = true;
       this.ajax
-        .put("/api/address/" + id)
+        .put("/api/address/" + id, {
+          consignee: self.consignee_d,
+          email: self.email_d,
+          mobile: self.mobile_d,
+          address: self.address_d,
+          province: self.resArr[0].code,
+          city: self.resArr[1].code,
+          district: self.resArr[2].code,
+          street: self.resArr[3].code
+        })
         .then(function(res) {
           self.goodaddress = res.data.address;
+          console.log(res.data.address);
         })
         .catch(function(err) {
           if (err.status_code == 403) {
+            alert(err.message);
+          }
+        });
+    },
+    // 支付宝
+    alipay_m(){
+        // console.log(1111111111)
+        var self =this
+        self.pay_d = true
+        self.payId = 1
+    },
+    //微信支付
+    wxpay_m(){
+        var self =this; 
+        self.payId = 6
+    },
+    // 线下支付
+    offlinepay_m(){
+        var self =this
+        self.payId = 8
+    },
+    //添加订单
+    addorder_m() {
+      var self = this;
+    //   console.log(this.$route.query.rowId)
+        // this.$router.push({
+        //         name: "immediatepay",
+        //     });
+      this.ajax
+        .post("/api/order/add", {
+          consignee: self.consignee_d,
+          email: self.email_d,
+          mobile: self.mobile_d,
+          address: self.address_d,
+          tel: self.tel_d,
+          referer:'self_site',
+          rowIds:self.$route.query.rowId,
+          pay_id: self.payId,
+        //   province: self.resArr[0].code,
+        //   city: self.resArr[1].code,
+        //   district: self.resArr[2].code,
+        //   street: self.resArr[3].code
+          
+                      
+        })
+        .then(function(res) {
+          console.log(1);
+
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
             alert(err.message);
           }
         });
@@ -439,16 +597,34 @@ export default {
 };
 </script>
 <style scoped>
+.address_show {
+  border: 4px solid grey;
+  width: 320px;
+  padding: 10px;
+  font-size: 12px;
+  margin-left: 47px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+.active {
+  background-image: url(../static.huijinjiu.com/submitorder/active.png);
+  background-size: 100% 100%;
+  border: none
+}
+.select {
+  color: red;
+  border: 1px solid red;
+}
 .ivu-layout {
   width: 100%;
-  height: 1768px;
+  height: 100%;
   background: url(../static.huijinjiu.com/personal/personImg.jpg) no-repeat;
   background-size: 100% 1768px;
   font-size: 16px;
 }
 
 .sider {
-  height: 1768px;
   background: url(../static.huijinjiu.com/personal/siderImg.png) no-repeat;
   background-size: 100% 100%;
 }
@@ -458,7 +634,6 @@ export default {
 }
 .side .bk {
   width: 100%;
-  height: 100%;
   background: url(../static.huijinjiu.com/personal/head.png) no-repeat center;
   margin-top: 102px;
 }
@@ -508,7 +683,6 @@ export default {
 }
 
 .content {
-  height: 1636px;
   margin-top: 10px;
   background: #fff;
   margin-left: 32px;
