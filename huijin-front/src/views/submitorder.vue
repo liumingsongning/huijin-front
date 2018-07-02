@@ -576,6 +576,7 @@ export default {
           referer:'self_site',
           rowIds:self.$route.query.rowId,
           pay_id: self.payId,
+          cart_type:'shopping'
         //   province: self.resArr[0].code,
         //   city: self.resArr[1].code,
         //   district: self.resArr[2].code,

@@ -14,7 +14,7 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://dp.huijinjiu.com' :
+    'http://api.huijinjiu.com' :
     env === 'production' ?
     'http://api.huijinjiu.com' :
     'https://debug.url.com';
@@ -56,7 +56,7 @@ ajax.interceptors.response.use(
                     // store.commit('logout');
                  
                     router.replace({
-                        path: 'login',
+                        path: '/login',
                         query: {redirect: router.currentRoute.fullPath}
                     })
             }
