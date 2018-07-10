@@ -28,19 +28,19 @@
 						</i-col>
 						<i-col span="5">
 							<!-- <i-col span="12"> -->
-								<li>
-									<a href="">个人中心</a>
-								</li>
+							<li>
+								<a href="">个人中心</a>
+							</li>
 							<!-- </i-col> -->
 							<!-- <i-col span='12'> -->
-						</i-col>	
-						<i-col span="4">	
+						</i-col>
+						<i-col span="4">
 							<li>
 								<a href="" @click='logout_m'>退出</a>
 								<a href="">{{user.userinfo.qq_user?user.userinfo.qq_user.nickname:user.userinfo.name}}</a>
 								<a href="" v-show="user.userinfo.qq_user"><img :src="user.userinfo.qq_user?user.userinfo.qq_user.figureurl_qq_1:''" /></a>
 							</li>
-					<!-- </i-col> -->
+							<!-- </i-col> -->
 						</i-col>
 
 					</ul>
@@ -80,14 +80,14 @@
 						<!--分量-->
 						<Row>
 							<i-col span="18" style="margin-top: 30px;">
-								<Row v-for="(item,index) in good.spe" style="margin-top:5px">
+								<Row v-for="(item,index) in good.goods_type.order_attr" style="margin-top:5px">
 									<i-col span="4" style="text-align:center;font-size: 15px;line-height: 50px;">
-										{{index}}
+										{{item.attr_name}}
 									</i-col>
 
-										<i-col span="20" style="margin-top:10px">
-											<Button  style="margin-left:10px" size="large" v-for="i in item">{{i.attr_value}}</Button>
-										</i-col>
+									<i-col span="20" style="margin-top:10px">
+										<Button style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)">{{i.attr_value}}</Button>
+									</i-col>
 								</Row>
 							</i-col>
 							<i-col span="6">&nbsp;</i-col>
@@ -183,6 +183,27 @@ export default {
     ...mapState(["user"])
   },
   methods: {
+		isCheck(id){
+			console.log(id);
+			console.log(this.good.products[0].goods_attr);
+			console.log(this.good.products[0].goods_attr.indexOf(id));
+			if(this.good.products[0].goods_attr.indexOf(id)>=0){
+				return true;
+			}
+		},
+    changeAttr(id) {},
+    stockout(id) {
+      var object = this.good.products;
+      for (const key in object) {
+        if (object.hasOwnProperty(key)) {
+          const element = object[key];
+
+          if (element.goods_attr.indexOf(id) === 0) {
+            return false;
+          }
+        }
+      }
+    },
     details() {
       var self = this;
       this.ajax
@@ -248,6 +269,9 @@ export default {
 
 
 <style scoped>
+.red{
+	border:1px solid #e20909
+}
 .detail {
   width: 100%;
   height: 2164px;
@@ -299,12 +323,12 @@ ol li {
   height: 521px;
 }
 .content .weight {
-	width:120px;
-	margin-left:10px
+  width: 120px;
+  margin-left: 10px;
   /*font-size: 9px;*/
 }
 .content .font {
-	width:100%;
+  width: 100%;
   border-radius: 0;
   height: 28px;
 }
