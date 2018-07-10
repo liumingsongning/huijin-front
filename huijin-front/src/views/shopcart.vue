@@ -176,7 +176,7 @@
                                                 <td style="padding-left:20px;">
                                                     <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
                                                     <div class="qty">{{item.qty}}</div>
-                                                    <button type="button" class="add" @click="addcart_m(item.model.id)">+</button>
+                                                    <button type="button" class="add" @click="addcart_m(item.rowId)">+</button>
                                                 </td>
                                             </i-col>
                                             <i-col span="2">
@@ -306,9 +306,10 @@ export default {
     // 增加
     addcart_m(id) {
       var self = this;
+     
       this.ajax
-        .post("/api/cart/add", {
-          good_id: id
+        .post("/api/cart/plus", {
+          rowId: id
         })
         .then(function(res) {
           self.carts = res.data.cart;
