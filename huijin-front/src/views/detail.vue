@@ -81,12 +81,12 @@
 						<Row>
 							<i-col span="18" style="margin-top: 30px;">
 								<Row v-for="(item,index) in good.goods_type.order_attr" style="margin-top:5px">
-									<i-col span="4" style="text-align:center;font-size: 15px;line-height: 50px;">
+									<i-col span="4" style="text-align:center;font-size: 15px;line-height: 45px;">
 										{{item.attr_name}}
 									</i-col>
 
 									<i-col span="20" style="margin-top:10px">
-										<Button style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)">{{i.attr_value}}</Button>
+										<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" >{{i.attr_value}}</Radio>
 									</i-col>
 								</Row>
 							</i-col>
@@ -269,9 +269,9 @@ export default {
 
 
 <style scoped>
-.red{
+/* .red{
 	border:1px solid #e20909
-}
+} */
 .detail {
   width: 100%;
   height: 2164px;
@@ -322,21 +322,13 @@ ol li {
   width: 100%;
   height: 521px;
 }
-.content .weight {
-  width: 120px;
-  margin-left: 10px;
-  /*font-size: 9px;*/
-}
-.content .font {
-  width: 100%;
-  border-radius: 0;
-  height: 28px;
-}
+
+
 .content .s1 .money {
   font-size: 37px;
   color: red;
   letter-spacing: 2px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .content .buy,
 .content .addcart {
