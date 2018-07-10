@@ -86,7 +86,7 @@
 
 									<i-col span="20" style="margin-top:10px">
 										<RadioGroup type="button">
-											<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" >{{i.attr_value}}</Radio>
+											<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" :label="i.attr_value"></Radio>
 										</RadioGroup>
 									</i-col>
 								</Row>
