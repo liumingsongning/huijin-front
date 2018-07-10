@@ -1,5 +1,5 @@
 <template>
-    <div class="layout">
+     <div class="layout">
         <Layout>
             <!-- 侧边栏 -->
             <Sider class="sider" hide-trigger style="width:150px;min-width:150px;max-width:150px;flex:0 0 150px">
@@ -89,97 +89,23 @@
                     </Row>
                 </div>
                 <!-- 中部内容 -->
-                 <Row>
-                    <i-col span="22"  class="content">
-                        <div style="height:95px;border-bottom:4px solid #4a5b77;padding:45px;font-weight:bold">
-                           <span style="float:left">提交订单</span>
-                            <img style="float:right" src="../static.huijinjiu.com/submitorder/web2.png" />
+                <Row>
+                    <i-col span="22" class="content">
+                        <div style="font-size:16px;font-weight:bold;border:1px solid #b4b2b3;height:34px;line-height:34px;text-indent:1em">
+                            转售商品信息
                         </div>
-                        <!-- 渲染的数据 -->
-                        <div v-for="i in ordershow">
-                            <!-- 收货人 -->
-                            <div style="width:100%;padding-left:46px;margin-top:40px;height:50px;border-bottom:1px solid #bfbfbf">
-                                <div style="font-size:17px;float:left">
-                                收货人
-                                </div>
-                                <div style="padding:4px;width:400px;line-height:30px;margin-left:160px;border:1px solid #b1c1e2;font-size:15px">
-                                    {{i.consignee}} &nbsp;&nbsp; {{areaData[i.country][i.province]+areaData[i.province][i.city]+areaData[i.city][i.district]+areaData[i.district][i.street]}}&nbsp;&nbsp;{{i.mobile}}
-                                </div>
-                            </div>
-                            <!-- 配送方式 -->
-                            <div style="width:100%;padding-left:46px;margin-top:40px;height:50px;border-bottom:1px solid #bfbfbf">
-                                <div style="font-size:17px;float:left">
-                                配送方式
-                                </div>
-                                <div style="width:250px;line-height:30px;margin-left:160px;font-size:15px">
-                                    申通快递 &nbsp;&nbsp;运费 &nbsp;¥ 800.00
-                                </div>
-                            </div>
-                            <!-- 发票信息 -->
-                            <div style="width:100%;padding-left:46px;margin-top:40px;height:50px;">
-                                <div style="font-size:17px;float:left">
-                                发票信息
-                                </div>
-                                <div style="width:250px;line-height:30px;margin-left:160px;font-size:15px">
-                                    普通发票 &nbsp;&nbsp;(电子) &nbsp;&nbsp;个人发票 &nbsp;&nbsp;<a>查看</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-top:50px;margin-left:46px">
-                        <Button style="font-size:20px;color:white;background:#fe706e;border-color:#ff4948;" @click="payment">立即付款</Button>
+                        <div style="width:600px;margin-left:150px;margin-top:60px">
+                            商品名称:<Input type="text" style></Input>
                         </div>
                     </i-col>
-                    <!-- <i-col span="2">&nbsp;</i-col> -->
                 </Row>
             </Layout>
         </Layout>
     </div>
 </template>
-
 <script>
-import areaData from "area-data";
 export default {
-    data() {
-        return {
-            orderlist :[],
-            ordershow :[],
-        }
-    }, 
-    mounted() {
-        this.ordershow_m();
-        this.orderlist_m();
-        this.areaData = areaData
-    },
-    methods:{
-        orderlist_m() {
-            var self = this;
-            this.ajax.get("/api/order")
-            .then(function(res){
-                // console.log(res.data)
-                self.orderlist = res.data.orders
-            }).catch(function(err){
-                 if (err.status_code == 404) {
-                    alert(err.message);
-                }
-            })
-        },
-        ordershow_m(){
-            var self =this;
-            this.ajax.get("/api/order/"+self.$route.query.id)
-            .then(function(res){
-                console.log(res.data.order_info)
-                self.ordershow = res.data
-            }).catch(function(err){
-                 if (err.status_code == 404) {
-                    alert(err.message);
-                }
-            })
-        },
-        payment() {
-            window.location = "http://api.huijinjiu.com/alipay?order_sn="+this.ordershow.order_sn            
-        }
-
-    }
+    
 }
 </script>
 <style scoped>
@@ -248,9 +174,13 @@ export default {
   border-bottom: 4px solid #a8d3fe;
 }
 .content {
+  height:937px;
   margin-top: 10px;
-  background: #fff;
+  background: url(../static.huijinjiu.com/shopcart/diwen.png) no-repeat;
+  background-size: 100% 100%;
   margin-left: 32px;
+  padding:50px
 }
 </style>
+
 

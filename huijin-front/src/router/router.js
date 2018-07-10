@@ -1,5 +1,13 @@
 const routers = [
     {
+		path: '/goodsresale',
+		name: 'goodsresale',
+	    meta: {
+	        title: '商品转售'
+	    },
+	    component: (resolve) => require(['../views/goodsresale.vue'], resolve)
+	},
+    {
 		path: '/immediatepay',
 		name: 'immediatepay',
 	    meta: {

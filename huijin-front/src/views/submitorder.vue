@@ -390,7 +390,7 @@ export default {
       pca: {},
       btn: true, //确认修改按钮的状态
       rowId: "",
-      pay_d: true,
+      pay_d: false,
       pay1_d: false,
       pay2_d: false,
       pay3_d: false,
