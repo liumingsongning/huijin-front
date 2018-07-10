@@ -45,7 +45,6 @@
 
 					</ul>
 				</i-col>
-				<!-- <i-col span="5"></i-col> -->
 			</Row>
 		</div>
 		<!--内容-->
@@ -86,7 +85,9 @@
 									</i-col>
 
 									<i-col span="20" style="margin-top:10px">
-										<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" >{{i.attr_value}}</Radio>
+										<RadioGroup type="button">
+											<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" >{{i.attr_value}}</Radio>
+										</RadioGroup>
 									</i-col>
 								</Row>
 							</i-col>
@@ -269,9 +270,9 @@ export default {
 
 
 <style scoped>
-/* .red{
+.red{
 	border:1px solid #e20909
-} */
+}
 .detail {
   width: 100%;
   height: 2164px;
