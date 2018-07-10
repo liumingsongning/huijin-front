@@ -85,8 +85,8 @@
 									</i-col>
 
 									<i-col span="20" style="margin-top:10px">
-										<RadioGroup type="button">
-											<Radio style="margin-left:10px" size="large" :class="{red:isCheck(i.id)}" v-for="(i,index) in item.goods_attr" @click="changeAttr(i.id)" :disabled="stockout(i.id)" :label="i.attr_value"></Radio>
+										<RadioGroup type="button" v-model="selects[index]" @input="selectChange()">
+											<Radio style="margin-left:10px" size="large"  v-for="(i,index) in item.goods_attr" :label="i.id"  :disabled="stockout(i.id)">{{i.attr_value}}</Radio>
 										</RadioGroup>
 									</i-col>
 								</Row>
@@ -98,7 +98,7 @@
 							<i-col span="12" offset="1">
 								<div class="money">
 									¥
-									<span style="font-size: 28px;">{{good.market_price}}</span>
+									<span style="font-size: 28px;">{{price}}</span>
 								</div>
 								<i-col span="11">&nbsp;</i-col>
 							</i-col>
@@ -116,7 +116,7 @@
 				</i-col>
 
 				<i-col span="14">
-					<img :src="good.goods_img" class="img1" />
+					<img :src="img" class="img1" />
 				</i-col>
 				<i-col span="2">&nbsp;</i-col>
 			</Row>
@@ -174,7 +174,11 @@ export default {
   data() {
     return {
       good: "",
-      goods: ""
+      goods: "",
+			selects:[],
+			price:'',
+			img:'',
+			selectSucess:true
     };
   },
   mounted() {
@@ -184,12 +188,53 @@ export default {
     ...mapState(["user"])
   },
   methods: {
-		isCheck(id){
-			console.log(id);
-			console.log(this.good.products[0].goods_attr);
-			console.log(this.good.products[0].goods_attr.indexOf(id));
-			if(this.good.products[0].goods_attr.indexOf(id)>=0){
-				return true;
+		selectChange(){
+			var object=this.selects;
+			var basePrice=parseInt(this.good.market_price);
+			for (const key in object) {
+				if (object.hasOwnProperty(key)) {
+					var select = object[key];
+         
+						var attrs=this.good.attrs
+						for (const key in attrs) {
+							if (attrs.hasOwnProperty(key)) {
+								const element = attrs[key];
+								
+								if(element.id==select){
+									console.log(basePrice);
+									console.log(element.attr_price);
+									basePrice+=parseInt(element.attr_price);
+								}
+								
+							}
+						}
+				
+					
+				}
+			}
+			this.price=basePrice
+
+			var products=this.good.products
+			
+			var has=false;
+
+			for (const key in products) {
+				if (products.hasOwnProperty(key)) {
+					const element = products[key];
+				
+					if(this.selects.sort().toString() == JSON.parse(element.goods_attr).sort().toString()){
+						 this.img=element.goods_attr_img
+						 has=true;
+						 this.selectSucess=true;
+					};
+					
+				}
+			}
+
+			if(!has){
+				this.price=0
+				this.img='http://static.huijinjiu.com/th.jpg'
+				this.selectSucess=false;
 			}
 		},
     changeAttr(id) {},
@@ -211,7 +256,18 @@ export default {
         .get("/api/goods/" + self.$route.params.id)
         .then(response => {
           console.log(response.data.good);
-          this.good = response.data.good;
+          self.good = response.data.good;
+					var object=self.good.goods_type.order_attr
+					console.log(object)
+					for (const key in object) {
+						if (object.hasOwnProperty(key)) {
+							const element = object[key];
+							self.selects.push(element.goods_attr[0].id)
+							self.price=parseInt(self.good.market_price)
+							self.img=self.good.goods_img
+						}
+					}
+					
         })
         .catch(error => {
           if (error.status_code == 404) {
@@ -221,11 +277,23 @@ export default {
     },
     // 加入购物车
     addcart_m() {
-      var self = this;
+			if(this.selectSucess==false){
+				alert('请选择正确规格');
+				return false
+			}
+			var self = this;
+			
+			var data={}
+
+      if(this.good.attrs.length>0){
+				data.good_id=self.good.id
+				data.spe=this.selects;
+			}else{
+				data.good_id=self.good.id
+			}
+		
       this.ajax
-        .post("/api/cart/add", {
-          good_id: self.good.id
-        })
+        .post("/api/cart/add",data)
         .then(function(res) {
           // console.log(res.data)
           self.$Message.success("添加购物车成功");
@@ -241,6 +309,10 @@ export default {
     },
     // 立即购买
     buynow_m() {
+			if(this.selectSucess==false){
+				alert('请选择正确规格');
+				return false
+			}
       var self = this;
 
       this.ajax
