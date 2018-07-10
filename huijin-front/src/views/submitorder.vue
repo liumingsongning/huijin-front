@@ -106,29 +106,29 @@
 
                             <!-- 地址展示 -->
                             <div style="display:flex;flex-wrap:wrap">
-                            <div v-show="goodaddress.length>0" 
-                                class="address_show" 
-                                v-for="(item,index) in goodaddress" v-bind:class="{'active':ind === index}" @click = "change(index)">
-                                <div style="margin-top:10px;">
-                                    <div style="float:left">
-                                        收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
+                                <div v-show="goodaddress.length>0" 
+                                    class="address_show" 
+                                    v-for="(item,index) in goodaddress" v-bind:class="{'active':ind === index}" @click = "change(index)">
+                                    <div style="margin-top:10px;">
+                                        <div style="float:left">
+                                            收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
+                                        </div>
+                                        <div style="float:right">
+                                            <a style="color:red" @click="updateaddress_m(item)">修改</a>
+                                            <a style="color:red" @click="deleteaddress_m(item.id)">删除</a>
+                                        </div>
                                     </div>
-                                    <div style="float:right">
-                                        <a style="color:red" @click="updateaddress_m(item)">修改</a>
-                                        <a style="color:red" @click="deleteaddress_m(item.id)">删除</a>
+                                    <Br />
+                                    <div style="margin-top:8px">
+                                        所在地区: &nbsp;<span style="color:#595959" >{{areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]+areaData[item.district][item.street]}}</span>
+                                    </div>
+                                    <div style="margin-top:8px">
+                                        详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
+                                    </div>
+                                    <div style="margin-top:8px">
+                                        手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
                                     </div>
                                 </div>
-                                <Br />
-                                <div style="margin-top:8px">
-                                    所在地区: &nbsp;<span style="color:#595959" >{{areaData[item.country][item.province]+areaData[item.province][item.city]+areaData[item.city][item.district]+areaData[item.district][item.street]}}</span>
-                                </div>
-                                <div style="margin-top:8px">
-                                    详细地址: &nbsp;<span style="color:#595959">{{item.address}}</span>
-                                </div>
-                                <div style="margin-top:8px">
-                                    手机号码: &nbsp;<span style="color:#595959">{{item.mobile}}</span>
-                                </div>
-                            </div>
                             </div>
 
                             <Row>
@@ -154,8 +154,6 @@
                                             <Button style="margin-left:10px;background:#eeeeee;border-color:#a6a6a6;color:#acacac;width:70px" @click="site=true" >取消</Button>
                                         </div>
                                     </Card>
-
-                                    
                                 </i-col>
                                 <i-col spa="6"></i-col>
                             </Row> 
@@ -203,7 +201,7 @@
 
                             </table>
                             <div style="width:100%;background:#f5f5f5;height:35px;margin-top:22px;color:red;line-height:35px;padding-left:50px">
-                                    公司直销 &nbsp;预计增值: &nbsp;¥110.00
+                                    公司直销 &nbsp;预计增值: &nbsp;¥0.00
                             </div>
 
                         </div>
@@ -215,16 +213,10 @@
                                 <span style="padding-left:10px;line-height:36px;color:red;font-size:20px">支付方式</span>
                             </div>
                             <div style="margin-left:58px;margin-top:20px">
-                                <!-- <RadioGroup v-model="btn1" type="button" size="large">
-                                    <Radio label="支付宝" v-on:change="alipay_m"></Radio> 
-                                    <Radio label="微信支付" @click="wxpay_m"></Radio>
-                                    <Radio label="线下支付" @click="offlinepay_m"></Radio>
-                                    <Radio label="余额"></Radio>
-                                </RadioGroup> -->
                                 <Button style="width:96px;height:40px;" v-bind:class="{'select': pay_d}" @click="alipay_m" >支付宝</Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Button style="width:96px;height:40px"  @click="wxpay_m">微信支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Button style="width:96px;height:40px" @click="offlinepay_m">线下支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Button style="width:96px;height:40px" >余额支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px"  v-bind:class="{'select': pay1_d}"  @click="wxpay_m">微信支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px" v-bind:class="{'select': pay2_d}" @click="offlinepay_m">线下支付</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button style="width:96px;height:40px" v-bind:class="{'select': pay3_d}" @click="balance_m">余额支付</Button>
                             </div>
                         </div>
                        
@@ -253,8 +245,8 @@
                         <!-- 发票 -->
                         <Card v-if="inv_show" style="width:650px;margin-left:auto;margin-right:auto;">
                             <div>
-                                <Button @click="invoice_d=true" v-bind:class="{select:invoice_d}">电子普通发票</Button>
-                                <Button @click="invoice_d=false" v-bind:class="{select:!invoice_d}">增值税专业用发票</Button>
+                                <Button @click="eleinv_m" v-bind:class="{select:invoice_d}">电子普通发票</Button>
+                                <Button @click="taxinv_m" v-bind:class="{select:!invoice_d}">增值税专用发票</Button>
                             </div>
                             <!-- 电子普通发票 -->
                             <div v-show="invoice_d">
@@ -381,12 +373,12 @@ import areaData from "area-data";
 export default {
   data() {
     return {
-      btn1:"",
+      btn1: "",
       payId: "",
       invoice_d: true,
       content_d: true,
       inv_show: false,
-      ind:"",
+      ind: "",
       resArr: [],
       site: true, //显示收货地址的状态
       goodaddress: [],
@@ -398,19 +390,40 @@ export default {
       pca: {},
       btn: true, //确认修改按钮的状态
       rowId: "",
-      province: "",
-      city: "",
-      district: "",
-      street: "",
-      pay_d:''
+      pay_d: true,
+      pay1_d: false,
+      pay2_d: false,
+      pay3_d: false,
+      invtype: "", //发票类型
+      address_number: "",
+      addorder: "",
+      cartype: "" //立即购买/加入购物车
     };
   },
   mounted() {
-    this.getassign_m();
+    //如果是立即购买的话调用getnow方法,
+    if (this.$route.query.type == "buynow") {
+      this.getnow();
+      this.cartype = "buynow";
+    } else {
+      //如果是加入购物车的话,调用getassign_m方法
+      this.getassign_m();
+      this.cartype = "shopping";
+    }
     this.getaddress();
     this.areaData = areaData;
+    this.getnow();
   },
   methods: {
+    //电子发票
+    eleinv_m() {
+      this.invoice_d = true;
+      this.invtype = "电子发票";
+    },
+    taxinv_m() {
+      this.invoice_d = false;
+      this.invtype = "增值税专用发票";
+    },
     //点击修改发票
     update_inv() {
       this.inv_show = true;
@@ -427,18 +440,18 @@ export default {
     cancel() {
       this.inv_show = false;
     },
-    //   选中出现红框
+    //地址选中出现红框
     change(i) {
-        console.log(i)
-        this.ind = i
-        this.getaddress()
+      this.ind = i;
+      this.address_number = i;
     },
+    // 获取地址
     getaddress() {
       var self = this;
       this.ajax
         .get("/api/address")
         .then(function(res) {
-            // console.log(res.data)
+          // console.log(res.data)
           self.goodaddress = res.data.address;
         })
         .catch(function(err) {
@@ -455,12 +468,27 @@ export default {
           params: { rowIds: self.$route.query.rowId }
         })
         .then(function(res) {
-          console.log(res.data.cart);
+          //   console.log(res.data.cart);
           self.orders = res.data.cart;
         })
         .catch(function(err) {
           if (err.status_code == 404) {
             alert(err.message);
+          }
+        });
+    },
+    //点击立即购买获取数据
+    getnow() {
+      var self = this;
+      this.ajax
+        .get("/api/BuyNowCart/cart")
+        .then(function(res) {
+          console.log(res.data);
+          self.orders = res.data.cart;
+        })
+        .catch(function(err) {
+          if (err.status_code == 404) {
+            console.log(err.message);
           }
         });
     },
@@ -515,7 +543,6 @@ export default {
       self.mobile_d = item.mobile;
       self.address_d = item.address;
       self.rowId = item.id;
-      //   console.log(item.province);
     },
     //确认修改
     update(id) {
@@ -543,50 +570,66 @@ export default {
         });
     },
     // 支付宝
-    alipay_m(){
-        // console.log(1111111111)
-        var self =this
-        self.pay_d = true
-        self.payId = 1
+    alipay_m() {
+      var self = this;
+      self.pay_d = true;
+      self.pay1_d = false;
+      self.pay2_d = false;
+      self.pay3_d = false;
+      self.payId = 1;
     },
     //微信支付
-    wxpay_m(){
-        var self =this; 
-        self.payId = 6
+    wxpay_m() {
+      var self = this;
+      self.pay_d = false;
+      self.pay1_d = true;
+      self.pay2_d = false;
+      self.pay3_d = false;
+      self.payId = 6;
     },
     // 线下支付
-    offlinepay_m(){
-        var self =this
-        self.payId = 8
+    offlinepay_m() {
+      var self = this;
+      self.pay_d = false;
+      self.pay1_d = false;
+      self.pay2_d = true;
+      self.pay3_d = false;
+      self.payId = 8;
+    },
+    //余额支付
+    balance_m() {
+      var self = this;
+      self.pay_d = false;
+      self.pay1_d = false;
+      self.pay2_d = false;
+      self.pay3_d = true;
     },
     //添加订单
     addorder_m() {
       var self = this;
-    //   console.log(this.$route.query.rowId)
-        // this.$router.push({
-        //         name: "immediatepay",
-        //     });
+      var i = this.address_number;
       this.ajax
         .post("/api/order/add", {
-          consignee: self.consignee_d,
-          email: self.email_d,
-          mobile: self.mobile_d,
-          address: self.address_d,
-          tel: self.tel_d,
-          referer:'self_site',
-          rowIds:self.$route.query.rowId,
+          consignee: self.goodaddress[i].consignee,
+          mobile: self.goodaddress[i].mobile,
+          address: self.goodaddress[i].address,
+          referer: "self_site",
+          rowIds: self.$route.query.rowId,
           pay_id: self.payId,
-          cart_type:'shopping'
-        //   province: self.resArr[0].code,
-        //   city: self.resArr[1].code,
-        //   district: self.resArr[2].code,
-        //   street: self.resArr[3].code
-          
-                      
+          cart_type: self.cartype,
+          province: self.goodaddress[i].province,
+          city: self.goodaddress[i].city,
+          district: self.goodaddress[i].district,
+          street: self.goodaddress[i].street
         })
         .then(function(res) {
-          console.log(1);
-
+          self.addorder = res.data.order;
+          self.$Message.success("添加订单成功");
+          console.log(self.addorder);
+          self.$router.push({
+            name: "immediatepay",
+            query: { id: self.addorder.id }
+          });
         })
         .catch(function(err) {
           if (err.status_code == 422) {
@@ -599,9 +642,9 @@ export default {
 </script>
 <style scoped>
 .address_show {
-  border: 4px solid grey;
+  border: 3px solid grey;
   width: 320px;
-  padding: 10px;
+  padding: 8px;
   font-size: 12px;
   margin-left: 47px;
   margin-top: 40px;
@@ -611,7 +654,7 @@ export default {
 .active {
   background-image: url(../static.huijinjiu.com/submitorder/active.png);
   background-size: 100% 100%;
-  border: none
+  border: none;
 }
 .select {
   color: red;

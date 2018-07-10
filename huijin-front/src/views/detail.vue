@@ -79,17 +79,15 @@
 						</ol>
 						<!--分量-->
 						<Row>
-							<i-col span="18" style="margin-top: 58px;">
-								<Row>
-									<i-col span="8">
-										<Button class="weight">{{good.goods_weight}}ml</Button>
+							<i-col span="18" style="margin-top: 30px;">
+								<Row v-for="(item,index) in good.spe" style="margin-top:5px">
+									<i-col span="4" style="text-align:center;font-size: 15px;line-height: 50px;">
+										{{index}}
 									</i-col>
-									<i-col span="8">
-										<Button class="weight">{{good.goods_weight}}ml</Button>
-									</i-col>
-									<i-col span="8">
-										<Button class="weight">{{good.goods_weight}}ml</Button>
-									</i-col>
+
+										<i-col span="20" style="margin-top:10px">
+											<Button  style="margin-left:10px" size="large" v-for="i in item">{{i.attr_value}}</Button>
+										</i-col>
 								</Row>
 							</i-col>
 							<i-col span="6">&nbsp;</i-col>
@@ -107,7 +105,7 @@
 
 						<Row>
 							<i-col span="6">
-								<Button class="buy">立即购买</Button>
+								<Button class="buy" @click="buynow_m">立即购买</Button>
 							</i-col>
 							<i-col span="6" offset="5">
 								<Button class="addcart" @click="addcart_m">加入购物车</Button>
@@ -119,7 +117,7 @@
 				<i-col span="14">
 					<img :src="good.goods_img" class="img1" />
 				</i-col>
-				<i-col span="1">&nbsp;</i-col>
+				<i-col span="2">&nbsp;</i-col>
 			</Row>
 		</div>
 
@@ -174,21 +172,23 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      good: ""
+      good: "",
+      goods: ""
     };
   },
   mounted() {
-		this.details();
+    this.details();
   },
   computed: {
     ...mapState(["user"])
   },
   methods: {
     details() {
-			var self=this;
+      var self = this;
       this.ajax
-        .get("/api/goods/"+self.$route.params.id)
+        .get("/api/goods/" + self.$route.params.id)
         .then(response => {
+          console.log(response.data.good);
           this.good = response.data.good;
         })
         .catch(error => {
@@ -197,6 +197,7 @@ export default {
           }
         });
     },
+    // 加入购物车
     addcart_m() {
       var self = this;
       this.ajax
@@ -215,6 +216,31 @@ export default {
     },
     logout_m() {
       this.$store.commit("logout");
+    },
+    // 立即购买
+    buynow_m() {
+      var self = this;
+
+      this.ajax
+        .post("/api/BuyNowCart/cart", { good_id: self.good.id })
+        .then(function(res) {
+          console.log(res.data.cart);
+          self.goods = res.data.cart;
+          var rowId = [];
+          rowId.push(self.goods[0].rowId);
+          self.$router.push({
+            name: "submitorder",
+            query: {
+              rowId: rowId,
+              type: "buynow"
+            }
+          });
+        })
+        .catch(function(err) {
+          if (err.status_code == 422) {
+            console.log(err.message);
+          }
+        });
     }
   }
 };
@@ -273,11 +299,14 @@ ol li {
   height: 521px;
 }
 .content .weight {
-  border-radius: 0;
-  color: red;
-  border: 1px solid #b5b5b5;
-  height: 28px;
+	width:120px;
+	margin-left:10px
   /*font-size: 9px;*/
+}
+.content .font {
+	width:100%;
+  border-radius: 0;
+  height: 28px;
 }
 .content .s1 .money {
   font-size: 37px;
