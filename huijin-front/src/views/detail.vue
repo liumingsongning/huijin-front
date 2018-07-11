@@ -233,7 +233,7 @@ export default {
 
 			if(!has){
 				this.price=0
-				this.img='http://static.huijinjiu.com/th.jpg'
+				this.img='http://static.huijinjiu.com/135060426634397841.png'
 				this.selectSucess=false;
 			}
 		},
