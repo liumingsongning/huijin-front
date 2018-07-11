@@ -79,14 +79,14 @@
 						<!--分量-->
 						<Row>
 							<i-col span="18" style="margin-top: 30px;">
-								<Row v-for="(item,index) in good.goods_type.order_attr" style="margin-top:5px">
+								<Row v-for="(item,index) in order_attr" style="margin-top:5px">
 									<i-col span="4" style="text-align:center;font-size: 15px;line-height: 45px;">
 										{{item.attr_name}}
 									</i-col>
 
 									<i-col span="20" style="margin-top:10px">
 										<RadioGroup type="button" v-model="selects[index]" @input="selectChange()">
-											<Radio style="margin-left:10px" size="large"  v-for="(i,index) in item.goods_attr" :label="i.id"  :disabled="stockout(i.id)">{{i.attr_value}}</Radio>
+											<Radio style="margin-left:10px" size="large" v-for="(i,index) in item.goods_attr" :label="i.id" :disabled="stockout(i.id)">{{i.attr_value}}</Radio>
 										</RadioGroup>
 									</i-col>
 								</Row>
@@ -175,10 +175,11 @@ export default {
     return {
       good: "",
       goods: "",
-			selects:[],
-			price:'',
-			img:'',
-			selectSucess:true
+      selects: [],
+      price: "",
+      img: "",
+      selectSucess: true,
+      order_attr: []
     };
   },
   mounted() {
@@ -188,56 +189,54 @@ export default {
     ...mapState(["user"])
   },
   methods: {
-		selectChange(){
-			var object=this.selects;
-			var basePrice=parseInt(this.good.market_price);
-			for (const key in object) {
-				if (object.hasOwnProperty(key)) {
-					var select = object[key];
-         
-						var attrs=this.good.attrs
-						for (const key in attrs) {
-							if (attrs.hasOwnProperty(key)) {
-								const element = attrs[key];
-								
-								if(element.id==select){
-									console.log(basePrice);
-									console.log(element.attr_price);
-									basePrice+=parseInt(element.attr_price);
-								}
-								
-							}
-						}
-				
-					
-				}
-			}
-			this.price=basePrice
+    selectChange() {
+      var object = this.selects;
+      var basePrice = parseInt(this.good.market_price);
+      for (const key in object) {
+        if (object.hasOwnProperty(key)) {
+          var select = object[key];
 
-			var products=this.good.products
-			
-			var has=false;
+          var attrs = this.good.attrs;
+          for (const key in attrs) {
+            if (attrs.hasOwnProperty(key)) {
+              const element = attrs[key];
 
-			for (const key in products) {
-				if (products.hasOwnProperty(key)) {
-					const element = products[key];
-				
-					if(this.selects.sort().toString() == JSON.parse(element.goods_attr).sort().toString()){
-						 this.img=element.goods_attr_img
-						 has=true;
-						 this.selectSucess=true;
-					};
-					
-				}
-			}
+              if (element.id == select) {
+                basePrice += parseInt(element.attr_price);
+              }
+            }
+          }
+        }
+      }
+      this.price = basePrice;
 
-			if(!has){
-				this.price=0
-				this.img='http://static.huijinjiu.com/th.jpg'
-				this.selectSucess=false;
-			}
-		},
-    changeAttr(id) {},
+      var products = this.good.products;
+
+      var has = false;
+
+      for (const key in products) {
+        if (products.hasOwnProperty(key)) {
+          const element = products[key];
+
+          if (
+            this.selects.sort().toString() ==
+            JSON.parse(element.goods_attr)
+              .sort()
+              .toString()
+          ) {
+            this.img = element.goods_attr_img;
+            has = true;
+            this.selectSucess = true;
+          }
+        }
+      }
+
+      if (!has) {
+        this.price = 0;
+        this.img = "http://static.huijinjiu.com/135060426634397841.png";
+        this.selectSucess = false;
+      }
+    },
     stockout(id) {
       var object = this.good.products;
       for (const key in object) {
@@ -255,19 +254,21 @@ export default {
       this.ajax
         .get("/api/goods/" + self.$route.params.id)
         .then(response => {
-          console.log(response.data.good);
           self.good = response.data.good;
-					var object=self.good.goods_type.order_attr
-					console.log(object)
-					for (const key in object) {
-						if (object.hasOwnProperty(key)) {
-							const element = object[key];
-							self.selects.push(element.goods_attr[0].id)
-							self.price=parseInt(self.good.market_price)
-							self.img=self.good.goods_img
-						}
-					}
-					
+
+          if (self.good.goods_type.length > 0) {
+            var object = (self.order_attr = self.good.goods_type.order_attr);
+
+            for (const key in object) {
+              if (object.hasOwnProperty(key)) {
+                const element = object[key];
+                self.selects.push(element.goods_attr[0].id);
+              }
+            }
+          }
+
+          self.price = parseInt(self.good.market_price);
+          self.img = self.good.goods_img;
         })
         .catch(error => {
           if (error.status_code == 404) {
@@ -277,25 +278,24 @@ export default {
     },
     // 加入购物车
     addcart_m() {
-			if(this.selectSucess==false){
-				alert('请选择正确规格');
-				return false
-			}
-			var self = this;
-			
-			var data={}
+      if (this.selectSucess == false) {
+        this.$Message.error("请选择正确规格");
+        return false;
+      }
+      var self = this;
 
-      if(this.good.attrs.length>0){
-				data.good_id=self.good.id
-				data.spe=this.selects;
-			}else{
-				data.good_id=self.good.id
-			}
-		
+      var data = {};
+
+      if (this.good.attrs.length > 0) {
+        data.good_id = self.good.id;
+        data.spe = this.selects;
+      } else {
+        data.good_id = self.good.id;
+      }
+
       this.ajax
-        .post("/api/cart/add",data)
+        .post("/api/cart/add", data)
         .then(function(res) {
-          // console.log(res.data)
           self.$Message.success("添加购物车成功");
         })
         .catch(function(err) {
@@ -309,14 +309,21 @@ export default {
     },
     // 立即购买
     buynow_m() {
-			if(this.selectSucess==false){
-				alert('请选择正确规格');
-				return false
-			}
+      if (this.selectSucess == false) {
+        this.$Message.error("请选择正确规格");
+        return false;
+      }
       var self = this;
 
+      if (this.good.attrs.length > 0) {
+        data.good_id = self.good.id;
+        data.spe = this.selects;
+      } else {
+        data.good_id = self.good.id;
+			}
+			
       this.ajax
-        .post("/api/BuyNowCart/cart", { good_id: self.good.id })
+        .post("/api/BuyNowCart/cart", data)
         .then(function(res) {
           console.log(res.data.cart);
           self.goods = res.data.cart;
@@ -342,8 +349,8 @@ export default {
 
 
 <style scoped>
-.red{
-	border:1px solid #e20909
+.red {
+  border: 1px solid #e20909;
 }
 .detail {
   width: 100%;
@@ -395,7 +402,6 @@ ol li {
   width: 100%;
   height: 521px;
 }
-
 
 .content .s1 .money {
   font-size: 37px;
