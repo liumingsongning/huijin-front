@@ -108,7 +108,7 @@
                             <div style="display:flex;flex-wrap:wrap">
                                 <div v-show="goodaddress.length>0" 
                                     class="address_show" 
-                                    v-for="(item,index) in goodaddress" v-bind:class="{'active':ind === index}" @click = "change(index)">
+                                    v-for="(item,index) in goodaddress" v-bind:class="{'active':ind === index}" @click = "change(index)" >
                                     <div style="margin-top:10px;">
                                         <div style="float:left">
                                             收货人: &nbsp;<span style="color:#595959;">{{item.consignee}}</span>
@@ -175,7 +175,7 @@
                                     <th>购买数量</th>
                                     <th>总计</th>
                                 </tr>
-                                <tr v-for="(item,index) in orders" >
+                                <tr v-for="(item,index) in orders">
                                     <td style="width:400px">
                                         <div style="width:60px;height:60px;margin-left:50px;margin-top:10px;float:left">
                                             <img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%">
@@ -412,7 +412,6 @@ export default {
     }
     this.getaddress();
     this.areaData = areaData;
-    this.getnow();
   },
   methods: {
     //电子发票

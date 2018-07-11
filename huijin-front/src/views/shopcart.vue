@@ -99,9 +99,6 @@
                                     <tr>
                                         <i-col span="3">
                                             <th>
-                                                <!-- <Checkbox v-model="checkAll" style="letter-spacing:3px;padding-left:11px">
-                                                    全选
-                                                </Checkbox> -->
                                                 <Checkbox style="letter-spacing:3px;padding-left:11px" :indeterminate="indeterminate" :value="checkAll" @click.prevent.native="handleCheckAll">全选</Checkbox>
                                             </th>
                                         </i-col>
@@ -144,48 +141,52 @@
                                 <!--  -->
                                 <Row>
                                     <table style="width:100%" class="tab1">
-
                                         <tr v-for="(item,index) in carts">
                                             <i-col span="3">
-                                                <td>
-                                                    <!-- <Checkbox  :value="item.id" v-model="checked" @click="currClick(item,$index)" style="letter-spacing:3px;margin-left:11px"> -->
-                                                    <!-- </Checkbox> -->
-                                                    <Checkbox :label="index" style="letter-spacing:3px;margin-left:11px" >{{item.model.goods_name}}</Checkbox>
+                                                <td style="padding-top:20px">
+                                                    <Checkbox :label="index" style="letter-spacing:3px;margin-left:6px" >{{item.model.goods_name}}</Checkbox>
                                                 </td>
                                             </i-col>
-                                            <i-col span="11">
-                                                <td>
-                                                    <div style="width:79px;height:79px;float:left"><img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%"></div>
-                                                    <div style="float:left;padding-left:10px">
+                                            <i-col span="4">
+                                                <td style="float:left;padding-top:20px">
+                                                    <!-- <div style="width:79px;height:79px;float:left"><img :src="item.model.goods_img+'?imageView2/1/w/100/h/100'" style="width:100%"></div> -->
+                                                    <div style="width:79px;height:79px;float:left"><img :src="item.products.goods_attr_img+'?imageView2/1/w/100/h/100'" style="width:100%"></div>
+                                                    
+                                                    <div style="float:left;padding-left:10px;line-height:25px">
                                                         <span>{{item.model.goods_name}}</span>
                                                         <Br />
                                                         <span>出产日期: 2013-07-15</span>
                                                         <Br />
                                                         <span>储藏年限: 10年</span>
                                                         <Br />
-                                                        <span>1000ml</span>
                                                     </div>
+                                                </td>
+                                                
+                                            </i-col>
+                                            <i-col span="7">
+                                                <td v-for="i in item.atts" style="margin-left:5px;padding-top:40px">
+                                                    {{i.attribute.attr_name}}:{{i.attr_value}}
                                                 </td>
                                             </i-col>
                                             <i-col span="2">
-                                                <td>
+                                                <td style="padding-top:20px">
                                                     ¥{{item.price}}
                                                 </td>
                                             </i-col>
                                             <i-col span="4">
-                                                <td style="padding-left:20px;">
+                                                <td style="padding-left:30px;padding-top:20px">
                                                     <button type="button" class="minus" @click="minuscart_m(item.rowId)">-</button>
                                                     <div class="qty">{{item.qty}}</div>
                                                     <button type="button" class="add" @click="addcart_m(item.rowId)">+</button>
                                                 </td>
                                             </i-col>
                                             <i-col span="2">
-                                                <td>
+                                                <td style="padding-top:20px">
                                                     ¥{{item.subtotal}}
                                                 </td>
                                             </i-col>
                                             <i-col span="2">
-                                                <td>
+                                                <td style="padding-top:20px">
                                                     <a style="color:#939393" @click="removecart_m(item.rowId)">删除</a>
                                                     <Br />
                                                     <a style="color:#939393">加入收藏</a>
@@ -381,11 +382,10 @@ export default {
 };
 </script>
 <style scoped>
-::-webkit-scrollbar {
-  width: 0px;
-}
+
 .ivu-layout {
   width: 100%;
+  height:960px;
   font-size: 16px;
   background: url(../static.huijinjiu.com/shopcart/beijing.jpg) no-repeat;
   background-size: 100% 100%;
@@ -393,7 +393,6 @@ export default {
 /* 侧边栏 */
 .sider {
   width: 100%;
-  /* height: 768px; */
   background: url(../static.huijinjiu.com/personal/siderImg.png) no-repeat;
   background-size: 100% 100%;
 }
@@ -449,7 +448,7 @@ export default {
 }
 /* 内容 */
 .content {
-  height: 637px;
+  /* height: 637px; */
   background: url(../static.huijinjiu.com/shopcart/diwen.png) no-repeat;
   background-size: 100% 100%;
   margin-top: 10px;
@@ -471,8 +470,9 @@ export default {
   font-size: 12px;
   border-top: 2px solid #aaa;
   border-bottom: 2px solid #aaa;
-  padding-top: 40px;
+  /* padding-top: 20px; */
 }
+
 .content .minus {
   width: 24px;
   height: 22px;
@@ -500,7 +500,7 @@ export default {
   height: 40px;
   background-color: #ffffff;
   line-height: 40px;
-  margin-top: 235px;
+  /* margin-top: 200px; */
 }
 </style>
 
