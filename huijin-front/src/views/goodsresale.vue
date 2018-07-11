@@ -94,9 +94,19 @@
                         <div style="font-size:16px;font-weight:bold;border:1px solid #b4b2b3;height:34px;line-height:34px;text-indent:1em">
                             转售商品信息
                         </div>
-                        <div style="width:600px;margin-left:150px;margin-top:60px">
-                            商品名称:<Input type="text" style></Input>
-                        </div>
+                        <Card style="width:600px;margin-left:150px;margin-top:60px;background:transparent;">
+                            商品名称: &nbsp;&nbsp;&nbsp;<Input type="text" style="width:300px" placeholder="商品名称不超过30个字"></Input><Br />
+                            商品ID: &nbsp;&nbsp;&nbsp;<Input type="text" style="width:300px" placeholder="请输入商品ID"></Input><Br />
+                            生产日期: &nbsp;&nbsp;&nbsp;2013年1月1日 <Br />
+                            产品规格: &nbsp;&nbsp;&nbsp;500ml
+                            产品浓度: &nbsp;&nbsp;&nbsp;50° <Br />
+                            产品类型: &nbsp;&nbsp;&nbsp;收藏版 原酒
+                            产品年限: &nbsp;&nbsp;&nbsp;10年 <Br />
+                            商品描述: &nbsp;&nbsp;&nbsp;<Input type="textarea" style="width:300px"></Input><Br />
+                            收款方式: &nbsp;&nbsp;&nbsp;<Input type="text" style="width:300px" placeholder="现金结算(收取服务费)"></Input> 服务说明 <a ></a> <Br />
+                            商品价格: &nbsp;&nbsp;&nbsp;<Input type="text" style="width:300px" placeholder=""></Input><Br />
+                            
+                        </Card>
                     </i-col>
                 </Row>
             </Layout>
